@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+{% block title %}Prestations{% endblock %}
+
+{% block body %}
+<style>
+    .header{
+        height: 400px;
+        background-image:url("{{ asset('images/FOND-04.jpg') }}");
+    }
+
+    .email{
+        position: absolute;
+        left: -50px; top: 200px; 
+        transform: rotate(-90deg);
+    }
+
+    .cv{
+        background-image:url("{{ asset('images/fond-cv.svg') }}");
+    }
+</style>
+
+
+
+    <section class="article container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="about_content_titre">
+                    <h3>hébergeur</h3>
+                    <p><span style="font-weight:bold">02Switch</span>
+                    <br>
+                    222 Boulevard Gustave Flaubert
+                    <br>
+                    63000 Clermont-Ferrand
+                    <br>
+                    04 44 44 60 40</p>
+                </div>
+            </div>
+          
+    </section>
+    <section class="article container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="about_content_titre">
+                    <h3>CONFIDENTIALITÉ ET PROTECTION DES DONNÉES</h3>
+                    <p>
+                    Conformément à la loi informatique et libertés du 06 janvier 1978, vous pouvez à tout moment modifier ou supprimer les renseignements liés à votre inscription. Ces informations vous concernant étant confidentielles, HelloWork s’engage à les protéger.
+                    Vous disposez d’un droit d’accès, de modification, de rectification et de suppression des données qui vous concernent (art. 34 de la loi « Informatique et Libertés »). Vous pouvez exercer ce droit directement sur les sites concernés ou en nous contactant :
+                    <span style="font-weight:bold">cleo.cosnier@gmail.com</span></p>
+                </div>
+            </div>
+          
+    </section>
+
+
+
+
+
+    
+
+
+{% endblock %}

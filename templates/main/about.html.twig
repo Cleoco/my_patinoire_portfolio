@@ -17,6 +17,24 @@
     .cv{
         background-image:url("{{ asset('images/fond-cv.svg') }}");
     }
+    .about_content_titre {
+        animation-duration: 1.5s;
+        animation-direction: normal;
+        animation-name: glissement;
+    }
+
+    @keyframes glissement {
+    from {
+        margin-left: -30%;
+        opacity: 0;
+    }
+
+    to {
+        margin-left: 0%;
+        opacity: 1;
+    }
+    }
+
 </style>
 
 
@@ -59,7 +77,7 @@
                 <h3>COMFX</h3>
                 <div class="filet-fin"></div>
                 <h5>Directrice artistique 
-                    </br>& designer graphique 
+                    </br> & designer graphique 
                     print/web</h5>
                 <p>Agence de communication globale avec réalisations sur tous supports. 
                         En charge de l’ensemble de la chaîne graphique; de la réception 

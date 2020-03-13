@@ -37,4 +37,13 @@ class MainController extends AbstractController
             "name" => "Prestations"
         ]);
     }
+    /**
+     * @Route("/mentions-legales", name="terms_of_use")
+     */
+    public function mentions()
+    {
+        return $this->render('main/terms.html.twig',[
+            "name" => "Mentions Légales"
+        ]);
+    }
 }

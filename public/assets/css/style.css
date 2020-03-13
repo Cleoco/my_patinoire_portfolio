@@ -125,7 +125,7 @@ a{
   text-decoration: none !important;
 }
 a:hover{
-  color:white !important
+  color:white !important;
 }
 
 /* MENU BURGER
@@ -487,21 +487,7 @@ a:hover{
   justify-content: center;
   width: 100%;
   height: 100%;
-  animation-duration: 1.5s;
-  animation-direction: normal;
-  animation-name: glissement;
-}
 
-@keyframes glissement {
-  from {
-    margin-left: -30%;
-    opacity: 0;
-  }
-
-  to {
-    margin-left: 0%;
-    opacity: 1;
-  }
 }
 
 .about_content_titre h2{
