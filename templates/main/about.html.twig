@@ -1,0 +1,213 @@
+{% extends 'base.html.twig' %}
+{% block title %}à Propos{% endblock %}
+
+{% block body %}
+<style>
+    .header{
+        height: 400px;
+        background-image:url("{{ asset('images/FOND-04.jpg') }}");
+    }
+
+    .email{
+        position: absolute;
+        left: -50px; top: 200px; 
+        transform: rotate(-90deg);
+    }
+
+    .cv{
+        background-image:url("{{ asset('images/fond-cv.svg') }}");
+    }
+</style>
+
+
+
+    <section class="article container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="about_content_titre">
+                    <h3>CRÉER. INSPIRER. RÉVÉLER.</h3>
+                    <p>Directrice artistique et graphiste pluridisciplinaire,<br> je mets à votre service
+
+                        mon savoir-faire et ma créativité
+                        
+                        <br>et vous accompagne dans vos projets
+                        
+                        de communication.</p>
+                    
+                    <div><a href="css/images/CV_CLEOCOSNIER_2020_DEV.pdf" class="btn btn-4 btn-4c icon-arrow-right" target="_blank" >Téléchargez CV PDF</a></div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="about_content_photo">
+                    <img src="{{ asset('images/illus-about.svg') }}" alt="">
+                </div>
+            </div>    
+    </section>
+
+
+
+<section class="cv">
+    <div class="timeline-fond"></div>
+    <div class="cv-content container">
+        <h2>EXPÉRIENCES</h2>
+        <div class="filet"></div>
+        <div class="experiences">
+            <div class="experience experience-droite">
+                <div class="bulles-droite"></div>
+                <div class="filet-bulle-droite"></div>
+                <h4>2016-2019</h4>
+                <h3>COMFX</h3>
+                <div class="filet-fin"></div>
+                <h5>Directrice artistique 
+                    </br>& designer graphique 
+                    print/web</h5>
+                <p>Agence de communication globale avec réalisations sur tous supports. 
+                        En charge de l’ensemble de la chaîne graphique; de la réception 
+                        du cahier des charges, à l’envoi en impression avec contrôle en 
+                        passant par la conception, la direction artistique et la réalisation. </p>
+            </div>
+            <div class="experience experience-gauche">
+                <div class="bulles-gauche"></div>
+                <div class="filet-bulle-gauche"></div>
+                <h4>2015-2016</h4>
+                <h3>ABA67</h3>
+                <div class="filet-fin"></div>
+                <h5>Designer graphique bénévole</h5>
+                <p>Travail en collaboration avec l’association ABA67 et mise en place 
+                    d’ateliers créatifs pour un public d’enfants autistes. 
+                    L’objectif: donner des moyens d’expression 
+                    à des enfants qui n’ont pas accès 
+                    à la communication verbale. Conception de l’identité visuelle de 
+                    la Journée Internationale de l’Autiste et réalisation de l’ensemble des supports.</p>
+            </div>
+            <div class="experience experience-droite">
+                <div class="bulles-droite"></div>
+                <div class="filet-bulle-droite"></div>
+                <h4>2015</h4>
+                <h3>LES HISTOIRES DE LULU</h3>
+                <div class="filet-fin"></div>
+                <h5>Designer graphique</h5>
+                <p>En charge de la création de supports promotionnels ainsi que de la papeterie.</p>
+            </div>
+            <div class="experience experience-gauche">
+                <div class="bulles-gauche"></div>
+                <div class="filet-bulle-gauche"></div>
+                <h4>avril - août 2014</h4>
+                <h3>ATELIER - MONTRÉAL</h3>
+                <div class="filet-fin"></div>
+                <h5>Designer graphique stagiaire</h5>
+                <p>Conception et réalisation de supports imprimés et digitaux en tous genres 
+                    (micro-sites, post réseaux, bannières, affiches, menus, papeterie). </p>
+            </div>
+            <div class="experience experience-droite">
+                <div class="bulles-droite"></div>
+                <div class="filet-bulle-droite"></div>
+                <h4>juin-juillet 2011</h4>
+                <h3>SODIMASS</h3>
+                <div class="filet-fin"></div>
+                <h5>Designer graphique stagiaire</h5>
+            </div>
+            <div class="experience experience-gauche">
+                <div class="bulles-gauche"></div>
+                <div class="filet-bulle-gauche"></div>
+                <h4>novembre 2010</h4>
+                <h3>SODIMASS</h3>
+                <div class="filet-fin"></div>
+                <h5>Métier de l’impression - stagiaire</h5>
+            </div>
+            <div class="experience experience-droite">
+                <div class="bulles-droite"></div>
+                <div class="filet-bulle-droite"></div>
+                <h4>juin 2010</h4>
+                <h3>ID&PAC</h3>
+                <div class="filet-fin"></div>
+                <h5>Designer graphique stagiaire</h5>
+            </div>
+        </div>
+        <h2>FORMATION</h2>
+        <div class="filet"></div>
+        <div class="experiences">
+            <div class="experience experience-droite">
+                <div class="bulles-droite"></div>
+                <div class="filet-bulle-droite"></div>
+                <h4>mars 2018</h4>
+                <h3>PHOTOSHOP</h3>
+                <div class="filet-fin"></div>
+                <h5>Formation Pyramyd</h5>
+                <p>Approfondissement des fonctionnalités 
+                        de Photoshop et de toutes ses subtilités (montage complexe, profil, 
+                        retouche beauté, détourage complexe, gestion Bridge, etc.). </p>
+            </div>
+            <div class="experience experience-gauche">
+                <div class="bulles-gauche"></div>
+                <div class="filet-bulle-gauche"></div>
+                <h4>avril 2016</h4>
+                <h3>CONCEPTION WEB</h3>
+                <div class="filet-fin"></div>
+                <h5>Formation Pyramyd</h5>
+                <p>Conception de maquettes web sous Photoshop. Réflexion, création et exécution. 
+                    Maitrise des contraintes de base liées au web et parfait contrôle de l’outil.</p>
+            </div>
+            <div class="experience experience-droite">
+                    <div class="bulles-droite"></div>
+                    <div class="filet-bulle-droite"></div>
+                    <h4>février 2016</h4>
+                    <h3>LES FONDAMENTAUX DU WEB</h3>
+                    <div class="filet-fin"></div>
+                    <h5>Formation Pyramyd</h5>
+                    <p>Apprentissage des fondamentaux du web, 
+                            de ses spécificités et ses contraintes techniques. Appréhension de ces dernières 
+                            du point de vue graphique (traitement 
+                            des images, front et back, profils colorimétriques, etc.). </p>
+                </div>
+                <div class="experience experience-gauche">
+                    <div class="bulles-gauche"></div>
+                    <div class="filet-bulle-gauche"></div>
+                    <h4>2013 - 2015</h4>
+                    <h3>DSAA  
+                        </br>CRÉATEUR CONCEPTEUR 
+                        </br>/ IN SITU LAB</h3>
+                    <div class="filet-fin"></div>
+                    <h5>Le Corbusier - Strasbourg</h5>
+                    <p>Savoir mener, diriger et défendre un projet
+                            de design global (design produit, design d’espace et design graphique) du point 
+                            de vue du directeur artistique. Encadrer 
+                            une équipe et travailler avec des profils complémentaires. Rédaction d’un mémoire 
+                            de recherche et soutenance devant un jury 
+                            de professionnels. </p>
+                </div>
+                <div class="experience experience-droite">
+                        <div class="bulles-droite"></div>
+                        <div class="filet-bulle-droite"></div>
+                        <h4>2011 - 2013</h4>
+                        <h3>BTS COMMUNICATION VISUELLE
+                            </br><span>Graphisme / Édition / Publicité</span>
+                        </h3>
+                        <div class="filet-fin"></div>
+                        <h5>ESAAB - Lycée Alain Colas - Nevers</h5>
+                        <p>Approfondissement des connaissances 
+                                en matière de design graphique, publicité 
+                                et édition. Maitrise des logiciels 
+                                de conception, développement d’un projet dans sa globalité (aspect économique, financier, sociologique, marketing 
+                                et artistique). Apprentissage de la chaîne 
+                                de production graphique en détail. Soutenance d’un projet devant jury 
+                                de professionnels. </p>
+                    </div>
+                    <div class="experience experience-gauche">
+                        <div class="bulles-gauche"></div>
+                        <div class="filet-bulle-gauche"></div>
+                        <h4>2010 - 2011</h4>
+                        <h3>MANAA</h3>
+                        <div class="filet-fin"></div>
+                        <h5>ESAAB - Lycée Alain Colas - Nevers</h5>
+                        <p>Découverte et apprentissage des bases
+                                du design toutes disciplines confondues. </p>
+                    </div>
+    </div>
+</section>
+
+
+    
+
+
+{% endblock %}

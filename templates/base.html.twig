@@ -3,10 +3,114 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
+            {# <link rel="stylesheet" href="../assets/css/grid.css"> #}
+            <link rel="stylesheet" href="../assets/css/style.css">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
+    <style>
+        .contact{
+            background-image:url("{{ asset('images/fond-contact.svg') }}");
+        }
+
+    </style>
+        <header  id="header" class="header">
+            <div class="container">
+                <div class="navbar">
+                    
+                    <!-- réseaux gauche -->
+                    <a href="../home/index.html" class="logo-header"><img src='{{ asset('images/logo-header.svg') }}' alt=""></a>
+                    <ul class="reseaux-sociaux">
+                        <li><a href="https://www.facebook.com/cleo.csn"target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://www.instagram.com/cleo__cook/?hl=fr"target="_blank"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/cl%C3%A9o-cosnier-092b7668"target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                        <!-- <li><a href=""><i class="fa fa-behance"></i></a></li> -->
+                        <li><a href="https://www.pinterest.fr/cleocosnier/"><i class="fa fa-pinterest-p"target="_blank"></i></a></li>
+                    </ul>
+                    
+                    <!-- menu à droite -->
+                    
+                    <ul class="menu">
+                        <li><a href="{{ path('about') }}">À PROPOS</a></li>
+                        <li><a href="{{ path('prestations') }}">PRESTATIONS</a></li>
+                        <li><a href="../portfolio_V2/index.html">PORTFOLIO</a></li>
+                        <li><a href="../portfolio_V2/index.html">BLOG</a></li>
+                        <li><a href="#contact">CONTACT</a></li>
+                    </ul>
+                </div>
+                <div class="header-title d-flex align-items-center">
+                    <div class="header_content_titre">
+                        <h1>{{name}}</h1>
+                        <div class="filet"></div>
+                        
+                    </div>
+                </div>
+
+                
+            </div>
+            <!-- <div class="fond-menu-scroll col-12"></div> -->
+            <div class="email">
+                <a href="cleo.cosnier@gmail.com">cleo.cosnier@gmail.com</a>
+            </div>
+            
+            
+            <!-- The overlay -->
+            <div id="myNav" class="overlay">
+
+                <!-- Button to close the overlay navigation -->
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            
+                <!-- Overlay content -->
+                <div class="overlay-content">
+                <a href="../home/index.html">HOME</a>
+                <a href="../about/index.html">ABOUT</a>
+                <a href="../competences/index.html">COMPÉTENCES</a>
+                <a href="../portfolio_V2/index.html">PORTFOLIO</a>
+                <a href="../home/index.html#contact">CONTACT</a>
+                </div>
+            
+            </div>
+            <span onclick="openNav()"><i class="fa fa-bars"></i></span>
+            
+ 
+
+</header>
+
+
+    
         {% block body %}{% endblock %}
+        {% block contact %}
+            <section class="contact">
+                <div class="contact-content container">
+                    <div class="contact-text">
+                        <h2>À VOTRE ÉCOUTE</h2>
+                        <div class="filet"></div>
+                    </div>
+                    <a href="../home/index.html#contact" class="btn btn-4 btn-4c icon-arrow-right">CONTACT</a>
+                </div>
+            </section>
+        {% endblock %}
+        {% block footer %}
+        {# scroll to top #}
+
+        <a href="#header" class="back-to-top">
+                <i class='fa fa-angle-double-up'></i>
+            </a>
+            <footer class="footer">
+                    <img src='{{ asset('images/logo-footer.svg') }}'alt="">
+                    <ul class="menu">
+                        <li><a href="../about/index.html">À PROPOS</a></li>
+                        <li><a href="../competences/index.html">PRESTATIONS</a></li>
+                        <li><a href="../portfolio_V2/index.html">PORTFOLIO</a></li>
+                        <li><a href="../portfolio_V2/index.html">BLOG</a></li>
+                        <li><a href="../home/index.html#contact">CONTACT</a></li>
+                        <li><a href="">MENTIONS LÉGALES</a></li>
+                    </ul>
+                </footer>
+        {% endblock %}
+
+        <script src="../assets/app.js"></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
