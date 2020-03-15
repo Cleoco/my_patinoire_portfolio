@@ -4,9 +4,8 @@
 
 {% block body %}
 <div class="container">
+    <a class="btn btn-primary btn-4 btn-4c icon-arrow-right mb-4 mt-5" href="{{ path('category_index') }}">retourner aux catégories</a>
     {{ include('category/_form.html.twig') }}
-
-    <a href="{{ path('category_index') }}">back to list</a>
 </div>
 
 {% endblock %}

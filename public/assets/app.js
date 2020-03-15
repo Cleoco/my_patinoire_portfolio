@@ -39,6 +39,7 @@ function openNav() {
   function clicBtn (){
     hideDetails();
     let monIndex = this.dataset.index;
+    console.log(monIndex)
     details[monIndex].style.display ='block';
     for(btn of btnFiltre){
       btn.classList.remove('violet');

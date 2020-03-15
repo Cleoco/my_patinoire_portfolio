@@ -22,10 +22,13 @@
 :root{
     --color-violet:#5352ED;
     --color-blue:#80CFE6;
+    --color-dark-blue:rgb(43, 159, 194);
     --color-grey:#ECF0F1;
     --color-dark-grey:#2C3E50;
     --color-footer:#2D2D80;
     --color-grey-medium:#ACACAC;
+    --color-pink:rgb(189, 7, 131);
+    --color-dark-pink:#F736BB;
 
 }
 
@@ -128,6 +131,7 @@ a:hover{
   color:white !important;
 }
 
+
 /* MENU BURGER
 
 
@@ -187,7 +191,6 @@ a:hover{
 
   /* Fonctionnement du bouton avec survol */
   .btn {
-    background: var(--color-violet)!important;
     border-radius: 30px !important;
     text-decoration: none!important;
     color: white !important;
@@ -204,6 +207,32 @@ a:hover{
     transition: all 0.3s;
    
 }
+  .btn-primary{
+    background: var(--color-violet)!important;
+    border: 0 !important;
+  }
+  .btn-primary:hover{
+    background: var(--color-footer) !important;
+  }
+  .btn-secondary{
+    background: var(--color-blue)!important;
+    border: 0 !important;
+  }
+  .btn-secondary:hover{
+    background: var(--color-dark-blue) !important;
+  }
+  .btn-danger{
+    background: var(--color-pink) !important;
+    border: 0 !important;
+  }
+  .btn-danger:hover{
+    background: var(--color-dark-pink) !important;
+    border: 0 !important;
+  }
+
+  .btn-delete{
+    margin-bottom: 30px;
+  }
 
   .btn:after {
 
@@ -229,10 +258,10 @@ a:hover{
     color: var(--color-violet);
   }
 
-  .btn-4:hover {
+  /* .btn-4:hover {
     background: var(--color-footer) !important;
     
-  }
+  } */
   .btn-4:before {
     position: absolute;
     height: 100%;
@@ -265,7 +294,6 @@ a:hover{
     width: 100%;
     background-size: cover;
     background-position: center center;
-    background-color: blue;
     background-repeat:no-repeat;
     display: flex;
     position: relative;
@@ -712,7 +740,7 @@ a:hover{
 
 }
 
-/* <!-- ----------------------------COMPETENCES------------------------------ --> */
+/* <!-- ----------------------------PRESTATIONS------------------------------ --> */
 
 
 .competences{
@@ -745,7 +773,7 @@ a:hover{
 .card img{
     width: 50px;
     height: 50px;
-    background: #000;
+ 
 }
 /* Bouton actif  */
 
@@ -810,6 +838,56 @@ a:hover{
 .competences .btn{
   margin-top: 50px;
 }
+.table td, .table th {
+  padding: .1.3rem !important;
+  vertical-align: middle !important;
+  border-top: 1px solid #ebebeb !important;
+}
+
+
+/* <!-- ----------------------------PRESTATIONS DETAILS------------------------------ --> */
+
+.details{
+  background: var(--color-violet);
+  padding-top: 106px;
+  padding-bottom: 106px;
+  display: none; 
+}
+.details-content{
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+.details-content .filet{
+  background: white;
+}
+
+.details-content .fa{
+  margin-top: 20px;
+  font-size: 4rem;
+  color: white;
+  align-self: flex-end;
+  cursor: pointer;
+  
+}
+.details-content h2{
+  color: white;
+}
+
+.competences-details{
+  display: flex;
+  
+}
+.skills{
+  color: white;
+}
+li{
+  margin-bottom: 10px;
+}
+li span{
+  font-weight: 600;
+}
+
 
 
 
@@ -849,6 +927,9 @@ a:hover{
   }
   
 }
+
+
+
 
 
 /* <!-- ----------------------------Sroll to top------------------------------ --> */

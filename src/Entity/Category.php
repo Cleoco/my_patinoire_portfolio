@@ -48,6 +48,11 @@ class Category
      */
     private $imageName;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Prestation", mappedBy="category", cascade={"persist", "remove"})
+     */
+    private $prestation;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -98,6 +103,23 @@ class Category
     public function getImageName(): ?string
     {
         return $this->imageName;
+    }
+
+    public function getPrestation(): ?Prestation
+    {
+        return $this->prestation;
+    }
+
+    public function setPrestation(Prestation $prestation): self
+    {
+        $this->prestation = $prestation;
+
+        // set the owning side of the relation if necessary
+        if ($prestation->getCategory() !== $this) {
+            $prestation->setCategory($this);
+        }
+
+        return $this;
     }
 
 

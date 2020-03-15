@@ -17,8 +17,13 @@
     .cv{
         background-image:url("{{ asset('images/fond-cv.svg') }}");
     }
+
+    .competences-details{
+        color:white;
+    }
    
 </style>
+
 
 
 <section class="article container">
@@ -28,148 +33,40 @@
                 <p>Retrouvez ci-dessous l'ensemble des prestations proposées, cliquez sur les vignettes pour voir de détail de la prestation.</p>
             </div>
                 <div class="container row cards">
+                {% set index = 0 %}
                     {% for category in categories %}
                         <!-- filtres -->
-                            <div class="card col-lg-2 col-md-3" data-index="0">
+                            <div class="card col-lg-2 col-md-3" data-index={{ index }}>
                                 <img src="{{ asset('images/category/{{category.imageName}}') }}" alt="">
                                 <h3>{{ category.name }}</h3>
                                 <div class="filet-fin"></div>
                             </div>
+                            {% set index = index + 1 %}
                     {% endfor %}
                 </div>
             </div>
         </div>
     </section>
 
-
-
-<section class="details">
-        <div class="details-content container">
-            <h2>PRINT</h2>
-            <div class="filet"></div>
-            <div class="competences-details row ">
-                <div class="liste-gauche col-lg-6">
-                    <ul class="skills">
-                        <li><p>Création de <span>logotypes</span></p></li>
-                        <li><p>Conception d'<span>identité visuelle</span></p></li>
-                        <li><p>Réalisation de <span>supports pré-presse</span></p></li>
-                    </ul>
-                </div>
-                <div class="liste-droite col-lg-6">
-                    <ul class="skills">
-                        <li><p>Conception de <span>branding</span></p></li>
-                        <li><p>Réalisation de <span>packaging</span></p></li>
-                        <li><p>Création de <span>marquages & signalétiques</span> </p></li>
-                    </ul>
-                </div>
-            </div>
-            <i class="fa fa-angle-up"></i>
-
-        </div>
-
-    </section>
+{% for prestation in prestations %}
     <section class="details">
-            <div class="details-content container">
-                <h2>WEB</h2>
+            <div class="details-content container data-index=">
+                <h2>{{ prestation.title }}</h2>
                 <div class="filet"></div>
-                <div class="competences-details row">
+                <div class="competences-details row ">
                     <div class="liste-gauche col-lg-6">
-                        <ul class="skills">
-                            <li><p>Conception de <span>wireframe</span></p></li>
-                            <li><p>Conception & réalisation de <span>webdesign</span></p></li>
-                            <li><p>Dessin d'<span>iconographies</span></p></li>
-                        </ul>
+                        {{ prestation.contentLeft|raw }}
                     </div>
                     <div class="liste-droite col-lg-6">
-                        <ul class="skills">
-                            <li><p>Conception en <span>responsive design</span></p></li>
-                            <li><p>Design de <span>newsletter</span></p></li>
-                            <li><p>Création, conception d' <span>applications mobiles</span> </p></li>
-                        </ul>
+                        {{ prestation.contentRight|raw }}
                     </div>
                 </div>
                 <i class="fa fa-angle-up"></i>
-    
+
             </div>
-    
-    </section>
-    <section class="details">
-            <div class="details-content container">
-                <h2>UI / UX</h2>
-                <div class="filet"></div>
-                <div class="competences-details row">
-                    <div class="liste-gauche col-lg-6">
-                        <ul class="skills">
-                            <li><p>Élaboration de <span>prototypes</span></p></li>
-                            <li><p><span>Interfaces</span> intuitives et ergonomiques</p></li>
-                        </ul>
-                    </div>
-                    <div class="liste-droite col-lg-6">
-                        <ul class="skills">
-                                <li><p>Mise au point d'une <span>expérience utilisateur</span></p></li>
-                        </ul>
-                    </div>
-                </div>
-                <i class="fa fa-angle-up"></i>
-    
-            </div>
-    
-    </section>
-    <section class="details">
-            <div class="details-content container">
-                <h2>DÉVELOPPEMENT WEB</h2>
-                <div class="filet"></div>
-                <div class="competences-details row">
-                    <div class="liste-gauche col-lg-6">
-                        <ul class="skills">
-                            <li><p> <span>FrontEnd</span></p></li>
-                            <li><p><span>HTML / CSS</span></p></li>
-                            <li><p><span>BOOTSTRAP</span></p></li>
-                            <li><p><span>javascript</span></p></li>
-                            <li><p><span>React JS</span></p></li>
-                            <li><p><span>Symfony</span> </p></li>
-                        </ul>
-                    </div>
-                    <div class="liste-droite col-lg-6">
-                        <ul class="skills">
-                            <li><p><span>SEO</span></p></li>
-                            <li><p><span>PHP</span></p></li>
-                            <li><p><span>MySQL</span> </p></li>
-                            <li><p><span>base de données</span> </p></li>
-                            <li><p><span>Node JS</span> </p></li>
-                            <li><p><span>Python</span> </p></li>
-                        </ul>
-                    </div>
-                </div>
-                <i class="fa fa-angle-up"></i>
-    
-            </div>
-    
-    </section>
-    <section class="details">
-            <div class="details-content container">
-                <h2>CMS</h2>
-                <div class="filet"></div>
-                <div class="competences-details row">
-                    <div class="liste-gauche col-lg-6">
-                        <ul class="skills">
-                            <li><p> <span>Wordpress</span></p></li>
-                            <li><p><span>Prestashop</span></p></li>
-                            <li><p><span>Développement d'interface</span></p></li>
-                        </ul>
-                    </div>
-                    <div class="liste-droite col-lg-6">
-                        <ul class="skills">
-                            <li><p><span>Sécurisation</span></p></li>
-                            <li><p><span>Optimisation & maintenance</span></p></li>
-                        </ul>
-                    </div>
-                </div>
-                <i class="fa fa-angle-up"></i>
-    
-            </div>
-    
-    </section>
+
+        </section>
+    {% endfor %}
     
 
 

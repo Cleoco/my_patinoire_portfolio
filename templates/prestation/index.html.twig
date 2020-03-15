@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prestation index{% endblock %}
+
+{% block body %}
+    {{ include('admin/navigation_admin.html.twig') }}
+    <div class="container"> 
+        <a class="btn btn-primary btn-4 btn-4c icon-arrow-right mb-4" href="{{ path('prestation_new') }}">Créer une prestation</a>
+        <table class="table mb-5">
+            <thead>
+                <tr>
+                    <th>Intitulé de la prestation</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for prestation in prestations %}
+                <tr>
+                    <td>{{ prestation.title }}</td>
+                    <td>
+                        <a class="btn btn-primary btn-4 btn-4c icon-arrow-right" href="{{ path('prestation_show', {'id': prestation.id}) }}">Voir</a>
+                        <a class="btn btn-secondary btn-4 btn-4c icon-arrow-right" href="{{ path('prestation_edit', {'id': prestation.id}) }}">Modifier</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Aucune prestation enregistrée</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

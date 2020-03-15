@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
             {# <link rel="stylesheet" href="../assets/css/grid.css"> #}
-            <link rel="stylesheet" href="../assets/css/style.css">
+            <link rel="stylesheet" href="/../assets/css/style.css">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         {% block stylesheets %}{% endblock %}
     </head>
@@ -97,7 +97,7 @@
                         <h2>À VOTRE ÉCOUTE</h2>
                         <div class="filet"></div>
                     </div>
-                    <a href="../home/index.html#contact" class="btn btn-4 btn-4c icon-arrow-right">CONTACT</a>
+                    <a href="../home/index.html#contact" class="btn btn-primary btn-4 btn-4c icon-arrow-right">CONTACT</a>
                 </div>
             </section>
         {% endblock %}
@@ -121,6 +121,7 @@
         {% endblock %}
 
         <script src="../assets/app.js"></script>
+        <script src="{{ asset('assets/ckeditor/ckeditor.js') }}" ></script>
         {% block javascripts %}{% endblock %}
     </body>
 </html>
