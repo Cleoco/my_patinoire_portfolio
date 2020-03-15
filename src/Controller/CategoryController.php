@@ -18,6 +18,7 @@ class CategoryController extends AbstractController
     {
         return $this->render('category/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
+            "name" => "Prestations proposées"
         ]);
     }
 
@@ -39,14 +40,16 @@ class CategoryController extends AbstractController
         return $this->render('category/new.html.twig', [
             'category' => $category,
             'form' => $form->createView(),
+            "name" => "Ajouter une prestation"
         ]);
     }
 
     
-    public function show(Category $category): Response
+    public function show(): Response
     {
+        $categoryName = $this->getDoctrine()->getRepository(Category::class)->findAll();
         return $this->render('category/show.html.twig', [
-            'category' => $category,
+            "name" => $categoryName
         ]);
     }
 
@@ -64,6 +67,7 @@ class CategoryController extends AbstractController
         return $this->render('category/edit.html.twig', [
             'category' => $category,
             'form' => $form->createView(),
+            "name" => "Modifier une prestation"
         ]);
     }
 

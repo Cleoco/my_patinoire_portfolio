@@ -442,46 +442,11 @@ a:hover{
   top: 557px; right: 450px;
 }
 
-
-
-
-@media(max-width:768px){
-  .article_content_photo img{
-      width: 80%;
-      height: auto;
-      margin-left: 10%;
-      margin-right: 10%;
-     
-   }
-  .article_content_titre h3::before{
-      display: none;
-  
-  }
-  
-  .article_content_titre{
-      text-align: center;
-      margin-bottom: 30px;
-  }
-  .article_content_titre{
-      text-align: center;
-  }
-}
-
-@media(min-width:768px){
- 
-}
-@media(max-width:992px){
-
-
-}
-  
-
-
-#about_content_titre {
+#article_content_titre {
   visibility: hidden;
 }
 
-.about_content_titre {
+.article_content_titre {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -490,35 +455,36 @@ a:hover{
 
 }
 
-.about_content_titre h2{
+.article_content_titre h2{
   color:var(--color-dark-grey);
 }
-.about_content_titre h3{
+.article_content_titre h3{
   margin-bottom: 50px;
   text-align: left;
 }
 
-.about_content_titre h3::before{
+.article_content_titre h3::before{
   display: inline-block;
   margin-right: 15px;
   content: "";
-  height: 4px;
+  height: 4px !;
   width: 30px;
   background-color:var(--color-dark-grey);
 }
-.about_content_titre p{
+
+.article_content_titre p{
   color: var(--color-grey-medium);
   margin-bottom: 40px;
 }
-.about_content_titre .btn{
+.article_content_titre .btn{
   margin-bottom: 10px;
 }
 
-#about_content_photo {
+#article_content_photo {
   visibility: hidden;
 }
 
-.about_content_photo{
+.article_content_photo{
   width: 100%;
   display: flex;
   align-items: center;
@@ -526,15 +492,15 @@ a:hover{
   margin:auto 0;
 }
 
-.about_content_photo img{
+.article_content_photo img{
  width: 100%;
  height: auto;
 
 }
-.about_content_photo {
+.article_content_photo {
   margin: auto 0;
 }
-.about_content_photo img{
+.article_content_photo img{
   animation-duration: 2s;
   animation-direction: normal;
   animation-delay: 0.5s;
@@ -553,7 +519,6 @@ a:hover{
     opacity: 100%;
   }
 }
-
 @media(max-width:768px){
   .article_content_photo img{
       width: 80%;
@@ -574,7 +539,7 @@ a:hover{
   .article_content_titre h3{
       text-align: center;
   }
-  .about_content_titre, .about_content_titre h3 {
+  .article_content_titre, .article_content_titre h3 {
     text-align: center;
   }
   .contact-content{
@@ -747,6 +712,107 @@ a:hover{
 
 }
 
+/* <!-- ----------------------------COMPETENCES------------------------------ --> */
+
+
+.competences{
+  width: 100%;
+  background-position: center bottom;
+  background-repeat:no-repeat;
+  background-color: var(--color-grey);
+  height: auto;
+  padding-top: 106px;
+  padding-bottom: 106px;
+}
+
+.card{
+  height: 200px;
+  background: white;
+  box-shadow: 0px 0px 30px rgb(190, 190, 190);
+  border-radius: 60px !important;
+  margin: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+.card:hover{
+  background: var(--color-violet);
+  transition: 0.2s;
+}
+.card img{
+    width: 50px;
+    height: 50px;
+    background: #000;
+}
+/* Bouton actif  */
+
+
+  /* .violet {
+      background: var(--color-violet);
+  }
+  .violet .card{
+      background: var(--color-violet);
+  }
+  .violet h3{
+      color: rgb(255, 255, 255);
+  }
+  .violet svg{
+      fill:rgb(255, 255, 255);
+  }
+  .violet .filet-fin{
+      background: rgb(255, 255, 255);
+  } */
+
+
+/* Bouton survol survol */
+
+
+.card:hover h3{
+  color: white;
+}
+.card:hover svg {
+  fill:white;
+}
+.card:hover .filet-fin{
+  background: white;
+}
+
+
+
+.card .filet-fin{
+  margin-top: 15px;
+  width: 25px;
+  height: 8px;
+}
+.card h3{
+  font-size: 16px !important;
+}
+.cards {
+  margin: 0 auto;
+  display: flex;
+
+
+}
+.card svg{
+  height: 40px;
+  margin-bottom: 15px;
+}
+
+.img-neutre {
+  margin: 0 auto;
+  fill: var(--color-violet);
+}
+
+
+.competences .btn{
+  margin-top: 50px;
+}
+
+
+
 /* <!-- ----------------------------CONTACT------------------------------ --> */
 
 .contact{
@@ -863,4 +929,41 @@ a:hover{
     }
   }
   
-  
+    /* <!-- ----------------------------BACK OFFICE------------------------------ --> */
+
+    .back-actions{
+      width: 100%;
+      height: 278px;
+      background: #000;
+      overflow: hidden;
+      position: relative;
+      
+    }
+    .back-actions img{
+      width: 100%;
+      height: 278px;
+      padding: 0;
+    }
+    figcaption{
+      position: absolute;
+      width: 100%;
+      height: 278px; 
+      background: var(--color-violet);
+      opacity: .8;
+      cursor: pointer;
+    }
+    .back-actions-infos{
+      margin-top: 35%;
+      display: flex;
+      flex-direction: column;
+    }
+    .back-actions-infos h3{
+      color: white;
+      text-align: center;
+    }
+    .back-actions-infos .filet-fin{
+      background-color: white;
+    }
+    .cover {
+      object-fit: cover !important;
+    }

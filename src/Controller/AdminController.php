@@ -20,9 +20,16 @@ class AdminController extends AbstractController
     {
         return $this->render('admin/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
-            "name" => "Vos prestations"
+            "name" => "votre espace de gestion"
         ]);
     }
+
+
+
+    // ---------------------- CATEGORIES --------------------
+
+
+
     /**
      * @Route("/category", name="category_index", methods={"GET"})
      */
@@ -52,7 +59,6 @@ class AdminController extends AbstractController
         }
 
         return $this->render('category/new.html.twig', [
-            'category' => $category,
             'form' => $form->createView(),
             "name" => "Ajouter une prestation"
         ]);
@@ -63,9 +69,10 @@ class AdminController extends AbstractController
      */
     public function show(Category $category): Response
     {
+        $categoryName = $category-> getName();
         return $this->render('category/show.html.twig', [
             'category' => $category,
-            "name" => ""
+            "name" => $categoryName
         ]);
     }
 
@@ -104,3 +111,6 @@ class AdminController extends AbstractController
         return $this->redirectToRoute('category_index');
     }
 }
+
+
+// ---------------------- CATEGORIES --------------------
