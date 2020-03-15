@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block title %}Portfolio{% endblock %}
+
+{% block body %}
+<style>
+    .btn-portfolio{
+        width:380px;
+        position:absolute;
+        right:0;
+        top:0
+    }
+    .article_content_titre{
+        position:relative;
+    }
+ 
+   
+</style>
+
+
+
+<section class="article container">
+            <div class="article_content_titre col-lg-12 col-md-12 col-sm-12 d-flex">
+                <div class="portfolio_title"> <h3>Galerie</h3></div>
+                <a class=" btn-portfolio btn btn-primary btn-4 btn-4c icon-arrow-right mb-4" href="">voir tous les projets</a>
+            </div>
+        <div class="row">
+                <div class="container row cards">
+                {% set index = 0 %}
+                    {% for category in categories %}
+                        <!-- filtres -->
+                            <div class="card col-lg-2 col-md-3" data-index={{ index }}>
+                                <img src="{{ asset('images/category/{{category.imageName}}') }}" alt="">
+                                <h3>{{ category.name }}</h3>
+                                <div class="filet-fin"></div>
+                            </div>
+                            {% set index = index + 1 %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+
+
+    
+
+
+{% endblock %}

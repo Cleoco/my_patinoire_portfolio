@@ -45,6 +45,20 @@ class MainController extends AbstractController
             "prestations" => $prestations
         ]);
     }
+
+    /**
+     * @Route("/portfolio", name="portfolio")
+     */
+    public function portfolio()
+    {
+        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
+        return $this->render('main/portfolio.html.twig',[
+            "name" => "Portfolio",
+            "categories" => $categories,
+        ]);
+    }
+
+
     /**
      * @Route("/mentions-legales", name="terms_of_use")
      */
@@ -54,4 +68,5 @@ class MainController extends AbstractController
             "name" => "Mentions Légales"
         ]);
     }
+    
 }

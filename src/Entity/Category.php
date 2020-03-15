@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
@@ -52,6 +54,16 @@ class Category
      * @ORM\OneToOne(targetEntity="App\Entity\Prestation", mappedBy="category", cascade={"persist", "remove"})
      */
     private $prestation;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Projet", mappedBy="category")
+     */
+    private $projets;
+
+    public function __construct()
+    {
+        $this->projets = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -117,6 +129,34 @@ class Category
         // set the owning side of the relation if necessary
         if ($prestation->getCategory() !== $this) {
             $prestation->setCategory($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Projet[]
+     */
+    public function getProjets(): Collection
+    {
+        return $this->projets;
+    }
+
+    public function addProjet(Projet $projet): self
+    {
+        if (!$this->projets->contains($projet)) {
+            $this->projets[] = $projet;
+            $projet->addCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProjet(Projet $projet): self
+    {
+        if ($this->projets->contains($projet)) {
+            $this->projets->removeElement($projet);
+            $projet->removeCategory($this);
         }
 
         return $this;
