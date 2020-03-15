@@ -9,16 +9,16 @@
         <table class="table mb-5">
             <thead>
                 <tr>
-                    <th>Intitulé de la catégorie</th>
-                    <th>Pictogramme de la catégorie</th>
-                    <th>Actions</th>
+                    <th><h4>Titre</h4></th>
+                    <th><h4>Pictogramme de la catégorie</h4></th>
+                    <th><h4>Actions</h4></th>
                 </tr>
             </thead>
             <tbody>
             {% for category in categories %}
                 <tr>
-                    <td>{{ category.name }}</td>
-                    <td>{{ category.imageName}}</td>
+                    <td><p>{{ category.name }}</p></td>
+                    <td><p>{{ category.imageName}}</p></td>
                     <td>
                         <a class="btn btn-primary btn-4 btn-4c icon-arrow-right" href="{{ path('category_show', {'id': category.id}) }}">Voir</a>
                         <a  class="btn btn-secondary btn-4 btn-4c icon-arrow-right" href="{{ path('category_edit', {'id': category.id}) }}">Modifier</a>
@@ -26,7 +26,7 @@
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="4">Aucune catégorie enregistrée</td>
+                    <td colspan="4"><p>Aucune catégorie enregistrée</p></td>
                 </tr>
             {% endfor %}
             </tbody>

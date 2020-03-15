@@ -8,6 +8,9 @@ use App\Repository\CategoryRepository;
 use App\Entity\Prestation;
 use App\Form\PrestationType;
 use App\Repository\PrestationRepository;
+use App\Entity\Projet;
+use App\Form\ProjetType;
+use App\Repository\ProjetRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -41,7 +44,7 @@ class AdminController extends AbstractController
 
 
     /**
-     * @Route("/admin/category", name="category_index", methods={"GET"})
+     * @Route("/admin/categories", name="category_index", methods={"GET"})
      */
     public function categoryList(CategoryRepository $categoryRepository): Response
     {
@@ -52,7 +55,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin/category/new", name="category_new", methods={"GET","POST"})
+     * @Route("/admin/categories/new", name="category_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -78,7 +81,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin/category/{id}", name="category_show", methods={"GET"})
+     * @Route("/admin/categories/{id}", name="category_show", methods={"GET"})
      */
     public function show(Category $category): Response
     {
@@ -90,7 +93,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin/category/{id}/edit", name="category_edit", methods={"GET","POST"})
+     * @Route("/admin/categories/{id}/edit", name="category_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Category $category): Response
     {
@@ -113,7 +116,7 @@ class AdminController extends AbstractController
     }
 
     /**
-     * @Route("/admin/category/{id}", name="category_delete", methods={"DELETE"})
+     * @Route("/admin/categories/{id}", name="category_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Category $category): Response
     {
@@ -219,3 +222,89 @@ class PrestationController extends AbstractController
     }
 }
 
+    // ---------------------- PROJETS --------------------
+
+    class ProjetController extends AbstractController
+    {
+        /**
+         * @Route("/admin/projets", name="projet_index", methods={"GET"})
+         */
+        public function index(ProjetRepository $projetRepository): Response
+        {
+            return $this->render('projet/index.html.twig', [
+                'projets' => $projetRepository->findAll(),
+                "name" => "Gérer vos projets",
+            ]);
+        }
+    
+        /**
+         * @Route("/admin/projets/new", name="projet_new", methods={"GET","POST"})
+         */
+        public function new(Request $request): Response
+        {
+            $projet = new Projet();
+            $form = $this->createForm(ProjetType::class, $projet);
+            $form->handleRequest($request);
+    
+            if ($form->isSubmitted() && $form->isValid()) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->persist($projet);
+                $entityManager->flush();
+    
+                return $this->redirectToRoute('projet_index');
+            }
+    
+            return $this->render('projet/new.html.twig', [
+                'projet' => $projet,
+                'form' => $form->createView(),
+                "name" => "Ajouter un projet",
+            ]);
+        }
+    
+        /**
+         * @Route("/admin/projets/{id}", name="projet_show", methods={"GET"})
+         */
+        public function show(Projet $projet): Response
+        {
+            $projetTitle = $projet-> getTitle();
+            return $this->render('projet/show.html.twig', [
+                'projet' => $projet,
+                "name" => $projetTitle
+            ]);
+        }
+    
+        /**
+         * @Route("/admin/projets/{id}/edit", name="projet_edit", methods={"GET","POST"})
+         */
+        public function edit(Request $request, Projet $projet): Response
+        {
+            $form = $this->createForm(ProjetType::class, $projet);
+            $form->handleRequest($request);
+    
+            if ($form->isSubmitted() && $form->isValid()) {
+                $this->getDoctrine()->getManager()->flush();
+    
+                return $this->redirectToRoute('projet_index');
+            }
+    
+            return $this->render('projet/edit.html.twig', [
+                'projet' => $projet,
+                'form' => $form->createView(),
+                "name" => "Modifier un projet",
+            ]);
+        }
+    
+        /**
+         * @Route("/admin/projets/{id}", name="projet_delete", methods={"DELETE"})
+         */
+        public function delete(Request $request, Projet $projet): Response
+        {
+            if ($this->isCsrfTokenValid('delete'.$projet->getId(), $request->request->get('_token'))) {
+                $entityManager = $this->getDoctrine()->getManager();
+                $entityManager->remove($projet);
+                $entityManager->flush();
+            }
+    
+            return $this->redirectToRoute('projet_index');
+        }
+    }

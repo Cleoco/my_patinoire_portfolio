@@ -3,32 +3,29 @@
 {% block title %}Prestation{% endblock %}
 
 {% block body %}
-    <h1>Prestation</h1>
-
+<div class="container">
+    <a class="btn btn-primary btn-4 btn-4c icon-arrow-right mb-4 mt-5" href="{{ path('prestation_index') }}">retourner aux prestations</a>
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ prestation.id }}</td>
+                <th>Intitulé de la prestation</th>
+                <td><p>{{ prestation.title }}</p></td>
             </tr>
             <tr>
-                <th>Title</th>
-                <td>{{ prestation.title }}</td>
+                <th>Contenu de gauche</th>
+                <td><p>{{ prestation.contentLeft|raw }}</p></td>
             </tr>
             <tr>
-                <th>ContentLeft</th>
-                <td>{{ prestation.contentLeft|raw }}</td>
-            </tr>
-            <tr>
-                <th>ContentRight</th>
-                <td>{{ prestation.contentRight|raw }}</td>
+                <th>Contenu de droite</th>
+                <td><p>{{ prestation.contentRight|raw }}</p></td>
             </tr>
         </tbody>
     </table>
 
-    <a class="btn btn-primary btn-4 btn-4c icon-arrow-right" href="{{ path('prestation_index') }}">Retourner aux prestations</a>
 
     <a class="btn btn-secondary btn-4 btn-4c icon-arrow-right" href="{{ path('prestation_edit', {'id': prestation.id}) }}">Modifier</a>
 
     {{ include('prestation/_delete_form.html.twig') }}
+</div>
+
 {% endblock %}

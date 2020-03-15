@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Prestation index{% endblock %}
+{% block title %}Vos Prestations{% endblock %}
 
 {% block body %}
     {{ include('admin/navigation_admin.html.twig') }}
@@ -9,14 +9,14 @@
         <table class="table mb-5">
             <thead>
                 <tr>
-                    <th>Intitulé de la prestation</th>
-                    <th>Actions</th>
+                    <th><h4>Intitulé de la prestation</h4></th>
+                    <th><h4>Actions</h4></th>
                 </tr>
             </thead>
             <tbody>
             {% for prestation in prestations %}
                 <tr>
-                    <td>{{ prestation.title }}</td>
+                    <td><p>{{ prestation.title }}</p></td>
                     <td>
                         <a class="btn btn-primary btn-4 btn-4c icon-arrow-right" href="{{ path('prestation_show', {'id': prestation.id}) }}">Voir</a>
                         <a class="btn btn-secondary btn-4 btn-4c icon-arrow-right" href="{{ path('prestation_edit', {'id': prestation.id}) }}">Modifier</a>
@@ -24,7 +24,7 @@
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="5">Aucune prestation enregistrée</td>
+                    <td colspan="5"><p>Aucune prestation enregistrée</p></td>
                 </tr>
             {% endfor %}
             </tbody>
