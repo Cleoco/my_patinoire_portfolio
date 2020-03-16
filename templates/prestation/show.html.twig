@@ -3,20 +3,25 @@
 {% block title %}Prestation{% endblock %}
 
 {% block body %}
+<style>
+    h4{
+        text-align:left;
+    }
+</style>
 <div class="container">
     <a class="btn btn-primary btn-4 btn-4c icon-arrow-right mb-4 mt-5" href="{{ path('prestation_index') }}">retourner aux prestations</a>
     <table class="table">
         <tbody>
             <tr>
-                <th>Intitulé de la prestation</th>
+                <th><h4>Intitulé de la prestation</h4></th>
                 <td><p>{{ prestation.title }}</p></td>
             </tr>
             <tr>
-                <th>Contenu de gauche</th>
+                <th><h4>Contenu de gauche</h4></th>
                 <td><p>{{ prestation.contentLeft|raw }}</p></td>
             </tr>
             <tr>
-                <th>Contenu de droite</th>
+                <th><h4>Contenu de droite</h4></th>
                 <td><p>{{ prestation.contentRight|raw }}</p></td>
             </tr>
         </tbody>

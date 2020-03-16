@@ -250,7 +250,13 @@ class PrestationController extends AbstractController
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($projet);
                 $entityManager->flush();
-    
+
+                $arrayImage = $projet->getImages()->toArray();
+                foreach ($arrayImage as $index => $img)
+                {
+                   
+ 
+                 }
                 return $this->redirectToRoute('projet_index');
             }
     

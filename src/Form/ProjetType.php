@@ -6,6 +6,7 @@ use App\Entity\Category;
 use App\Entity\Projet;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -20,7 +21,9 @@ class ProjetType extends AbstractType
             ->add('category', EntityType::class, [
                 'class'=> Category::class,
                 'choice_label'=> 'name',
-                'label'=> "Quelle catégorie ?"
+                'label'=> "Quelle catégorie ?",
+                'multiple' => true,
+                'expanded' => true,
             ])
             ->add('title', TextType::class, [
                 'label'=> 'Intitulé du projet',
@@ -37,21 +40,7 @@ class ProjetType extends AbstractType
                     'class'=>'ckeditor',
                 ]
             ])
-            ->add('fullwidth')
-            ->add('imageFile1',VichImageType::class,[
-                'label' => 'Téléchagez une image',
-                'required'=> true,
-                'attr' => [
-                    'placeholder'=> 'Sélectionnez un fichier '
-                ]
-            ] )
-            ->add('imageFile2',VichImageType::class,[
-                'label' => 'Téléchagez une image',
-                'required'=> true,
-                'attr' => [
-                    'placeholder'=> 'Sélectionnez un fichier '
-                ]
-            ] )
+            
         ;
     }
 

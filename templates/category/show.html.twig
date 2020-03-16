@@ -3,20 +3,25 @@
 {% block title %}Category{% endblock %}
 
 {% block body %}
+<style>
+    h4{
+        text-align:left;
+    }
+</style>
 <div class="container">
     <a class="btn btn-primary btn-4 btn-4c icon-arrow-right mb-4 mt-5" href="{{ path('category_index') }}">retourner aux catégories</a>
     <table class="table mb-5">
         <tbody>
             <tr>
-                <th>Intitulé de la catégorie</th>
-                <td>{{ category.name }}</td>
+                <th><h4>Intitulé de la catégorie</h4></th>
+                <td><p>{{ category.name }}</p></td>
             </tr>
             <tr>
-                <th>Image</th>
-                <td>{{ category.imageName }}</td>
+                <th><h4>Image</h4></th>
+                <td><p>{{ category.imageName }}</p></td>
             </tr>
             <tr>
-                <th>Actions</th>
+                <th><h4>Actions</h4></th>
                 <td><a class="btn btn-secondary btn-4 btn-4c icon-arrow-right" href="{{ path('category_edit', {'id': category.id}) }}">Mettre à jour</a></td>
                 <td>{{ include('category/_delete_form.html.twig') }}</td>
             </tr>
