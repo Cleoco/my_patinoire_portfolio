@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Category;
+use App\Entity\Image;
 use App\Entity\Projet;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -39,6 +40,11 @@ class ProjetType extends AbstractType
                     'placeholder'=> 'Ajouter une présentation',
                     'class'=>'ckeditor',
                 ]
+            ])
+            ->add('images', EntityType::class, [
+                'class'=> Image::class,
+
+                'label'=> "Quelle image ?",
             ])
             
         ;

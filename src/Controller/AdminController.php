@@ -3,12 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Image;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
 use App\Entity\Prestation;
 use App\Form\PrestationType;
 use App\Repository\PrestationRepository;
 use App\Entity\Projet;
+use App\Form\ImageType;
 use App\Form\ProjetType;
 use App\Repository\ProjetRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -245,24 +247,27 @@ class PrestationController extends AbstractController
             $projet = new Projet();
             $form = $this->createForm(ProjetType::class, $projet);
             $form->handleRequest($request);
-    
+
+            $image = new Image();
+            $form2 = $this->createForm(ImageType::class, $image);
+            $form2->handleRequest($request);
+
             if ($form->isSubmitted() && $form->isValid()) {
+                if ($form2->isSubmitted() && $form2->isValid()) {
+                    $entityManager = $this->getDoctrine()->getManager();
+                    $entityManager->persist($image);
+                    $entityManager->flush();
+                }
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($projet);
                 $entityManager->flush();
-
-                $arrayImage = $projet->getImages()->toArray();
-                foreach ($arrayImage as $index => $img)
-                {
-                   
- 
-                 }
                 return $this->redirectToRoute('projet_index');
             }
     
             return $this->render('projet/new.html.twig', [
                 'projet' => $projet,
                 'form' => $form->createView(),
+                'form2' => $form2->createView(),
                 "name" => "Ajouter un projet",
             ]);
         }

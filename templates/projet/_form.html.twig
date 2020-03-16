@@ -1,4 +1,10 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+    {{ form_start(form2) }}
+    {{ form_widget(form2) }}
+    <button class="btn btn-primary btn-4 btn-4c icon-arrow-right">{{ button_label|default('Enregistrer l\'image') }}</button>
+    {{ form_end(form2) }}
+
+    <button class="btn btn-primary btn-4 btn-4c icon-arrow-right">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
