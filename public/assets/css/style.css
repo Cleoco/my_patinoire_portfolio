@@ -893,6 +893,102 @@ li span{
 }
 
 
+/* <!-- ----------------------------PORTFOLIO------------------------------ --> */
+
+/* 
+.portfolio{
+
+  width: 100%;
+  background-position: center bottom;
+  background-repeat:no-repeat;
+  height: auto;
+}
+.portfolio .filet{
+  margin: 40px auto;
+}
+
+.gallery{
+  box-sizing: border-box;
+}
+
+.gallery .image{
+  height: auto;
+  margin: 0;
+  padding: 0;
+  
+}
+
+.gallery .btn{
+
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.image img{
+  
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: table;
+}
+
+.image figure{
+  position: relative;
+  overflow: hidden;
+}
+
+.image figcaption{
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color:var(--color-violet);
+  opacity: 0;
+  transition: .4s; 
+  color: white;
+  flex-direction: column;
+  padding-left: 70px;
+  padding-right: 50px;
+  justify-content: center;
+}
+
+.image figcaption:hover{
+  opacity:0.9;
+}
+
+.image figcaption h3{
+  color: white;
+  text-align: left;
+}
+
+.image figcaption .filet-fin{
+  background: white;
+  margin-left: 0;
+  margin-bottom: 30px;
+}
+
+.btn-figcaption{
+
+  background: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  align-self: flex-end;
+  margin-right: 70px; 
+  background: white;
+  border-radius: 30px;
+  text-decoration: none;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+cursor: pointer;
+display: inline-block;
+padding: 15px 20px;
+} */
+
+
 
 
 /* <!-- ----------------------------CONTACT------------------------------ --> */

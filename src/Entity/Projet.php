@@ -32,11 +32,6 @@ class Projet
     private $content;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    private $fullwidth;
-
-    /**
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
@@ -56,6 +51,24 @@ class Projet
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
+     * @Vich\UploadableField(mapping="projet_une", fileNameProperty="imageUneName")
+     * 
+     * @var File|null
+     */
+    private $imageUneFile;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @var string|null
+     */
+    private $imageUneName;
+
+
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * 
      * @Vich\UploadableField(mapping="projet_image1", fileNameProperty="imageName1")
      * 
      * @var File|null
@@ -63,7 +76,7 @@ class Projet
     private $imageFile1;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @var string|null
      */
@@ -80,16 +93,67 @@ class Projet
     private $imageFile2;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      *
      * @var string|null
      */
     private $imageName2;
 
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * 
+     * @Vich\UploadableField(mapping="projet_image3", fileNameProperty="imageName3")
+     * 
+     * @var File|null
+     */
+    private $imageFile3;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @var string|null
+     */
+    private $imageName3;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * 
+     * @Vich\UploadableField(mapping="projet_image4", fileNameProperty="imageName4")
+     * 
+     * @var File|null
+     */
+    private $imageFile4;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @var string|null
+     */
+    private $imageName4;
+
+    /**
+     * NOTE: This is not a mapped field of entity metadata, just a simple property.
+     * 
+     * @Vich\UploadableField(mapping="projet_image5", fileNameProperty="imageName5")
+     * 
+     * @var File|null
+     */
+    private $imageFile5;
+
+    /**
+     * @ORM\Column(type="string", nullable=true)
+     *
+     * @var string|null
+     */
+    private $imageName5;
+
 
     public function __construct()
     {
         $this->category = new ArrayCollection();
+        $now = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
+        $this->setCreatedAt($now);
+        $this->setUpdatedAt($now);
     }
 
     public function getId(): ?int
@@ -121,18 +185,6 @@ class Projet
         return $this;
     }
 
-    public function getFullwidth(): ?bool
-    {
-        return $this->fullwidth;
-    }
-
-    public function setFullwidth(bool $fullwidth): self
-    {
-        $this->fullwidth = $fullwidth;
-
-        return $this;
-    }
-
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
@@ -156,6 +208,44 @@ class Projet
 
         return $this;
     }
+
+    
+
+    /**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageUneFile
+     */
+    public function setImageUneFile(?File $imageUneFile = null): void
+    {
+        $this->imageUneFile = $imageUneFile;
+
+        if (null !== $imageUneFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageUneFile(): ?File
+    {
+        return $this->imageUneFile;
+    }
+
+    public function setImageUneName(?string $imageUneName): void
+    {
+        $this->imageUneName = $imageUneName;
+    }
+
+    public function getImageUneName(): ?string
+    {
+        return $this->imageUneName;
+    }
+
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the update. If this
@@ -225,6 +315,114 @@ class Projet
     {
         return $this->imageName2;
     }
+
+/**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile3
+     */
+    public function setImageFile3(?File $imageFile3 = null): void
+    {
+        $this->imageFile3 = $imageFile3;
+
+        if (null !== $imageFile3) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageFile3(): ?File
+    {
+        return $this->imageFile3;
+    }
+
+    public function setImageName3(?string $imageName3): void
+    {
+        $this->imageName3 = $imageName3;
+    }
+
+    public function getImageName3(): ?string
+    {
+        return $this->imageName3;
+    }
+
+
+/**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile4
+     */
+    public function setImageFile4(?File $imageFile4 = null): void
+    {
+        $this->imageFile4 = $imageFile4;
+
+        if (null !== $imageFile4) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageFile4(): ?File
+    {
+        return $this->imageFile4;
+    }
+
+    public function setImageName4(?string $imageName4): void
+    {
+        $this->imageName4 = $imageName4;
+    }
+
+    public function getImageName4(): ?string
+    {
+        return $this->imageName4;
+    }
+
+
+/**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $imageFile5
+     */
+    public function setImageFile5(?File $imageFile5 = null): void
+    {
+        $this->imageFile5 = $imageFile5;
+
+        if (null !== $imageFile5) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageFile5(): ?File
+    {
+        return $this->imageFile5;
+    }
+
+    public function setImageName5(?string $imageName5): void
+    {
+        $this->imageName5 = $imageName5;
+    }
+
+    public function getImageName5(): ?string
+    {
+        return $this->imageName5;
+    }
+
 
     /**
      * @return Collection|Category[]

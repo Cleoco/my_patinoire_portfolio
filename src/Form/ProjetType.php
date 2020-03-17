@@ -20,7 +20,9 @@ class ProjetType extends AbstractType
             ->add('category', EntityType::class, [
                 'class'=> Category::class,
                 'choice_label'=> 'name',
-                'label'=> "Quelle catégorie ?"
+                'label'=> "Quelle catégorie ?",
+                'multiple' => true,
+                'expanded' => true,
             ])
             ->add('title', TextType::class, [
                 'label'=> 'Intitulé du projet',
@@ -37,17 +39,44 @@ class ProjetType extends AbstractType
                     'class'=>'ckeditor',
                 ]
             ])
-            ->add('fullwidth')
+            ->add('imageUneFile',VichImageType::class,[
+                'label' => 'Image à la une',
+                'required'=> true,
+                'attr' => [
+                    'placeholder'=> 'Sélectionnez un fichier '
+                ]
+            ] )
             ->add('imageFile1',VichImageType::class,[
                 'label' => 'Téléchagez une image',
-                'required'=> true,
+                'required'=> false,
                 'attr' => [
                     'placeholder'=> 'Sélectionnez un fichier '
                 ]
             ] )
             ->add('imageFile2',VichImageType::class,[
                 'label' => 'Téléchagez une image',
-                'required'=> true,
+                'required'=> false,
+                'attr' => [
+                    'placeholder'=> 'Sélectionnez un fichier '
+                ]
+            ] )
+            ->add('imageFile3',VichImageType::class,[
+                'label' => 'Téléchagez une image',
+                'required'=> false,
+                'attr' => [
+                    'placeholder'=> 'Sélectionnez un fichier '
+                ]
+            ] )
+            ->add('imageFile4',VichImageType::class,[
+                'label' => 'Téléchagez une image',
+                'required'=> false,
+                'attr' => [
+                    'placeholder'=> 'Sélectionnez un fichier '
+                ]
+            ] )
+            ->add('imageFile5',VichImageType::class,[
+                'label' => 'Téléchagez une image',
+                'required'=> false,
                 'attr' => [
                     'placeholder'=> 'Sélectionnez un fichier '
                 ]

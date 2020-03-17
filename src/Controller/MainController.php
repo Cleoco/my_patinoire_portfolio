@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Entity\Prestation;
+use App\Entity\Projet;
 use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -52,9 +53,11 @@ class MainController extends AbstractController
     public function portfolio()
     {
         $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
+        $projets = $this->getDoctrine()->getRepository(Projet::class)->findAll();
         return $this->render('main/portfolio.html.twig',[
             "name" => "Portfolio",
             "categories" => $categories,
+            "projets" => $projets
         ]);
     }
 

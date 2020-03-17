@@ -266,9 +266,12 @@ class PrestationController extends AbstractController
          */
         public function show(Projet $projet): Response
         {
+            $projets = $this->getDoctrine()->getRepository(Projet::class)->findAll();
             $projetTitle = $projet-> getTitle();
+            dump($projets);
             return $this->render('projet/show.html.twig', [
                 'projet' => $projet,
+                "projets" => $projets,
                 "name" => $projetTitle
             ]);
         }

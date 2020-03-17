@@ -14,6 +14,84 @@
     }
  
    
+
+
+.portfolio{
+
+  width: 100%;
+  background-position: center bottom;
+  background-repeat:no-repeat;
+  height: auto;
+}
+.portfolio .filet{
+  margin: 40px auto;
+}
+
+.gallery{
+  box-sizing: border-box;
+}
+
+.gallery .image{
+  height: auto;
+  margin: 0;
+  padding: 0;
+  
+}
+
+.gallery .btn{
+
+  margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.project_pictures img{
+  
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  display: table;
+  background:black;
+}
+
+.project_pictures figure{
+  position: relative;
+  overflow: hidden;
+}
+
+.figcaption_projet{
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color:var(--color-violet);
+  opacity: 0;
+  transition: .4s; 
+  color: white;
+  flex-direction: column;
+  padding-left: 70px;
+  padding-right: 50px;
+  justify-content: center;
+}
+
+.figcaption_projet:hover{
+  opacity:0.9;
+}
+
+.figcaption_projet h3{
+  color: white;
+  text-align: left;
+}
+
+.figcaption_projet .filet-fin{
+  background: white;
+  margin-left: 0;
+  margin-bottom: 30px;
+}
+
+
+
 </style>
 
 
@@ -29,7 +107,7 @@
                     {% for category in categories %}
                         <!-- filtres -->
                             <div class="card col-lg-2 col-md-3" data-index={{ index }}>
-                                <img src="{{ asset('images/category/{{category.imageName}}') }}" alt="">
+                                <img src='{{ asset('images/category/' ~ category.imageName ~ '') }}' alt="">
                                 <h3>{{ category.name }}</h3>
                                 <div class="filet-fin"></div>
                             </div>
@@ -40,11 +118,21 @@
         </div>
     </section>
 
-    
-
-
-
-    
-
-
+    <section class="portfolio">
+        <div class="row gallery">
+            {% for projet in projets %}
+                <div class="project_pictures p-0 col-lg-4 col-md-6 col-sm-12">
+                    <figure>
+                        <img src='{{ asset('images/projet/' ~ projet.imageUneName ~ '') }}' alt="">
+                        <figcaption class="figcaption_projet">
+                            <a href="{{ path('projet_show', {'id': projet.id}) }}" >
+                                <h3>{{ projet.title }}</h3>
+                                <div class="filet-fin"></div>
+                            </a>
+                        </figcaption>
+                    </figure>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
 {% endblock %}

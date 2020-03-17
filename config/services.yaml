@@ -5,8 +5,12 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     app.path.category_images: /public/images/category_images
+    app.path.projet_une: /public/images/projet_une
     app.path.projet_images1: /public/images/projet_images1
     app.path.projet_images2: /public/images/projet_images2
+    app.path.projet_images3: /public/images/projet_images3
+    app.path.projet_images4: /public/images/projet_images4
+    app.path.projet_images5: /public/images/projet_images5
 services:
     # default configuration for services in *this* file
     _defaults:

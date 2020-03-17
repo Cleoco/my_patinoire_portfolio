@@ -62,6 +62,6 @@ function openNav() {
     hideDetails();
     this.classeList.remove('violet');
   }
-  
-  
+
+
   
