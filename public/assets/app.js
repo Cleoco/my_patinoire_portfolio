@@ -63,5 +63,11 @@ function openNav() {
     this.classeList.remove('violet');
   }
 
+// ---------------------- PORTFOLIO ---------------------------
+
+
+$(document).ready(function(){
+  $('#myModal').modal(options)
+});
 
   

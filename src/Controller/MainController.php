@@ -61,6 +61,22 @@ class MainController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/portfolio/{id}", name="projets_category")
+     */
+    public function recipeByCategory($id, CategoryRepository $repo){
+        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
+        $category = $repo->find($id);
+        $categoryTitle = $category-> getName();
+        $projets = $category->getProjets();
+        return $this->render('main/portfolio.html.twig', [
+            'projets'=> $projets,
+            "name" => $categoryTitle,
+            "categories" => $categories,
+            
+        ]);
+    }
+
 
     /**
      * @Route("/mentions-legales", name="terms_of_use")
