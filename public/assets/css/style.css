@@ -291,9 +291,11 @@ a:hover{
   }
 
   th,td{
-    text-align:center;
+    text-align:left;
 }
-
+  .show_h4{
+    text-align: left;
+  }
   /* <!-- ----------------------------HEADER------------------------------ --> */
 
   .header{
@@ -771,6 +773,13 @@ a:hover{
   align-items: center;
   position: relative;
   cursor: pointer;
+}
+.card div{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
 }
 .card:hover{
   background: var(--color-violet);

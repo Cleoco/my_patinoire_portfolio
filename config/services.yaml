@@ -11,6 +11,7 @@ parameters:
     app.path.projet_images3: /public/images/projet_images3
     app.path.projet_images4: /public/images/projet_images4
     app.path.projet_images5: /public/images/projet_images5
+    app.path.article_image: /public/images/article_image
 services:
     # default configuration for services in *this* file
     _defaults:

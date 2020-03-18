@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+{% block title %}Portfolio{% endblock %}
+
+{% block body %}
+<style>
+  .article_image{
+    width:100%;
+    height: 175px;
+    overflow: hidden;
+  }
+  .article_image img{
+    width:100%;
+    object-fit: cover;
+  }
+  .article_info h3{
+    text-align:left;
+  }
+.btn {
+  font-size : 12px !important;
+}
+    
+</style>
+
+<div class="container">
+  <section class="article ">
+          <div class="row">
+                  <div class="container row cards">
+                  {% set index = 0 %}
+                    <a class="card col-lg-2 col-md-3" href="{{path('blog')}}">
+                              <div>
+                                  <img src='{{ asset('images/tout.svg') }}' alt="">
+                                  <h3>TOUT</h3>
+                                  <div class="filet-fin"></div>
+                              </div>
+                              </a>
+                      {% for f in filters %}
+                          <!-- filtres -->
+                              <a class="card col-lg-2 col-md-3" href="{{path('blog_filters',{'id': f.id})}}">
+                              <div  data-index={{ index }}>
+                                  <img src='{{ asset('images/' ~ f.image ~ '') }}' alt="">
+                                  <h3>{{ f.name }}</h3>
+                                  <div class="filet-fin"></div>
+                              </div>
+                              {% set index = index + 1 %}
+                              </a>
+                      {% endfor %}
+                  </div>
+              </div>
+          </div>
+      </section>
+
+  <section class="article_body container">
+
+  <h2>{{ filterName }}</h2>
+  <div class="filet"></div>
+    <div class="row">
+        <div class="listing_articles col-lg-8 col-md-8 col-sm-12">
+              {% for article in articles %}
+              <div class="article_content">
+                <div class="row">
+                    <div class="article_image col-lg-4">
+                        <img src='{{ asset('images/blog/' ~ article.imageName ~ '') }}' alt="">
+                    </div>
+                    <div class="article_info col-lg-8">
+                        <a href="{{ path('article_show', {'id': article.id}) }}" >
+                            <h3>{{ article.title }}</h3>
+                        </a>
+                            <p>{{ article.createdAt | date('d-m-Y') }}</p>
+                            <p>{{ article.content | slice(0, 100) |raw }} …</p>
+                          <a href="{{ path('article_show', {'id': article.id}) }}">
+                            <div class="btn btn-primary">Lire la suite</div>
+                          </a>
+                    </div>
+                </div>
+              </div>
+                        
+        
+    
+                  </div>
+              {% endfor %}
+        </div>
+    </div>
+
+  </section>
+</div>
+        
+{% endblock %}

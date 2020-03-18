@@ -3,28 +3,42 @@
 {% block title %}Vos projets{% endblock %}
 
 {% block body %}
+<style>
+    .project_miniature{
+        width:250px;
+        height: 175px;
+        overflow: hidden;
+
+    }
+    .project_miniature img{
+        width:100%;
+        object-fit: cover;
+    }
+    h3{
+        text-align:left;
+    }
+
+</style>
     {{ include('admin/navigation_admin.html.twig') }}
     <div class="container">
         <a class="btn btn-primary btn-4 btn-4c icon-arrow-right mb-4" href="{{ path('projet_new') }}">Créer une projet</a>
         <table class="table">
             <thead>
                 <tr>
-                    <th><h4>Id</h4></th>
+                    <th><h4>Image à la une</h4></th>
                     <th><h4>Titre</h4></th>
                     <th><h4>CreatedAt</h4></th>
-                    <th><h4>UpdatedAt</h4></th>
                     <th><h4>Actions</h4></th>
                 </tr>
             </thead>
             <tbody>
             {% for projet in projets %}
                 <tr>
-                    <td>{{ projet.id }}</td>
-                    <td>{{ projet.title }}</td>
-                    <td>{{ projet.createdAt ? projet.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                    <td>{{ projet.updatedAt ? projet.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                    <td><div class="project_miniature"><img   src='{{ asset('images/projet/' ~ projet.imageUneName ~ '') }}' alt=""></div></td>
+                    <td><h3>{{ projet.title }}</h3></td>
+                    <td><p>{{ projet.createdAt ? projet.createdAt|date('Y-m-d H:i:s') : '' }}</p></td>
                     <td>
-                        <a class="btn btn-primary btn-4 btn-4c icon-arrow-right" href="{{ path('projet_show', {'id': projet.id}) }}">Voir</a>
+                        <a class="btn btn-primary btn-4 btn-4c icon-arrow-right mb-2" href="{{ path('projet_show', {'id': projet.id}) }}">Voir</a>
                         <a class="btn btn-secondary btn-4 btn-4c icon-arrow-right" href="{{ path('projet_edit', {'id': projet.id}) }}">Modifier</a>
                     </td>
                 </tr>

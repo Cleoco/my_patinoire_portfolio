@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article index{% endblock %}
+
+{% block body %}
+<style>
+    .project_miniature{
+        width:250px;
+        height: 175px;
+        overflow: hidden;
+
+    }
+    .project_miniature img{
+        width:100%;
+        object-fit: cover;
+    }
+    h3{
+        text-align:left;
+    }
+
+</style>
+{{ include('admin/navigation_admin.html.twig') }}
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th><h4>Image à la une</h4></th>
+                <th><h4>Intitulé de l'article</h4></th>
+                <th><h4>Date d'ajout</h4></th>
+                <th><h4>Actions</h4></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td><div class="project_miniature"><img   src='{{ asset('images/blog/' ~ article.imageName ~ '') }}' alt=""></div></td>
+                <td><p>{{ article.title }}</p></td>
+                <td><p>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</p></td>
+                <td>
+                    <a class="btn btn-primary btn-4 btn-4c icon-arrow-righ mb-2" href="{{ path('article_show', {'id': article.id}) }}">Voir</a>
+                    <a class="btn btn-secondary btn-4 btn-4c icon-arrow-righ" href="{{ path('article_edit', {'id': article.id}) }}">Modifier</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">Aucun article enregistré</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary btn-4 btn-4c icon-arrow-righ mb-4" href="{{ path('article_new') }}">Ajouter un article</a>
+</div>
+{% endblock %}

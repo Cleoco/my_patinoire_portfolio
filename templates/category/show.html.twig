@@ -8,17 +8,16 @@
     <table class="table mb-5">
         <tbody>
             <tr>
-                <th>Intitulé de la catégorie</th>
-                <td>{{ category.name }}</td>
+                <th><h4 class="show_h4">Intitulé de la catégorie</h4></th>
+                <td><p>{{ category.name }}</p></td>
             </tr>
             <tr>
-                <th>Image</th>
-                <td>{{ category.imageName }}</td>
+                <th><h4 class="show_h4">Image</h4></th>
+                <td><p>{{ category.imageName }}</p></td>
             </tr>
             <tr>
-                <th>Actions</th>
-                <td><a class="btn btn-secondary btn-4 btn-4c icon-arrow-right" href="{{ path('category_edit', {'id': category.id}) }}">Mettre à jour</a></td>
-                <td>{{ include('category/_delete_form.html.twig') }}</td>
+                <th><h4 class="show_h4">Actions</h4></th>
+                <td class="d-flex"><a class="btn btn-secondary btn-4 btn-4c icon-arrow-right mr-3" href="{{ path('category_edit', {'id': category.id}) }}">Mettre à jour</a>{{ include('category/_delete_form.html.twig') }}</td>
             </tr>
         </tbody>
     </table>

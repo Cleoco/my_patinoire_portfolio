@@ -33,3 +33,8 @@ vich_uploader:
             uri_prefix: /images/projet
             upload_destination: '%kernel.project_dir%/public/images/projet'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+
+        article_image:
+            uri_prefix: /images/blog
+            upload_destination: '%kernel.project_dir%/public/images/blog'
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

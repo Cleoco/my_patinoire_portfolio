@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Article;
 use App\Entity\Category;
+use App\Entity\FiltersBlog;
 use App\Entity\Prestation;
 use App\Entity\Projet;
 use App\Repository\CategoryRepository;
+use App\Repository\FiltersBlogRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -39,7 +42,6 @@ class MainController extends AbstractController
     {
         $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
         $prestations = $this->getDoctrine()->getRepository(Prestation::class)->findAll();
-        dump($categories);
         return $this->render('main/prestations.html.twig',[
             "categories" => $categories,
             "name" => "Prestations",
@@ -64,7 +66,7 @@ class MainController extends AbstractController
     /**
      * @Route("/portfolio/{id}", name="projets_category")
      */
-    public function recipeByCategory($id, CategoryRepository $repo){
+    public function projectByCategory($id, CategoryRepository $repo){
         $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
         $category = $repo->find($id);
         $categoryTitle = $category-> getName();
@@ -77,6 +79,38 @@ class MainController extends AbstractController
         ]);
     }
 
+       
+    /**
+     * @Route("/blog", name="blog")
+     */
+    public function blog()
+    {
+        $filters = $this->getDoctrine()->getRepository(FiltersBlog::class)->findAll();
+        $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
+        return $this->render('main/blog.html.twig',[
+            "name" => "Blog",
+            "filters" => $filters,
+            "articles" => $articles,
+            "filterName" => "TOUT"
+        ]);
+    }
+    /**
+     * @Route("/blog/{id}", name="blog_filters")
+     */
+    public function articlesByFilters($id, FiltersBlogRepository $repo){
+        $filters = $this->getDoctrine()->getRepository(FiltersBlog::class)->findAll();
+        $filter = $repo->find($id);
+        $filterName = $filter-> getName();
+        dump($filterName);
+        $articles = $filter->getArticles();
+        return $this->render('main/blog.html.twig', [
+            'articles'=> $articles,
+            "name" => "Blog",
+            "filters" => $filters,
+            "filterName" => $filterName
+            
+        ]);
+    }
 
     /**
      * @Route("/mentions-legales", name="terms_of_use")

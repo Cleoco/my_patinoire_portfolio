@@ -8,24 +8,28 @@
     <table class="table">
         <tbody>
             <tr>
-                <th>Intitulé de la prestation</th>
+                <th><h4 class="show_h4" >Intitulé de la prestation</h4></th>
                 <td><p>{{ prestation.title }}</p></td>
             </tr>
             <tr>
-                <th>Contenu de gauche</th>
+                <th><h4 class="show_h4" >Contenu de gauche</h4></th>
                 <td><p>{{ prestation.contentLeft|raw }}</p></td>
             </tr>
             <tr>
-                <th>Contenu de droite</th>
+                <th><h4 class="show_h4" >Contenu de droite</h4></th>
                 <td><p>{{ prestation.contentRight|raw }}</p></td>
+            </tr>
+             <tr>
+                <th><h4 class="show_h4" >Actions</h4></th>
+                <td class="d-flex">
+                    <a class="btn btn-secondary btn-4 btn-4c icon-arrow-right mr-3" href="{{ path('prestation_edit', {'id': prestation.id}) }}">Modifier</a>
+                    {{ include('prestation/_delete_form.html.twig') }}
+                </td>
             </tr>
         </tbody>
     </table>
 
 
-    <a class="btn btn-secondary btn-4 btn-4c icon-arrow-right" href="{{ path('prestation_edit', {'id': prestation.id}) }}">Modifier</a>
-
-    {{ include('prestation/_delete_form.html.twig') }}
 </div>
 
 {% endblock %}
