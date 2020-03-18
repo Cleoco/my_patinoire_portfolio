@@ -10,6 +10,7 @@ use App\Entity\Projet;
 use App\Repository\CategoryRepository;
 use App\Repository\FiltersBlogRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController
@@ -111,6 +112,7 @@ class MainController extends AbstractController
             
         ]);
     }
+
 
     /**
      * @Route("/mentions-legales", name="terms_of_use")
