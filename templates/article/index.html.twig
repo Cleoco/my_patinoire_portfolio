@@ -21,6 +21,7 @@
 </style>
 {{ include('admin/navigation_admin.html.twig') }}
 <div class="container">
+    <a class="btn btn-primary btn-4 btn-4c icon-arrow-righ mb-4" href="{{ path('article_new') }}">Ajouter un article</a>
     <table class="table">
         <thead>
             <tr>
@@ -48,7 +49,5 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a class="btn btn-primary btn-4 btn-4c icon-arrow-righ mb-4" href="{{ path('article_new') }}">Ajouter un article</a>
 </div>
 {% endblock %}

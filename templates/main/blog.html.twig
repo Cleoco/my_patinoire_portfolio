@@ -5,7 +5,7 @@
 <style>
   .article_image{
     width:100%;
-    height: 175px;
+    height: 200px;
     overflow: hidden;
   }
   .article_image img{
@@ -15,10 +15,16 @@
   .article_info h3{
     text-align:left;
   }
-.btn {
-  font-size : 12px !important;
+.btn-more {
+  font-size : 10px !important;
+  padding : 10px 20px !important
+
 }
-    
+.sidebar{
+  background:var(--color-grey);
+  width:100%
+}    
+
 </style>
 
 <div class="container">
@@ -54,31 +60,36 @@
   <h2>{{ filterName }}</h2>
   <div class="filet"></div>
     <div class="row">
+
         <div class="listing_articles col-lg-8 col-md-8 col-sm-12">
-              {% for article in articles %}
-              <div class="article_content">
-                <div class="row">
-                    <div class="article_image col-lg-4">
-                        <img src='{{ asset('images/blog/' ~ article.imageName ~ '') }}' alt="">
-                    </div>
-                    <div class="article_info col-lg-8">
-                        <a href="{{ path('article_show', {'id': article.id}) }}" >
-                            <h3>{{ article.title }}</h3>
-                        </a>
-                            <p>{{ article.createdAt | date('d-m-Y') }}</p>
-                            <p>{{ article.content | slice(0, 100) |raw }} …</p>
-                          <a href="{{ path('article_show', {'id': article.id}) }}">
-                            <div class="btn btn-primary">Lire la suite</div>
-                          </a>
-                    </div>
-                </div>
-              </div>
-                        
-        
-    
+          {% for article in articles %}
+            <div class="article_content ">
+              <div class="row">
+                  <div class="article_image col-lg-4">
+                      <img src='{{ asset('images/blog/' ~ article.imageName ~ '') }}' alt="">
                   </div>
-              {% endfor %}
+                  <div class="article_info col-lg-8">
+                      <a href="{{ path('article_show', {'id': article.id}) }}" >
+                          <h3>{{ article.title }}</h3>
+                      </a>
+                          <p>{{ article.createdAt | date('d-m-Y') }}</p>
+                          <p>{{ article.content | slice(0, 100) |raw }} …</p>
+                        <a href="{{ path('article_show', {'id': article.id}) }}">
+                          <div class="btn btn-primary btn-more">Lire la suite</div>
+                        </a>
+                  </div>
+              </div>
+            <hr>
+            </div>
+            {% endfor %}
         </div>
+        <div class="sidebar col-lg-4 col-md-4 col-sm-12 p-4">
+          <div class="search_tool">
+            <h3>Rechercher</h3>
+          </div>
+          <div class="social_network"></div>
+        </div>
+      </div>
     </div>
 
   </section>
