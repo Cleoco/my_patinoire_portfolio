@@ -265,7 +265,7 @@ class PrestationController extends AbstractController
         }
     
         /**
-         * @Route("/admin/projets/{id}", name="projet_show", methods={"GET"})
+         * @Route("/projets/{id}", name="projet_show", methods={"GET"})
          */
         public function show(Projet $projet): Response
         {
@@ -356,15 +356,23 @@ class PrestationController extends AbstractController
         }
 
         /**
-         * @Route("/admin/blog/{id}", name="article_show", methods={"GET"})
+         * @Route("/blog/{id}", name="article_show", methods={"GET"})
          */
-        public function show(Article $article): Response
+        public function show(Article $article, Request $request): Response
         {
-            $articles = $this->getDoctrine()->getRepository(Projet::class)->findAll();
+            $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
+            $currentId = $article ->getId($request);
+            $articleKeyWords = $article->getKeyWords();
             $articleTitle = $article-> getTitle();
+            $lastestArticles = $this->getDoctrine()->getRepository(Article::class)->findAll(array('title' => 'ASC'),5 );
+            $repo = $this->getDoctrine()->getRepository(Article::class)->findBy(array('keyWords' => $articleKeyWords),array('id' => 'DESC'),2 );
+            dump($repo);
             return $this->render('article/show.html.twig', [
+                'articleByKeyWords' => $repo,
                 'article' => $article,
+                'lastestArticles' => $lastestArticles,
                 "name" => $articleTitle,
+                "currentId" => $currentId,
             ]);
         }
 

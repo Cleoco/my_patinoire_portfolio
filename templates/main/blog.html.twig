@@ -12,10 +12,6 @@
     width:100%;
     object-fit: cover;
   }
-  .article_info h3{
-    text-align:left;
-    text-transform:none !important;
-  }
 .btn-more {
   font-size : 10px !important;
   padding : 10px 20px !important
@@ -99,7 +95,7 @@
                   </div>
                   <div class="article_info col-lg-8">
                       <a href="{{ path('article_show', {'id': article.id}) }}" >
-                          <h3>{{ article.title }}</h3>
+                          <h3 class="article_title">{{ article.title }}</h3>
                       </a>
                           <p>{{ article.createdAt | date('d-m-Y') }}</p>
                           <p>{{ article.content | slice(0, 100) |raw }} …</p>

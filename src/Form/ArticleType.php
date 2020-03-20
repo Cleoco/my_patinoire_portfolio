@@ -58,6 +58,13 @@ class ArticleType extends AbstractType
                 'choice_label'=> 'name',
                 'label'=> "Quel filtre ?"
             ])
+            ->add('keyWords', TextType::class, [
+                'label'=> 'Mots-clés',
+                'required'=> false,
+                'attr' => [
+                    'placeholder'=> 'Ajouter des mots-clés pour cet article',
+                ]
+            ])
         ;
     }
 

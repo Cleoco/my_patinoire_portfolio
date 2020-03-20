@@ -73,6 +73,11 @@ class Article
      */
     private $filter;
 
+    /**
+     * @ORM\Column(type="string", length=1000, nullable=true)
+     */
+    private $keyWords;
+
     public function __construct()
     {
         $now = new \DateTime('now', new \DateTimeZone('Europe/Paris'));
@@ -202,6 +207,18 @@ class Article
     public function setFilter(?FiltersBlog $filter): self
     {
         $this->filter = $filter;
+
+        return $this;
+    }
+
+    public function getKeyWords(): ?string
+    {
+        return $this->keyWords;
+    }
+
+    public function setKeyWords(?string $keyWords): self
+    {
+        $this->keyWords = $keyWords;
 
         return $this;
     }

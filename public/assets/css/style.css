@@ -91,6 +91,11 @@ h5{
   line-height: 30px;
 }
 
+.article_title{
+  font-size: 18px !important;
+  text-transform: none;
+}
+
 ul{
   padding:0;
 }
