@@ -8,13 +8,12 @@ use App\Entity\Article;
 use App\Entity\FiltersBlog;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
-use Faker\Factory;
 
 class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager)
     {
-        $faker = Factory::create();
+        $faker = \Faker\Factory::create(" ");
 
            $filter2 = new FiltersBlog();
            $filter2->setName('PRINT');
@@ -44,25 +43,28 @@ class AppFixtures extends Fixture
                      -> setCreatedAt($faker->dateTimeBetween('-6 months'))
                      -> setLink($faker->url)
                      -> setSource($faker->url)
-                     -> setUpdatedAt($faker->dateTimeBetween('-6 months'))
-                     -> setFilter($filter2,$filter3,$filter4,$filter5)
+                     -> setUpdatedAt($faker->dateTimeBetween('-6 months'));
+            $manager->persist($article);
                      
+            for($k = 1; $k < mt_rand(4,15); $k++){
+                $comment = new Comment();
+                $content = '<p>' . join($faker->paragraphs(2),'</p><p>') . '</p>';
+    
+      
+                $days = (new \DateTime())->diff($article->getCreatedAt())->days;
+                $comment-> setAuthor($faker->name)
+                        -> setContent($content)
+                        -> setCreatedAt($faker->dateTimeBetween("-" .  $days . ' days' ))
+                        -> setArticle($article)
+                        -> setEmail($faker->email)
+                        -> setGdprAgreement(true);
+                $manager->persist($comment);
+    
+            }
         }
+    
 
 
-        for($k = 1; $k < mt_rand(4,10); $k++){
-            $comment = new Comment();
-            $content = '<p>' . join($faker->paragraphs(2),'</p><p>') . '</p>';
-
-  
-            $days = (new \DateTime())->diff($article->getCreatedAt())->days;
-            $comment-> setAuthor($faker->name)
-                    -> setContent($content)
-                    -> setCreatedAt($faker->dateTimeBetween("-" .  $days . ' days' ))
-                    -> setArticle($article);
-                    -> setEmail($faker->email);
-
-        }
 
         $manager->flush();
     }

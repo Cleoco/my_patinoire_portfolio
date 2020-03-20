@@ -104,12 +104,13 @@ class MainController extends AbstractController
         ]);
     }
     /**
-     * @Route("/blog/{id}", name="blog_filters")
+     * @Route("/blog/categorie/{id}", name="blog_filters")
      */
     public function articlesByFilters($id, FiltersBlogRepository $repo, PaginatorInterface $paginator, Request $request){
         $filters = $this->getDoctrine()->getRepository(FiltersBlog::class)->findAll();
         $filter = $repo->find($id);
         $filterName = $filter-> getName();
+        dump($filters);
         $articlesFiltred = $filter->getArticles();
         
         

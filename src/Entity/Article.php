@@ -71,7 +71,7 @@ class Article
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\FiltersBlog", inversedBy="articles")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=true)
      */
     private $filter;
 

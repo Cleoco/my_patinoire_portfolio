@@ -12,8 +12,11 @@ use App\Entity\Projet;
 use App\Form\ProjetType;
 use App\Repository\ProjetRepository;
 use App\Entity\Article;
+use App\Entity\Comment;
 use App\Form\ArticleType;
+use App\Form\CommentType;
 use App\Repository\ArticleRepository;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -356,23 +359,38 @@ class PrestationController extends AbstractController
         }
 
         /**
-         * @Route("/blog/{id}", name="article_show", methods={"GET"})
+         * @Route("/blog/{id}", name="article_show",  methods={"GET","POST"}, requirements={"id":"\d+"})
          */
-        public function show(Article $article, Request $request): Response
+        public function show(Article $article, Request $request, Comment $comment): Response
         {
-            $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
             $currentId = $article ->getId($request);
             $articleKeyWords = $article->getKeyWords();
             $articleTitle = $article-> getTitle();
-            $lastestArticles = $this->getDoctrine()->getRepository(Article::class)->findAll(array('title' => 'ASC'),5 );
-            $repo = $this->getDoctrine()->getRepository(Article::class)->findBy(array('keyWords' => $articleKeyWords),array('id' => 'DESC'),2 );
-            dump($repo);
+            $lastestArticles = $this->getDoctrine()->getRepository(Article::class)->findBy([],['createdAt' => 'desc'],5);
+            $repo = $this->getDoctrine()->getRepository(Article::class)->findBy(array('keyWords' => $articleKeyWords),array('id' => 'desc'),2 );
+            
+            $comment = new Comment();
+            $form = $this->createForm(CommentType::class, $comment);
+            $form->handleRequest($request);
+            
+            if ($form->isSubmitted() && $form->isValid()) {
+                $manager = $this->getDoctrine()->getManager();
+                $comment->setCreatedAt(new \DateTime())
+                        ->setArticle($article);
+                $manager->persist($comment);
+                $manager->flush();
+
+                return $this->redirectToRoute('article_show', ['id'=> $article->getId()]);
+            }
+
             return $this->render('article/show.html.twig', [
                 'articleByKeyWords' => $repo,
                 'article' => $article,
+                'comment' => $comment,
                 'lastestArticles' => $lastestArticles,
                 "name" => $articleTitle,
                 "currentId" => $currentId,
+                "commentForm" => $form->createView(),
             ]);
         }
 

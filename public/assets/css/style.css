@@ -36,7 +36,7 @@
     margin: 0;
 }
 
-p{
+p, label{
   font-family: 'Montserrat', sans-serif;
   font-size: 16px;
   line-height: 26px;
@@ -139,7 +139,19 @@ a:hover{
   color:white !important;
 }
 
-
+.form-control{
+  background :var(--color-grey) !important;
+  border-radius:30px !important;
+  border:0 !important;
+  text-transform: uppercase;
+  font-family: 'Montserrat',sans-serif;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  color:var(--color-dark-grey);
+  letter-spacing: 2px;
+  padding: 25px !important;
+  
+}
 /* MENU BURGER
 
 
