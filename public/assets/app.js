@@ -69,5 +69,3 @@ function openNav() {
 $(document).ready(function(){
   $('#myModal').modal(options)
 });
-
-  

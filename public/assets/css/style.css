@@ -94,6 +94,7 @@ h5{
 .article_title{
   font-size: 18px !important;
   text-transform: none;
+  text-align: left;
 }
 
 ul{
