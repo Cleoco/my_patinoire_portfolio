@@ -3,48 +3,173 @@
 {% block title %}Article{% endblock %}
 
 {% block body %}
-<div class="container">
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ article.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ article.title }}</td>
-            </tr>
-            <tr>
-                <th>Content</th>
-                <td>{{ article.content }}</td>
-            </tr>
-            <tr>
-                <th>Picture</th>
-                <td>{{ article.imageName }}</td>
-            </tr>
-            <tr>
-                <th>Link</th>
-                <td>{{ article.link }}</td>
-            </tr>
-            <tr>
-                <th>Source</th>
-                <td>{{ article.source }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>UpdatedAt</th>
-                <td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+<style>
+.article_body{
+    padding-top:70px;
+}
+.article_body h3{
+    margin-bottom:50px;
+    text-align:left;
+}
+  .article_image{
+    width:100%;
+    height: 200px;
+    overflow: hidden;
+  }
+  .article_image img{
+    width:100%;
+    object-fit: cover;
+  }
+  .article_info h3{
+    text-align:left;
+    text-transform:none !important;
+  }
+.btn-more {
+  font-size : 10px !important;
+  padding : 10px 20px !important
 
-    <a href="{{ path('article_index') }}">back to list</a>
+}
+.sidebar{
+  background:var(--color-grey);
+  width:100%
+}    
+.search_input input:first-child{
+  width:100%;
+  height:40px;
+  border-radius:30px;
+  border:0;
+  background:white;
+  padding-left:20px;
+}
+.search_input{
+  position:relative;
+}
+.background_icon_search{
+  width:40px;
+  height:30px;
+  background:white;
+  position:absolute;
+  top:5px;
+  right:20px;
+}
 
-    <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
+.social_network{
+  margin-top:150px;
+}
+.social_network_icons .fa{
+  font-size:25px;
+  color:var(--color-violet) !important;
+}
+figure img{
+    width:100%;
+    object-fit:cover;
+}
+figure{
+    position:relative;
+    height:278px;
+    overflow:hidden;
+}
+figcaption{
+    position:absolute;
+    left:0; top:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+}
+figcaption:hover{
+    opacity:.7;
+}
+figcaption .fa-plus{
+    font-size:40px;
+    color:white;
+}
+
+.similar_article_content h3{
+      text-transform:none;
+}
+
+</style>
+
+<section class="article_body container">
+
+  <h3>{{ article.title }}</h3>
+    <div class="row">
+
+        <div class="listing_articles col-lg-8 col-md-8 col-sm-12">
+        <p>Publié le {{ article.createdAt ? article.createdAt|date('Y-m-d') : '' }} | Mis à jour le : {{ article.updatedAt ? article.updatedAt|date('Y-m-d') : '' }}</p>
+        <div class="btn_actions_blog d-flex">
+            <a href="{{ path('article_index') }}">
+                <div class="btn btn-primary btn-more">Retour</div>
+            </a>
+            <a href="">
+                <div class="btn btn-primary btn-more">Ajouter un commentaire</div>
+            </a>
+        </div>
+            
+                        
+        <p class="mt-5">{{ article.content|raw }}</p>
+        <img class="p-0 col-lg-12 col-md-12 col-sm-12" src='{{ asset('images/blog/' ~ article.imageName ~ '') }}' alt="">
+        <a href="{{ article.link }}" class="btn btn-primary btn-4 btn-4c icon-arrow-right mb-4 mt-5">voir le site</a>
+         <p>Sources : <a href="{{ article.source }}">{{ article.source }}</a></p>  
+
+    <a class="btn btn-secondary btn-4 btn-4c icon-arrow-right mb-3" href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
 
     {{ include('article/_delete_form.html.twig') }}
+
+    <div class="similar_articles">
+        <h3 class="mt-5">Articles similaires</h3>
+        <div class="row">
+            <div class="similar_article_content col-lg-6 col-md-6 col-sm-12">
+                <figure>
+                    <img class="" src='{{ asset('images/blog/' ~ article.imageName ~ '') }}' alt="">
+                    <a href="">
+                        <figcaption>
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </figcaption>
+                    </a>
+                </figure>
+                <a href=""><h3>{{ article.title }}</h3></a>
+            </div>
+            <div class="similar_article_content col-lg-6 col-md-6 col-sm-12">
+                <figure>
+                    <img class="" src='{{ asset('images/blog/' ~ article.imageName ~ '') }}' alt="">
+                    <a href="">
+                        <figcaption>
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </figcaption>
+                    </a>
+                </figure>
+                <a href=""><h3>{{ article.title }}</h3></a>
+            </div>
+        </div>
+    </div>
+
 </div>
+
+     <div class="sidebar col-lg-4 col-md-4 col-sm-12 p-4">
+          <div class="search_tool">
+            <h3 class="mt-3" >Rechercher</h3>
+            <form action="" method="post">
+              <div class="search_input mt-3">
+                <input type="text" class="form-control" placeholder="mots-clés…" name="search">
+                <div type="submit" name="" id="" ><div class="background_icon_search d-flex justify-content-center align-items-center" ><i class="fa fa-search" aria-hidden="true"></i></div></div>
+              </div>
+            </form>
+          </div>
+          <div class="social_network">
+            <h3>Follow me !</h3>
+            <div class="social_network_icons d-flex justify-content-around mt-5">
+                <a href="https://www.facebook.com/cleo.csn"target="_blank"><i class="fa fa-facebook"></i></a>
+                <a href="https://www.instagram.com/cleo__cook/?hl=fr"target="_blank"><i class="fa fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/cl%C3%A9o-cosnier-092b7668"target="_blank"><i class="fa fa-linkedin"></i></a>
+                <a href="https://www.pinterest.fr/cleocosnier/"><i class="fa fa-pinterest-p"target="_blank"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
 {% endblock %}

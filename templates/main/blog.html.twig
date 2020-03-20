@@ -111,7 +111,12 @@
             <hr>
             </div>
             {% endfor %}
+          <div class="pagination">
+            {{ knp_pagination_render(articles) }}
+          </div>
         </div>
+
+
         <div class="sidebar col-lg-4 col-md-4 col-sm-12 p-4">
           <div class="search_tool">
             <h3 class="mt-3" >Rechercher</h3>

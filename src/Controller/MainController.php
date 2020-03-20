@@ -7,10 +7,14 @@ use App\Entity\Category;
 use App\Entity\FiltersBlog;
 use App\Entity\Prestation;
 use App\Entity\Projet;
+use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\FiltersBlogRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\BrowserKit\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController
@@ -84,10 +88,14 @@ class MainController extends AbstractController
     /**
      * @Route("/blog", name="blog")
      */
-    public function blog()
+    public function blog(PaginatorInterface $paginator, Request $request): Response
     {
         $filters = $this->getDoctrine()->getRepository(FiltersBlog::class)->findAll();
-        $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
+        $articles = $paginator->paginate($this->getDoctrine()->getRepository(Article::class)
+            ->findAll(),
+            $request->query->getInt('page', 1), /*page number*/
+            4
+    );
         return $this->render('main/blog.html.twig',[
             "name" => "Blog",
             "filters" => $filters,
@@ -98,12 +106,20 @@ class MainController extends AbstractController
     /**
      * @Route("/blog/{id}", name="blog_filters")
      */
-    public function articlesByFilters($id, FiltersBlogRepository $repo){
+    public function articlesByFilters($id, FiltersBlogRepository $repo, PaginatorInterface $paginator, Request $request){
         $filters = $this->getDoctrine()->getRepository(FiltersBlog::class)->findAll();
         $filter = $repo->find($id);
         $filterName = $filter-> getName();
-        dump($filterName);
-        $articles = $filter->getArticles();
+        $articlesFiltred = $filter->getArticles();
+        
+        
+        $articles = $paginator->paginate($this->getDoctrine()->getRepository(Article::class)
+            ->$articlesFiltred,
+
+            $request->query->getInt('page', 1), /*page number*/
+            4
+    );
+    
         return $this->render('main/blog.html.twig', [
             'articles'=> $articles,
             "name" => "Blog",
@@ -112,6 +128,7 @@ class MainController extends AbstractController
             
         ]);
     }
+
 
 
     /**
