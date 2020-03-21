@@ -4,7 +4,7 @@
 @import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 @font-face {
 	font-family: 'icomoon';
-	src:url('../fonts/icomoon/icomoon.eot');
+  src:url('../assets/fonts/icomoon/icomoon.eot');
 	src:url('../fonts/icomoon/icomoon.eot?#iefix') format('embedded-opentype'),
 		url('../fonts/icomoon/icomoon.woff') format('woff'),
 		url('../fonts/icomoon/icomoon.ttf') format('truetype'),
@@ -517,13 +517,13 @@ a:hover{
   text-align: left;
 }
 
-.article_content_titre h3::before{
+.h3_title::before{
   display: inline-block;
   margin-right: 15px;
   content: "";
-  height: 4px !;
-  width: 30px;
-  background-color:var(--color-dark-grey);
+  height: 4px !important;
+  width: 30px !important;
+  background-color:var(--color-dark-grey) !important;
 }
 
 .article_content_titre p{
@@ -803,10 +803,14 @@ a:hover{
   background: var(--color-violet);
   transition: 0.2s;
 }
+
 .card img{
     width: 50px;
     height: 50px;
  
+}
+.image-neutre{
+  fill:var(--color-violet);
 }
 /* Bouton actif  */
 

@@ -32,7 +32,7 @@
                 <div class="navbar">
                     
                     <!-- réseaux gauche -->
-                    <a href="../home/index.html" class="logo-header"><img src='{{ asset('images/logo-header.svg') }}' alt=""></a>
+                    <a href="{{ path('homepage') }}" class="logo-header"><img src='{{ asset('images/logo-header.svg') }}' alt=""></a>
                     <ul class="reseaux-sociaux">
                         <li><a href="https://www.facebook.com/cleo.csn"target="_blank"><i class="fa fa-facebook"></i></a></li>
                         <li><a href="https://www.instagram.com/cleo__cook/?hl=fr"target="_blank"><i class="fa fa-instagram"></i></a></li>
@@ -75,11 +75,12 @@
             
                 <!-- Overlay content -->
                 <div class="overlay-content">
-                <a href="../home/index.html">HOME</a>
-                <a href="../about/index.html">ABOUT</a>
-                <a href="../competences/index.html">COMPÉTENCES</a>
-                <a href="../portfolio_V2/index.html">PORTFOLIO</a>
-                <a href="../home/index.html#contact">CONTACT</a>
+                <a href="{{ path('homepage') }}">HOME</a>
+                <a href="{{ path('about') }}">À PROPOS</a>
+                <a href="{{ path('prestations') }}">PRESTATIONS</a>
+                <a href="{{ path('portfolio') }}">PORTFOLIO</a>
+                <a href="{{ path('blog') }}">BLOG</a>
+                <a href="{{ path('homepage') }}">CONTACT</a>
                 </div>
             
             </div>
@@ -111,12 +112,12 @@
             <footer class="footer">
                     <img src='{{ asset('images/logo-footer.svg') }}'alt="">
                     <ul class="menu">
-                        <li><a href="../about/index.html">À PROPOS</a></li>
-                        <li><a href="../competences/index.html">PRESTATIONS</a></li>
-                        <li><a href="../portfolio_V2/index.html">PORTFOLIO</a></li>
-                        <li><a href="../portfolio_V2/index.html">BLOG</a></li>
-                        <li><a href="../home/index.html#contact">CONTACT</a></li>
-                        <li><a href="">MENTIONS LÉGALES</a></li>
+                        <li><a href="{{ path('about') }}">À PROPOS</a></li>
+                        <li><a href="{{ path('prestations') }}">PRESTATIONS</a></li>
+                        <li><a href="{{ path('portfolio') }}">PORTFOLIO</a></li>
+                        <li><a href="{{ path('blog') }}">BLOG</a></li>
+                        <li><a href="{{ path('homepage') }}">CONTACT</a></li>
+                        <li><a href="{{ path('terms_of_use') }}">MENTIONS LÉGALES</a></li>
                     </ul>
                 </footer>
         {% endblock %}
