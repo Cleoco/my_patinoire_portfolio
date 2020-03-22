@@ -1,4 +1,12 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn btn-primary btn-4 btn-4c icon-arrow-right mb-4 mt-5">{{ button_label|default('Enregistrer') }}</button>
-{{ form_end(form) }}
+<style>
+    img{
+        width:100%
+    }
+</style>
+
+<div class="container">
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <button class="btn btn-primary btn-4 btn-4c icon-arrow-right mb-4 mt-5">{{ button_label|default('Enregistrer') }}</button>
+    {{ form_end(form) }}
+</div>

@@ -24,9 +24,12 @@ class MainController extends AbstractController
      */
     public function index()
     {
+        $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
+        $projets = $this->getDoctrine()->getRepository(Projet::class)->findBy([],['createdAt' => 'ASC'],6);
         return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',
-            "name" => ""
+            "categories" => $categories,
+            "projets" => $projets
         ]);
     }
 

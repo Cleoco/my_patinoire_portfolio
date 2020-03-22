@@ -1,20 +1,741 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+            {# <link rel="stylesheet" href="../assets/css/grid.css"> #}
+            <link rel="stylesheet" href="/../assets/css/style.css">
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js">
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
 
-{% block title %}Hello MainController!{% endblock %}
+
 
 {% block body %}
+
 <style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+
+/* <!-- ----------------------------HEADER------------------------------ --> */
+
+.header{
+    background-image:url("{{ asset('images/Logo-fond-V2-02 copy.jpg') }}");
+    height: 100vh;
+}
+
+.header_content_all {
+    position: relative;
+}
+
+.header_content{
+    height: auto;
+    display: flex;
+    align-items: flex-end;
+}
+
+.header_content_titre{
+    max-height: 100vh;
+    margin-bottom: 30px;
+    position: absolute;
+    bottom: 0;
+}
+
+.header_content_titre p {
+    line-height: 50px;
+    letter-spacing: 0.2rem;
+}
+
+.header_content_titre h1{
+    font-family: 'Montserrat',sans-serif;
+    letter-spacing: 0.5rem;
+    font-size: 50px;
+    font-weight: 600;
+}
+
+
+.header_content_titre img{
+    margin-top: 50px;
+    animation: bounce 0.35s ease infinite alternate; 
+} 
+@keyframes bounce{ 
+    from {transform: translateY(0);} 
+    to {transform: translateY(-5px);}
+} 
+
+.email{
+    position: absolute;
+    left: -50px; top:50vh;
+    transform: rotate(-90deg);
+}
+
+  
+@media(min-width:768px){
+    .fa-bars{visibility: hidden;}
+
+}
+
+@media (max-width:768px){
+
+    .header{
+        background-image:url(../css/images/Logo-fond-V2-02.jpg);
+    }
+    .header_content_titre p {
+       visibility: hidden;
+    }
+    .header_content_titre h1{
+        font-family: 'Montserrat',sans-serif;
+        letter-spacing: 0.5rem;
+        font-size: 35px;
+        font-weight: 600;
+    }
+}
+
+/* <!-- ----------------------------ABOUT------------------------------ --> */
+
+
+.about{
+    padding-top: 140px;
+    padding-bottom: 140px;
+    position: relative;
+    background-image:url(../css/images/graphic-about.svg);
+    width: 100%;
+    background-position: center top;
+    background-repeat:no-repeat;
+
+}
+
+.rect-haut-prez{
+    position: absolute;
+    top: -3px; right: 218px;
+}
+
+.rect-bas-prez{
+    position: absolute;
+    top: 557px; right: 450px;
+}
+
+
+@media (max-width:992px){
+    .filet{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .about_content_titre{
+        text-align: center;
+    }
+    .about_content_titre .btn{
+        margin-bottom: 30px;
+       
+    }
+}
+  
+@media(min-width:768px){
+    .about_content_titre .btn{
+        margin-bottom: 30px;
+       
+    }
+
+}
+
+@media (max-width:768px){
+
+    
+}
+
+
+/* <!-- ----------------------------COMPETENCES------------------------------ --> */
+
+
+.competences{
+    background-image:url(../css/images/graphic-competences.svg);
+    width: 100%;
+    background-position: center bottom;
+    background-repeat:no-repeat;
+    background-color: var(--color-grey);
+    height: auto;
+    padding-top: 106px;
+    padding-bottom: 106px;
+}
+.titre{
+    text-align: center;
+}
+.competences .filet{
+    margin: 40px auto;
+}
+.titre h2{
+    color: var(--color-dark-grey);
+}
+
+.card{
+    width: 268px;
+    height: auto;
+    background: white;
+    box-shadow: 0px 0px 30px rgb(190, 190, 190);
+    border-radius: 20px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 50px;
+    position: relative;
+    text-decoration: none;
+}
+
+.cards {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    
+
+}
+
+.card:nth-child(6){
+    background: var(--color-violet);
+}
+.card:nth-child(6):hover{
+    background: var(--color-blue);
+    transition: 0.2s;
+}
+.img-tel{
+    margin-bottom: 30px;
+}
+.card img{
+    margin-bottom: 30px;
+    width:80px !important;
+    height:80px !important;
+    
+}
+
+.img-neutre {
+    margin: 0 auto;
+    fill: var(--color-violet);
+ }
+
+.card span{
+    color: white;
+}
+
+.competences .btn{
+    margin-top: 50px;
+}
+
+
+@media (max-width:992px){
+
+}
+  
+@media(min-width:768px){
+
+
+}
+
+@media (max-width:768px){
+
+    .competences .btn{
+        text-align: center;
+        margin-left: 50px;
+        margin-right: 50px;
+        border-radius: 50px;
+    }
+    .card:nth-child(6):hover{
+        background: var(--color-violet);
+    }
+}
+
+
+
+/* <!-- ----------------------------PORTFOLIO------------------------------ --> */
+
+.portfolio{
+    padding-top: 106px;
+    padding-bottom: 106px;
+    background-image:url(../css/images/graphic-portfolio.svg);
+    width: 100%;
+    background-position: center bottom;
+    background-repeat:no-repeat;
+    height: auto;
+}
+.portfolio .filet{
+    margin: 40px auto;
+}
+
+.gallery{
+    box-sizing: border-box;
+}
+
+.gallery .image{
+    /* width: 455px; */
+    height: auto;
+    margin: 0;
+    padding: 0;
+    
+}
+figure img{
+    
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: table;
+}
+.gallery .btn{
+
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+figure{
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    height:100%;
+    width:100%;
+}
+
+.image figcaption{
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color:var(--color-violet);
+    opacity: 0;
+    transition: .4s; 
+    color: white;
+    flex-direction: column;
+    padding-left: 70px;
+    justify-content: center;
+}
+
+.image figcaption:hover{
+    opacity:0.9;
+}
+
+.image figcaption h3{
+    color: white;
+    text-align: left;
+}
+
+.image figcaption .filet-fin{
+    background: white;
+    margin-left: 0;
+    margin-bottom: 30px;
+}
+
+.btn-figcaption{
+
+    background: white;
+    padding-left: 10px;
+    padding-right: 10px;
+    align-self: flex-end;
+    margin-right: 70px; 
+    background: white;
+    border-radius: 30px;
+    text-decoration: none;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    text-transform: uppercase;
+	cursor: pointer;
+	display: inline-block;
+	padding: 15px 20px;
+}
+
+@media (max-width:992px){
+
+}
+  
+@media(min-width:768px){
+  
+
+}
+
+@media (max-width:768px){
+
+    .btn-figcaption{
+        margin-right: 50px;
+    }
+    figcaption{
+        visibility: hidden;
+    }
+    .gallery .btn{
+    text-align: center; 
+    }
+
+}
+
+
+
+/* <!-- ----------------------------CONTACT------------------------------ --> */
+
+.contact {
+    height: auto;
+    padding-top: 106px;
+    padding-bottom: 106px;
+    background: var(--color-violet);
+    background-image:url(../css/images/graphic-contact.svg);
+    width: 100vw;
+    background-position: center bottom;
+    background-repeat:no-repeat;
+    height: auto;
+}
+.contact_content-titre h2{
+    color: white;
+}
+.contact_content-titre .filet{
+    background: white;
+}
+.coordonnees {
+    color: white;
+    margin-top: 50px;
+    
+}
+.coordonnees p{
+    margin-left: 30px;
+}
+.coordonnees img{
+    width: 20px;
+}
+.telephone{
+    display: flex;
+}
+.telephone p{
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.2rem;
+}
+.adresse{
+    margin-top: 20px;
+    display: flex;
+}
+.reseaux h3{
+    text-align: left;
+    color: white;
+    padding: 30px 0;
+}
+.reseaux-sociaux .fa{
+    color: white;
+}
+
+.form-control{
+    height: 40px;
+    width: 250px;
+    width: auto;
+    border-radius: 30px;
+    border: 2px solid white;
+    padding-left: 30px;
+    padding-right: 30px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    margin-bottom:30px;
+}
+.form-control:hover {
+    box-shadow: 5px 5px 10px rgb(54, 54, 155);
+}
+ 
+form{
+    display: flex;
+    flex-direction: column;
+    padding-left:70px;
+}
+.form-name{
+    display: flex;
+    justify-content: space-between;
+}
+.form-name>*{
+    width: 320px;
+}
+
+.message-form{
+    height: 100px;
+    padding-top:15px;
+}
+
+.btn-form{
+    width: 200px;
+    padding: 10px 30px;
+    background: var(--color-blue);
+    border: 0px;
+    align-self: flex-end;
+}
+
+.btn-form:hover{
+
+    background: var(--color-footer);
+    transition: 0.3s;
+}
+
+
+
+@media(max-width:576px){
+
+}
+
+@media(max-width:768px){
+    .form-contact .btn{
+        width: 100%;
+    }
+}
+@media(min-width:576px){
+    .contact{
+        text-align: center;
+    }
+    .telephone{
+        justify-content: center;
+    }
+    .adresse {
+        justify-content: center;
+    }
+
+    .form-contact{
+        margin-top: 50px;
+        padding-left: 15px;
+    }
+
+    .reseaux h3{
+        text-align: center;
+    }
+    .reseaux-sociaux{
+        justify-content: center;
+    }
+    .btn-form{
+        width: 100%;
+        padding: 10px 30px;
+        background: var(--color-blue);
+        border: 0px;
+        align-self: flex-end;
+    }
+    
+    .contact_content-titre{
+        margin-bottom: 30px;
+    }
+
+    .contact_content-titre .filet{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    form{
+        padding-left:15px;
+    }
+    .form-control{
+        width: 100%;
+    }
+ 
+
+}
+
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    {# <!-- ----------------------------HEADER------------------------------ --> #}
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Applications/MAMP/htdocs/digital-campus/patinoire_book/symfony4_patinoire/my_patinoire_portfolio/src/Controller/MainController.php'|file_link(0) }}">src/Controller/MainController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Applications/MAMP/htdocs/digital-campus/patinoire_book/symfony4_patinoire/my_patinoire_portfolio/templates/main/index.html.twig'|file_link(0) }}">templates/main/index.html.twig</a></code></li>
-    </ul>
-</div>
+<header id="header" class="header">
+    <div class=" header_content_all container">
+        <div class="navbar">
+            <!-- réseaux gauche -->
+                <a href="{{ path('homepage') }}" class="logo-header"><img src='{{ asset('images/logo-header.svg') }}' alt=""></a>
+                <ul class="reseaux-sociaux">
+                    <li><a href="https://www.facebook.com/cleo.csn"target="_blank"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="https://www.instagram.com/cleo__cook/?hl=fr"target="_blank"><i class="fa fa-instagram"></i></a></li>
+                    <li><a href="https://www.linkedin.com/in/cl%C3%A9o-cosnier-092b7668"target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                    <!-- <li><a href=""><i class="fa fa-behance"></i></a></li> -->
+                    <li><a href="https://www.pinterest.fr/cleocosnier/"><i class="fa fa-pinterest-p"target="_blank"></i></a></li>
+                </ul>
+                
+                <!-- menu à droite -->
+                
+                <ul class="menu">
+                    <li><a href="{{ path('about') }}">À PROPOS</a></li>
+                    <li><a href="{{ path('prestations') }}">PRESTATIONS</a></li>
+                    <li><a href="{{ path('portfolio') }}">PORTFOLIO</a></li>
+                    <li><a href="{{ path('blog') }}">BLOG</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </div>
+        <div class="header_content">
+            <div class="header_content_titre">
+                <p>DA & DESIGNER GRAPHIQUE</p>
+                <h1>CLÉO COSNIER</h1>
+                <a href="#arrox-scroll-header"><img src="{{ asset('images/arrox-scroll-header.svg') }}" alt=""></a>
+                
+            </div>
+        </div>
+        
+    </div>
+    <div class="email">
+        <a href="mailto:cleocosnier@gmail.com">cleo.cosnier@gmail.com</a>
+    </div>
+    
+    
+    <!-- Overlay -->
+    <div id="myNav" class="overlay">
+
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      
+        <div class="overlay-content">
+          <a href="../home/index.html">HOME</a>
+          <a href="../about/index.html">ABOUT</a>
+          <a href="../competences/index.html">COMPÉTENCES</a>
+          <a href="../portfolio_V2/index.html">PORTFOLIO</a>
+          <a href="#contact">CONTACT</a>
+        </div>
+      
+    </div>
+    
+    <span onclick="openNav()"><i class="fa fa-bars"></i></span>
+      
+
+</header>
+
+
+
+
+    {# <!-- ----------------------------ABOUT------------------------------ --> #}
+
+<section id="arrox-scroll-header" class="about container">
+    <div class="row">
+        <div class="col-lg-6 col-md-12 col-sm-12">
+            <div id="about_content_titre">
+                <h2>à propos</h2>
+                <div class="filet"></div>
+                <p>Directrice Artistique et Designer Graphique,
+                    je vous accompagne de la conception à la réalisation
+                    de vos supports de communication Print & Web. </p>
+                
+                <div><a href="{{ path('about') }}" class="btn btn-primary btn-4 btn-4c icon-arrow-right">lire la suite</a></div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-12 col-sm-12">
+            <div id="about_content_photo">
+                <img src="{{ asset('images/P1000368.jpg') }}" alt="">
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+    {# <!-- ----------------------------COMPETENCES------------------------------ --> #}
+
+
+<section class="competences">
+    <div class="titre">
+        <h2>COMPÉTENCES</h2>
+        <div class="filet"></div>
+    </div>
+               
+        <div class="container row cards">
+        {% set index = 0 %}
+            {% for category in categories %}
+                <!-- filtres -->
+                    <div class="card col-lg-3 col-md-4 col-sm-12" data-index={{ index }}>
+                        <img src='{{ asset('images/category/' ~ category.imageName ~ '') }}' alt="">
+                        <h3>{{ category.name }}</h3>
+                        <div class="filet-fin"></div>
+                    </div>
+                    {% set index = index + 1 %}
+            {% endfor %}
+            <a href="#contact" class="card col-lg-3 col-md-4 col-sm-12">
+                <img class='img-tel'src="{{ asset('images/Groupe54.svg') }}" alt="">
+                <h3><span>CONTACT</span></h3>
+                <div class="filet-fin-blanc"></div>
+            </a> 
+        <a href="{{ path('prestations') }}" class="btn btn-primary btn-4 btn-4c icon-arrow-right">voir les compétences</a>
+        </div>
+
+
+</section>
+
+
+    {# <!-- ----------------------------PORTFOLIO------------------------------ --> #}
+
+<section class="portfolio">
+    <div class="titre">
+        <h2>PORTFOLIO</h2>
+        <div class="filet"></div>
+    </div>
+    <div class="row gallery">
+    {% for projet in projets %}
+        <div class="image col-lg-4 col-md-6 col-sm-12">
+            <figure>
+                <a href="{{ path('projet_show', {'id': projet.id}) }}"><img src="{{ asset('images/projet/' ~ projet.imageUneName ~ '') }}" alt="">
+                <figcaption>
+                    <h3>{{ projet.title }}</h3>
+                    <div class="filet-fin"></div>
+                    {# <p>{{ projet.category }}</p> #}
+                </figcaption>
+                </a>
+            </figure>
+        </div>
+    {% endfor %}
+    
+      
+        <a href="{{ path('portfolio') }}" class="btn btn-primary btn-4 btn-4c icon-arrow-right">voir tous les projets</a>
+    </div>
+</section>
+
+
+{# 
+    <!-- ----------------------------CONTACT------------------------------ --> #}
+
+<section id="contact"class="contact">
+        <div class="container contact_content row">
+            <div class="contact_content-titre col-lg-12 ">
+                <h2 style="text-align: center;">CONTACT</h2>
+                <div style="margin-left: auto; margin-right: auto"class="filet"></div>
+                <div class="coordonnees">
+                    <div class="telephone">
+                        <img src="css/images/phone-call.svg" alt="">
+                        <p>06 71 89 86 28</p>
+                    </div>
+                    <div class="adresse">
+                        <img src="css/images/placeholder.svg" alt="">
+                        <p>SAINT-MARTIN DU TOUCH
+                        </br>TOULOUSE</p>
+                    </div>
+                </div>
+                <div class="reseaux">
+                    <h3>SUIVEZ-MOI</h3>
+                    <ul class="reseaux-sociaux">
+                            <li><a href="https://www.facebook.com/cleo.csn"target="_blank"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://www.instagram.com/cleo__cook/?hl=fr"target="_blank"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="https://www.linkedin.com/in/cl%C3%A9o-cosnier-092b7668"target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                            <!-- <li><a href=""><i class="fa fa-behance"target="_blank"></i></a></li> -->
+                            <li><a href="https://www.pinterest.fr/cleocosnier/"target="_blank"><i class="fa fa-pinterest-p"></i></a></li>
+                        </ul>
+                </div>
+
+            </div>
+
+    <div class="form-contact col-lg-8">
+
+        <form class="form-name" action="" method="POST" enctype="multipart/form-data">
+            <input type="text" class="form-control" name="user_name" value="submit" placeholder="NOM*" required>
+                <br>
+            <input name="user_cie" class="form-control" type="text" placeholder="SOCIÉTÉ" /><br>
+                <br>
+            <input type="email" class="form-control" name="user_email"  placeholder="E-MAIL*" required /><br>
+            <br>
+            <input type="phone" class="form-control" name="user_"placeholder="TÉLÉPHONE*" required>
+            <textarea name="message" class="form-control message-form" placeholder="MESSAGE" ></textarea><br>
+            <input class='btn btn-form'type="submit" value="ENVOYER">
+        </form>
+
+
 {% endblock %}
+
+        <script src="../assets/app.js"></script>
+        <script src="../assets/social_share.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="{{ asset('assets/ckeditor/ckeditor.js') }}" ></script>
+        {% block javascripts %}{% endblock %}
+
+    </body>
+</html>
+
