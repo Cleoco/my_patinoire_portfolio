@@ -77,9 +77,7 @@
 
 @media (max-width:768px){
 
-    .header{
-        background-image:url(../css/images/Logo-fond-V2-02.jpg);
-    }
+
     .header_content_titre p {
        visibility: hidden;
     }
@@ -115,6 +113,26 @@
     top: 557px; right: 450px;
 }
 
+.about_content_photo img{
+    width:100%;
+    animation-duration: 2s;
+    animation-direction: normal;
+    animation-delay: 0.5s;
+    animation-name: glissement-photo;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+@keyframes glissement-photo {
+  from {
+    margin-left: 30%;
+    opacity: 0%;
+  }
+
+  to {
+    margin-left: 0%;
+    opacity: 100%;
+  }
+}
 
 @media (max-width:992px){
     .filet{
@@ -534,25 +552,7 @@ form{
  
 
 }
-.about_content_photo img{
-  animation-duration: 2s;
-  animation-direction: normal;
-  animation-delay: 0.5s;
-  animation-name: glissement-photo;
-  opacity: 0;
-  animation-fill-mode: forwards;
-}
-@keyframes glissement-photo {
-  from {
-    margin-left: 30%;
-    opacity: 0%;
-  }
 
-  to {
-    margin-left: 0%;
-    opacity: 100%;
-  }
-}
 
 </style>
 
