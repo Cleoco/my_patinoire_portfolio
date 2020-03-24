@@ -89,7 +89,7 @@ class MainController extends AbstractController
 
        
     /**
-     * @Route("/blog", name="blog")
+     * @Route("/blog", name="blog" ,  methods={"GET","POST"})
      */
     public function blog(PaginatorInterface $paginator, Request $request): Response
     {
@@ -112,20 +112,34 @@ class MainController extends AbstractController
     /**
      * @Route("/blog/search", name="blog_search")
      */
-    public function search(PaginatorInterface $paginator, Request $request): Response
+    public function search(Request $request): Response
     {
+        $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
+
+        $keyWord = $request->request->get('search');
+        $keyWordSearched = htmlspecialchars($keyWord);
+        $articlesByKeyword = [];
+
+        if(empty($keyWord) == false){
+            for($i=0; $i<count($articles); $i++){
+                if(stristr($articles[$i]->getContent(), $keyWordSearched,) || stristr($articles[$i]->getTitle(), $keyWordSearched,) ){
+                    $articlesByKeyword[]=$articles[$i];
+                }
+            }
+        }
+        dump($articlesByKeyword);
         $filters = $this->getDoctrine()->getRepository(FiltersBlog::class)->findAll();
-        $articles = $paginator->paginate($this->getDoctrine()->getRepository(Article::class)
-            ->findAll(),
-            $request->query->getInt('page', 1), /*page number*/
-            4
-    );
-        $search = $this->getDoctrine()->getRepository(Article::class)->findBy((array($request)));
+    //     $articles = $paginator->paginate($this->getDoctrine()->getRepository(Article::class)
+    //         ->findAll(),
+    //         $request->query->getInt('page', 1), /*page number*/
+    //         4
+    // );
         return $this->render('main/blogSearch.html.twig',[
+            "articles" => $articles,
             "name" => "Resultats de recherche",
             "filters" => $filters,
-            "search" => $search,
-            "filterName" => "TOUT"
+            "articlesByKeyword" => $articlesByKeyword,
+            // "filterName" => "TOUT"
         ]);
     }
 

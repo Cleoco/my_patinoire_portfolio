@@ -54,6 +54,10 @@
 .h3_title{
   text-align:left;
 }
+form button{
+  border:0;
+
+}
 
 
 </style>
@@ -122,10 +126,10 @@
         <div class="sidebar col-lg-4 col-md-4 col-sm-12 p-4">
           <div class="search_tool">
             <h3 class="mt-3 h3_title" >Rechercher</h3>
-            <form action="" method="post">
+            <form action="{{ path('blog_search') }}" method="post">
               <div class="search_input mt-3">
-                <input type="text" class="form-control search" placeholder="mots-clés…" name="search">
-                <div type="submit" name="" id="" ><div class="background_icon_search d-flex justify-content-center align-items-center mt-1" ><i class="fa fa-search" aria-hidden="true"></i></div></div>
+                <input type="text" class="form-control search" placeholder="mots-clés…" name="search" required>
+                <button type="submit" name="" id="" ><div class="background_icon_search d-flex justify-content-center align-items-center mt-1" ><i class="fa fa-search" aria-hidden="true"></i></button></div>
               </div>
             </form>
           </div>
