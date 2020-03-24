@@ -1,13 +1,54 @@
-
+const backToTop = document.querySelector('.back-to-top .fa');
+const aboutTitle = document.querySelector('#about_content_titre');
+const aboutPhoto = document.querySelector('#about_content_photo');
+const navHome = document.querySelector('.background_header');
+const navBase = document.querySelector('.background_head');
+console.log(navBase)
 /* Ouverture du menu Burger */
 function openNav() {
     document.getElementById("myNav").style.width = "100%";
+    navHome.style.display="none";
+    navBase.style.display="none";
   }
   
   /* ferme l'overlay */
   function closeNav() {
     document.getElementById("myNav").style.width = "0%";
+    navHome.style.display='block';
   }
+
+
+  var height = window.innerHeight;
+  window.addEventListener('scroll', function(e) {
+    // back to top
+    if (window.scrollY > 100) {
+      backToTop.style.visibility = "visible";
+    } else { 
+      backToTop.style.visibility = "hidden";
+    }
+
+    // About content
+    if (window.scrollY > 400) {
+      aboutTitle.style.visibility = "visible";
+      aboutTitle.classList.add('about_content_titre');
+      aboutPhoto.style.visibility = "visible";
+      aboutPhoto.classList.add('about_content_photo');
+    }
+    //sticky header Home
+    if(window.scrollY > height) {
+      navHome.style.width = "100%";
+      navHome.style.height = "100px";
+      navHome.style.background = "var(--color-violet)";
+      navHome.style.boxShadow = "0 1px 30px rgb(77, 77, 77)";
+    }
+    if(window.scrollY < height) {
+      navHome.style.background="none";
+      navHome.style.boxShadow = "none";
+    }
+  
+
+  });
+
 
 // ---------------------- PRESTATIONS FILTRES ---------------------------
 

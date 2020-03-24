@@ -39,6 +39,8 @@
   position:absolute;
   top:5px;
   right:20px;
+  color:var(--color-violet);
+  border:0
 }
 
 .social_network{
@@ -63,32 +65,31 @@ form button{
 </style>
 
 <div class="container">
-  <section class="article ">
-          <div class="row">
-                  <div class="container row cards">
-                  {% set index = 0 %}
-                    <a class="card col-lg-2 col-md-3" href="{{path('blog')}}">
-                              <div>
-                                  <img src='{{ asset('images/tout.svg') }}' alt="">
-                                  <h3>TOUT</h3>
-                                  <div class="filet-fin"></div>
-                              </div>
-                              </a>
-                      {% for f in filters %}
-                          <!-- filtres -->
-                              <a class="card col-lg-2 col-md-3" href="{{path('blog_filters',{'id': f.id})}}">
-                              <div  data-index={{ index }}>
-                                  <img src='{{ asset('images/' ~ f.image ~ '') }}' alt="">
-                                  <h3>{{ f.name }}</h3>
-                                  <div class="filet-fin"></div>
-                              </div>
-                              {% set index = index + 1 %}
-                              </a>
-                      {% endfor %}
+  <section class="article">
+    <div class="row">
+        <div class="cards">
+        {% set index = 0 %}
+            <a class="card col-lg-2 col-md-3" href="{{path('blog')}}">
+                <div>
+                    <img src='{{ asset('images/tout.svg') }}' alt="">
+                    <h3>TOUT</h3>
+                    <div class="filet-fin"></div>
+                </div>
+            </a>
+            {% for f in filters %}
+                <!-- filtres -->
+                <a class="card col-lg-2 col-md-3" href="{{path('blog_filters',{'id': f.id})}}">
+                  <div  data-index={{ index }}>
+                      <img src='{{ asset('images/' ~ f.image ~ '') }}' alt="">
+                      <h3>{{ f.name }}</h3>
+                      <div class="filet-fin"></div>
                   </div>
-              </div>
-          </div>
-      </section>
+                  {% set index = index + 1 %}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+  </section>
 
   <section class="article_body container">
 
@@ -129,7 +130,7 @@ form button{
             <form action="{{ path('blog_search') }}" method="post">
               <div class="search_input mt-3">
                 <input type="text" class="form-control search" placeholder="mots-clés…" name="search" required>
-                <button type="submit" name="" id="" ><div class="background_icon_search d-flex justify-content-center align-items-center mt-1" ><i class="fa fa-search" aria-hidden="true"></i></button></div>
+                 <button type="submit" name="" id="" class="background_icon_search d-flex justify-content-center align-items-center mt-1" ><i class="fa fa-search" aria-hidden="true"></i></button>
               </div>
             </form>
           </div>

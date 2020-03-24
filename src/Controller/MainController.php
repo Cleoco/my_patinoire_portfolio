@@ -67,7 +67,7 @@ class MainController extends AbstractController
         return $this->render('main/portfolio.html.twig',[
             "name" => "Portfolio",
             "categories" => $categories,
-            "projets" => $projets
+            "projets" => $projets,
         ]);
     }
 

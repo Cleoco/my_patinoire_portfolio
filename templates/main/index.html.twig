@@ -163,7 +163,7 @@
 .competences .filet{
     margin: 40px auto;
 }
-.titre h2{
+h2{
     color: var(--color-dark-grey);
 }
 
@@ -173,6 +173,7 @@
     background: white;
     box-shadow: 0px 0px 30px rgb(190, 190, 190);
     border-radius: 20px;
+    border:0;
     margin: 20px;
     display: flex;
     flex-direction: column;
@@ -180,6 +181,10 @@
     padding: 50px;
     position: relative;
     text-decoration: none;
+    cursor: default;
+}
+.card_contact{
+    cursor: pointer !important;
 }
 
 .cards {
@@ -262,6 +267,8 @@
 
 .gallery{
     box-sizing: border-box;
+    width:100%;
+    margin:0
 }
 
 .gallery .image{
@@ -527,6 +534,25 @@ form{
  
 
 }
+.about_content_photo img{
+  animation-duration: 2s;
+  animation-direction: normal;
+  animation-delay: 0.5s;
+  animation-name: glissement-photo;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+@keyframes glissement-photo {
+  from {
+    margin-left: 30%;
+    opacity: 0%;
+  }
+
+  to {
+    margin-left: 0%;
+    opacity: 100%;
+  }
+}
 
 </style>
 
@@ -534,60 +560,63 @@ form{
 
 <header id="header" class="header">
     <div class=" header_content_all container">
-        <div class="navbar">
-            <!-- réseaux gauche -->
-                <a href="{{ path('homepage') }}" class="logo-header"><img src='{{ asset('images/logo-header.svg') }}' alt=""></a>
-                <ul class="reseaux-sociaux">
-                    <li><a href="https://www.facebook.com/cleo.csn"target="_blank"><i class="fa fa-facebook"></i></a></li>
-                    <li><a href="https://www.instagram.com/cleo__cook/?hl=fr"target="_blank"><i class="fa fa-instagram"></i></a></li>
-                    <li><a href="https://www.linkedin.com/in/cl%C3%A9o-cosnier-092b7668"target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                    <!-- <li><a href=""><i class="fa fa-behance"></i></a></li> -->
-                    <li><a href="https://www.pinterest.fr/cleocosnier/"><i class="fa fa-pinterest-p"target="_blank"></i></a></li>
-                </ul>
-                
-                <!-- menu à droite -->
-                
-                <ul class="menu">
-                    <li><a href="{{ path('about') }}">À PROPOS</a></li>
-                    <li><a href="{{ path('prestations') }}">PRESTATIONS</a></li>
-                    <li><a href="{{ path('portfolio') }}">PORTFOLIO</a></li>
-                    <li><a href="{{ path('blog') }}">BLOG</a></li>
-                    <li><a href="#contact">CONTACT</a></li>
-                </ul>
+        <div class="background_header fixed-top">
+            <div class="navbar fixed-top container">
+                <!-- réseaux gauche -->
+                    <a href="{{ path('homepage') }}" class="logo-header"><img src='{{ asset('images/logo-header.svg') }}' alt=""></a>
+                    <ul class="reseaux-sociaux">
+                        <li><a href="https://www.facebook.com/cleo.csn"target="_blank"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://www.instagram.com/cleo__cook/?hl=fr"target="_blank"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="https://www.linkedin.com/in/cl%C3%A9o-cosnier-092b7668"target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                        <!-- <li><a href=""><i class="fa fa-behance"></i></a></li> -->
+                        <li><a href="https://www.pinterest.fr/cleocosnier/"><i class="fa fa-pinterest-p"target="_blank"></i></a></li>
+                    </ul>
+                    
+                    <!-- menu à droite -->
+                    
+                    <ul class="menu">
+                        <li><a href="{{ path('about') }}">À PROPOS</a></li>
+                        <li><a href="{{ path('prestations') }}">PRESTATIONS</a></li>
+                        <li><a href="{{ path('portfolio') }}">PORTFOLIO</a></li>
+                        <li><a href="{{ path('blog') }}">BLOG</a></li>
+                        <li><a href="#contact">CONTACT</a></li>
+                        <span onclick="openNav()"><i class="fa fa-bars mt-0"></i></span>
+                    </ul>
             </div>
-        <div class="header_content">
-            <div class="header_content_titre">
-                <p>DA & DESIGNER GRAPHIQUE</p>
-                <h1>CLÉO COSNIER</h1>
-                <a href="#arrox-scroll-header"><img src="{{ asset('images/arrox-scroll-header.svg') }}" alt=""></a>
-                
+        </div>
+            <div class="header_content">
+                <div class="header_content_titre">
+                    <p>DA & DESIGNER GRAPHIQUE</p>
+                    <h1>CLÉO COSNIER</h1>
+                    <a href="#arrox-scroll-header"><img src="{{ asset('images/arrox-scroll-header.svg') }}" alt=""></a>
+                    
+                </div>
             </div>
+            
         </div>
         
-    </div>
-    <div class="email">
-        <a href="mailto:cleocosnier@gmail.com">cleo.cosnier@gmail.com</a>
-    </div>
-    
-    
-    <!-- Overlay -->
-    <div id="myNav" class="overlay">
+        <!-- Overlay -->
+        <div id="myNav" class="overlay">
 
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-      
-        <div class="overlay-content">
-          <a href="../home/index.html">HOME</a>
-          <a href="../about/index.html">ABOUT</a>
-          <a href="../competences/index.html">COMPÉTENCES</a>
-          <a href="../portfolio_V2/index.html">PORTFOLIO</a>
-          <a href="#contact">CONTACT</a>
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        
+            <div class="overlay-content">
+                <a href="{{ path('homepage') }}">HOME</a>
+                <a href="{{ path('about') }}">À PROPOS</a>
+                <a href="{{ path('prestations') }}">PRESTATIONS</a>
+                <a href="{{ path('portfolio') }}">PORTFOLIO</a>
+                <a href="{{ path('blog') }}">BLOG</a>
+                <a href="{{ path('homepage') }}">CONTACT</a>
+            </div>
+        
         </div>
-      
-    </div>
+        
+        
     
-    <span onclick="openNav()"><i class="fa fa-bars"></i></span>
-      
-
+        <div class="email">
+            <a href="mailto:cleocosnier@gmail.com">cleo.cosnier@gmail.com</a>
+        </div>
+        
 </header>
 
 
@@ -597,7 +626,7 @@ form{
 
 <section id="arrox-scroll-header" class="about container">
     <div class="row">
-        <div class="col-lg-6 col-md-12 col-sm-12">
+        <div class="d-flex align-items-center col-lg-6 col-md-12 col-sm-12">
             <div id="about_content_titre">
                 <h2>à propos</h2>
                 <div class="filet"></div>
@@ -639,7 +668,7 @@ form{
                     </div>
                     {% set index = index + 1 %}
             {% endfor %}
-            <a href="#contact" class="card col-lg-3 col-md-4 col-sm-12">
+            <a href="#contact" class="card card_contact col-lg-3 col-md-4 col-sm-12">
                 <img class='img-tel'src="{{ asset('images/Groupe54.svg') }}" alt="">
                 <h3><span>CONTACT</span></h3>
                 <div class="filet-fin-blanc"></div>
@@ -711,22 +740,44 @@ form{
 
             </div>
 
-    <div class="form-contact col-lg-8">
+            <div class="form-contact col-lg-8">
 
-        <form class="form-name" action="" method="POST" enctype="multipart/form-data">
-            <input type="text" class="form-control" name="user_name" value="submit" placeholder="NOM*" required>
-                <br>
-            <input name="user_cie" class="form-control" type="text" placeholder="SOCIÉTÉ" /><br>
-                <br>
-            <input type="email" class="form-control" name="user_email"  placeholder="E-MAIL*" required /><br>
-            <br>
-            <input type="phone" class="form-control" name="user_"placeholder="TÉLÉPHONE*" required>
-            <textarea name="message" class="form-control message-form" placeholder="MESSAGE" ></textarea><br>
-            <input class='btn btn-form'type="submit" value="ENVOYER">
-        </form>
+                <form class="form-name" action="" method="POST" enctype="multipart/form-data">
+                    <input type="text" class="form-control" name="user_name" value="submit" placeholder="NOM*" required>
+                        <br>
+                    <input name="user_cie" class="form-control" type="text" placeholder="SOCIÉTÉ" /><br>
+                        <br>
+                    <input type="email" class="form-control" name="user_email"  placeholder="E-MAIL*" required /><br>
+                    <br>
+                    <input type="phone" class="form-control" name="user_"placeholder="TÉLÉPHONE*" required>
+                    <textarea name="message" class="form-control message-form" placeholder="MESSAGE" ></textarea><br>
+                    <input class='btn btn-secondary'type="submit" value="ENVOYER">
+                </form>
+            <div>
+        </div>
+    </section>
 
+    {% endblock %}
+    {% block footer %}
+    {# scroll to top #}
 
-{% endblock %}
+        <a href="#header" class="back-to-top">
+                <i class='fa fa-angle-double-up'></i>
+        </a>
+        
+        <footer class="footer">
+            <img src='{{ asset('images/logo-footer.svg') }}'alt="">
+            <ul class="menu">
+                <li><a href="{{ path('about') }}">À PROPOS</a></li>
+                <li><a href="{{ path('prestations') }}">PRESTATIONS</a></li>
+                <li><a href="{{ path('portfolio') }}">PORTFOLIO</a></li>
+                <li><a href="{{ path('blog') }}">BLOG</a></li>
+                <li><a href="{{ path('homepage') }}">CONTACT</a></li>
+                <li><a href="{{ path('terms_of_use') }}">MENTIONS LÉGALES</a></li>
+            </ul>
+        </footer>
+
+    {% endblock %}
 
         <script src="../assets/app.js"></script>
         <script src="../assets/social_share.js"></script>

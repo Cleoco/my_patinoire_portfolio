@@ -328,10 +328,9 @@ a:hover{
     margin-top:50px;
     margin-right: auto;
     margin-left: auto;
-    margin-bottom: 0px;
 }
   .header-title{
-      height: 75%;
+      height: 100%;
   }
   .logo-header img{
     width: 80%;
@@ -799,14 +798,15 @@ a:hover{
   align-items: center;
 
 }
-.card:hover{
+/* .card:hover{
   background: var(--color-violet);
   transition: 0.2s;
-}
+} */
 
 .card img{
     width: 50px;
     height: 50px;
+    margin-bottom: 15px;
  
 }
 .image-neutre{
@@ -835,15 +835,15 @@ a:hover{
 /* Bouton survol survol */
 
 
-.card:hover h3{
+/* .card:hover h3{
   color: white;
-}
+} */
 .card:hover svg {
   fill:white;
 }
-.card:hover .filet-fin{
+/* .card:hover .filet-fin{
   background: white;
-}
+} */
 
 
 
@@ -856,8 +856,9 @@ a:hover{
   font-size: 16px !important;
 }
 .cards {
-  margin: 0 auto;
+  width: 100%;
   display: flex;
+  justify-content: space-between;
 
 
 }
@@ -881,6 +882,28 @@ a:hover{
   border-top: 1px solid #ebebeb !important;
 }
 
+.page-link {
+  color: var(--color-violet) !important;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+.page-item.active .page-link {
+  color: white !important;
+  background-color: var(--color-blue) !important;
+  border-color: var(--color-blue) !important;
+}
+.page-item.disabled .page-link {
+  color: var(--color-grey-medium)!important;
+}
+.page-link:hover {
+  background-color: var(--color-violet) !important;
+  border-color: var(--color-violet) !important;
+  color:white !important:
+}
+ 
 
 /* <!-- ----------------------------PRESTATIONS DETAILS------------------------------ --> */
 
@@ -924,105 +947,6 @@ li{
 li span{
   font-weight: 600;
 }
-
-
-/* <!-- ----------------------------PORTFOLIO------------------------------ --> */
-
-/* 
-.portfolio{
-
-  width: 100%;
-  background-position: center bottom;
-  background-repeat:no-repeat;
-  height: auto;
-}
-.portfolio .filet{
-  margin: 40px auto;
-}
-
-.gallery{
-  box-sizing: border-box;
-}
-
-.gallery .image{
-  height: auto;
-  margin: 0;
-  padding: 0;
-  
-}
-
-.gallery .btn{
-
-  margin-top: 50px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.image img{
-  
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  display: table;
-}
-
-.image figure{
-  position: relative;
-  overflow: hidden;
-}
-
-.image figcaption{
-  display: flex;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color:var(--color-violet);
-  opacity: 0;
-  transition: .4s; 
-  color: white;
-  flex-direction: column;
-  padding-left: 70px;
-  padding-right: 50px;
-  justify-content: center;
-}
-
-.image figcaption:hover{
-  opacity:0.9;
-}
-
-.image figcaption h3{
-  color: white;
-  text-align: left;
-}
-
-.image figcaption .filet-fin{
-  background: white;
-  margin-left: 0;
-  margin-bottom: 30px;
-}
-
-.btn-figcaption{
-
-  background: white;
-  padding-left: 10px;
-  padding-right: 10px;
-  align-self: flex-end;
-  margin-right: 70px; 
-  background: white;
-  border-radius: 30px;
-  text-decoration: none;
-  color: white;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
-  text-transform: uppercase;
-cursor: pointer;
-display: inline-block;
-padding: 15px 20px;
-} */
-
-
-
 
 /* <!-- ----------------------------CONTACT------------------------------ --> */
 

@@ -11,6 +11,9 @@
     </head>
     <body>
     <style>
+        body{
+            padding-top:100px;
+        }
         .header{
             height: 400px;
             background-image:url("{{ asset('images/FOND-04.jpg') }}");
@@ -24,71 +27,81 @@
         .contact{
             background-image:url("{{ asset('images/fond-contact.svg') }}");
         }
-        
+        .background_head{
+            width:100%;
+            height:100px;
+            background:var(--color-violet);
+            box-shadow:0 1px 30px rgb(33, 33, 33);
+        }
+        .overlay{
+            margin-top:100px;
+        }
+
 
     </style>
         <header  id="header" class="header">
-            <div class="container">
-                <div class="navbar">
-                    
-                    <!-- réseaux gauche -->
-                    <a href="{{ path('homepage') }}" class="logo-header"><img src='{{ asset('images/logo-header.svg') }}' alt=""></a>
-                    <ul class="reseaux-sociaux">
-                        <li><a href="https://www.facebook.com/cleo.csn"target="_blank"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="https://www.instagram.com/cleo__cook/?hl=fr"target="_blank"><i class="fa fa-instagram"></i></a></li>
-                        <li><a href="https://www.linkedin.com/in/cl%C3%A9o-cosnier-092b7668"target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                        <!-- <li><a href=""><i class="fa fa-behance"></i></a></li> -->
-                        <li><a href="https://www.pinterest.fr/cleocosnier/"><i class="fa fa-pinterest-p"target="_blank"></i></a></li>
-                    </ul>
-                    
-                    <!-- menu à droite -->
-                    
-                    <ul class="menu">
-                        <li><a href="{{ path('about') }}">À PROPOS</a></li>
-                        <li><a href="{{ path('prestations') }}">PRESTATIONS</a></li>
-                        <li><a href="{{ path('portfolio') }}">PORTFOLIO</a></li>
-                        <li><a href="{{ path('blog') }}">BLOG</a></li>
-                        <li><a href="#contact">CONTACT</a></li>
-                    </ul>
+                <div class="background_head fixed-top">
+                    <div class="navbar fixed-top container">
+                        
+                        <!-- réseaux gauche -->
+                        <a href="{{ path('homepage') }}" class="logo-header"><img src='{{ asset('images/logo-header.svg') }}' alt=""></a>
+                        <ul class="reseaux-sociaux">
+                            <li><a href="https://www.facebook.com/cleo.csn"target="_blank"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://www.instagram.com/cleo__cook/?hl=fr"target="_blank"><i class="fa fa-instagram"></i></a></li>
+                            <li><a href="https://www.linkedin.com/in/cl%C3%A9o-cosnier-092b7668"target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                            <!-- <li><a href=""><i class="fa fa-behance"></i></a></li> -->
+                            <li><a href="https://www.pinterest.fr/cleocosnier/"><i class="fa fa-pinterest-p"target="_blank"></i></a></li>
+                        </ul>
+                        
+                        <!-- menu à droite -->
+                        
+                        <ul class="menu">
+                            <li><a href="{{ path('about') }}">À PROPOS</a></li>
+                            <li><a href="{{ path('prestations') }}">PRESTATIONS</a></li>
+                            <li><a href="{{ path('portfolio') }}">PORTFOLIO</a></li>
+                            <li><a href="{{ path('blog') }}">BLOG</a></li>
+                            <li><a href="#contact">CONTACT</a></li>
+                            <span onclick="openNav()"><i class="fa fa-bars mt-0"></i></span>
+                        </ul>
+                    </div>
                 </div>
-                <div class="header-title d-flex align-items-center">
+
+                <div class="header-title d-flex align-items-center container">
                     <div class="header_content_titre">
                         <h1>{{name}}</h1>
                         <div class="filet"></div>
                         
                     </div>
                 </div>
-
-                
-            </div>
-            <!-- <div class="fond-menu-scroll col-12"></div> -->
-            <div class="email">
-                <a href="mailto:cleocosnier@gmail.com">cleo.cosnier@gmail.com</a>
-            </div>
-            
-            
-            <!-- The overlay -->
-            <div id="myNav" class="overlay">
-
-                <!-- Button to close the overlay navigation -->
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            
-                <!-- Overlay content -->
-                <div class="overlay-content">
-                <a href="{{ path('homepage') }}">HOME</a>
-                <a href="{{ path('about') }}">À PROPOS</a>
-                <a href="{{ path('prestations') }}">PRESTATIONS</a>
-                <a href="{{ path('portfolio') }}">PORTFOLIO</a>
-                <a href="{{ path('blog') }}">BLOG</a>
-                <a href="{{ path('homepage') }}">CONTACT</a>
+                  
+                <!-- <div class="fond-menu-scroll col-12"></div> -->
+                <div class="email">
+                    <a href="mailto:cleocosnier@gmail.com">cleo.cosnier@gmail.com</a>
                 </div>
-            
-            </div>
-            <span onclick="openNav()"><i class="fa fa-bars"></i></span>
-            
- 
+                
+                
+                <!-- The overlay -->
+                <div id="myNav" class="overlay">
 
-</header>
+                    <!-- Button to close the overlay navigation -->
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                
+                    <!-- Overlay content -->
+                    <div class="overlay-content">
+                    <a href="{{ path('homepage') }}">HOME</a>
+                    <a href="{{ path('about') }}">À PROPOS</a>
+                    <a href="{{ path('prestations') }}">PRESTATIONS</a>
+                    <a href="{{ path('portfolio') }}">PORTFOLIO</a>
+                    <a href="{{ path('blog') }}">BLOG</a>
+                    <a href="{{ path('homepage') }}">CONTACT</a>
+                    </div>
+                
+                </div>
+         
+                
+ 
+            
+        </header>
 
     
         {% block body %}{% endblock %}
