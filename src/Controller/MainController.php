@@ -93,12 +93,14 @@ class MainController extends AbstractController
      */
     public function blog(PaginatorInterface $paginator, Request $request): Response
     {
+        dump($request);
         $filters = $this->getDoctrine()->getRepository(FiltersBlog::class)->findAll();
         $articles = $paginator->paginate($this->getDoctrine()->getRepository(Article::class)
             ->findAll(),
             $request->query->getInt('page', 1), /*page number*/
             4
     );
+
         return $this->render('main/blog.html.twig',[
             "name" => "Blog",
             "filters" => $filters,
@@ -106,29 +108,49 @@ class MainController extends AbstractController
             "filterName" => "TOUT"
         ]);
     }
+
+    /**
+     * @Route("/blog/search", name="blog_search")
+     */
+    public function search(PaginatorInterface $paginator, Request $request): Response
+    {
+        $filters = $this->getDoctrine()->getRepository(FiltersBlog::class)->findAll();
+        $articles = $paginator->paginate($this->getDoctrine()->getRepository(Article::class)
+            ->findAll(),
+            $request->query->getInt('page', 1), /*page number*/
+            4
+    );
+        $search = $this->getDoctrine()->getRepository(Article::class)->findBy((array($request)));
+        return $this->render('main/blogSearch.html.twig',[
+            "name" => "Resultats de recherche",
+            "filters" => $filters,
+            "search" => $search,
+            "filterName" => "TOUT"
+        ]);
+    }
+
+
     /**
      * @Route("/blog/categorie/{id}", name="blog_filters")
      */
-    public function articlesByFilters($id, FiltersBlogRepository $repo, PaginatorInterface $paginator, Request $request){
+    public function articlesByFilters($id, FiltersBlogRepository $repo, PaginatorInterface $paginator, Request $request, FiltersBlog $filtersBlog ){
         $filters = $this->getDoctrine()->getRepository(FiltersBlog::class)->findAll();
         $filter = $repo->find($id);
         $filterName = $filter-> getName();
-        dump($filters);
-        $articlesFiltred = $filter->getArticles();
         
         
         $articles = $paginator->paginate($this->getDoctrine()->getRepository(Article::class)
-            ->$articlesFiltred,
-
+            ->findBy(array('filter' => $filtersBlog),array('id' => 'desc') ),
             $request->query->getInt('page', 1), /*page number*/
-            4
+            2
     );
     
         return $this->render('main/blog.html.twig', [
             'articles'=> $articles,
             "name" => "Blog",
             "filters" => $filters,
-            "filterName" => $filterName
+            "filterName" => $filterName,
+            
             
         ]);
     }
