@@ -136,7 +136,7 @@ class MainController extends AbstractController
     // );
         return $this->render('main/blogSearch.html.twig',[
             "articles" => $articles,
-            "name" => "Resultats de recherche",
+            "name" => "Votre recherche",
             "filters" => $filters,
             "articlesByKeyword" => $articlesByKeyword,
             // "filterName" => "TOUT"
@@ -151,14 +151,12 @@ class MainController extends AbstractController
         $filters = $this->getDoctrine()->getRepository(FiltersBlog::class)->findAll();
         $filter = $repo->find($id);
         $filterName = $filter-> getName();
-        
-        
         $articles = $paginator->paginate($this->getDoctrine()->getRepository(Article::class)
-            ->findBy(array('filter' => $filtersBlog),array('id' => 'desc') ),
-            $request->query->getInt('page', 1), /*page number*/
-            2
+        ->findBy(array('filter' => $filtersBlog),array('id' => 'desc') ),
+        $request->query->getInt('page', 1), /*page number*/
+        6
     );
-    
+
         return $this->render('main/blog.html.twig', [
             'articles'=> $articles,
             "name" => "Blog",

@@ -201,6 +201,11 @@ label{
                             <p>{{ comment.content|raw }}</p>
                             <hr>    
                         </div>
+                        {% if is_granted("ROLE_ADMIN") %}
+                            <div class="btn-delete">
+                                {{ include('comment/_delete_form.html.twig') }}
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}

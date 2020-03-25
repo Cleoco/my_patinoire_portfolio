@@ -2,8 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-            {# <link rel="stylesheet" href="../assets/css/grid.css"> #}
+        <title>{% block title %}Cléo Cosnier | Portfolio{% endblock %}</title>
             <link rel="stylesheet" href="/../assets/css/style.css">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js">
@@ -606,7 +605,7 @@ form{
                 <a href="{{ path('prestations') }}">PRESTATIONS</a>
                 <a href="{{ path('portfolio') }}">PORTFOLIO</a>
                 <a href="{{ path('blog') }}">BLOG</a>
-                <a href="{{ path('homepage') }}">CONTACT</a>
+                <a href="{{ path('homepage') }}#contact">CONTACT</a>
             </div>
         
         </div>
@@ -772,7 +771,7 @@ form{
                 <li><a href="{{ path('prestations') }}">PRESTATIONS</a></li>
                 <li><a href="{{ path('portfolio') }}">PORTFOLIO</a></li>
                 <li><a href="{{ path('blog') }}">BLOG</a></li>
-                <li><a href="{{ path('homepage') }}">CONTACT</a></li>
+                <li><a href="{{ path('homepage') }}#contact">CONTACT</a></li>
                 <li><a href="{{ path('terms_of_use') }}">MENTIONS LÉGALES</a></li>
             </ul>
         </footer>

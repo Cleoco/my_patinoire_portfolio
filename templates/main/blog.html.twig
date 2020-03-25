@@ -107,25 +107,25 @@ form button{
 
         <div class="listing_articles col-lg-8 col-md-8 col-sm-12">
           {% for article in articles %}
-            <div class="article_content ">
-              <div class="row">
-                  <div class="article_image col-lg-4">
-                      <img src='{{ asset('images/blog/' ~ article.imageName ~ '') }}' alt="">
-                  </div>
-                  <div class="article_info col-lg-8">
-                      <a href="{{ path('article_show', {'id': article.id}) }}" >
-                          <h3 class="article_title">{{ article.title }}</h3>
-                      </a>
-                          <p>{{ article.createdAt | date('d-m-Y') }}</p>
-                          <p>{{ article.content | slice(0, 100) |raw }} …</p>
-                        <a href="{{ path('article_show', {'id': article.id}) }}">
-                          <div class="btn btn-primary btn-more">Lire la suite</div>
+              <div class="article_content ">
+                <div class="row">
+                    <div class="article_image col-lg-4">
+                        <img src='{{ asset('images/blog/' ~ article.imageName ~ '') }}' alt="">
+                    </div>
+                    <div class="article_info col-lg-8">
+                        <a href="{{ path('article_show', {'id': article.id}) }}" >
+                            <h3 class="article_title">{{ article.title }}</h3>
                         </a>
-                  </div>
+                            <p>{{ article.createdAt | date('d-m-Y') }}</p>
+                            <p>{{ article.content | slice(0, 100) |raw }} …</p>
+                          <a href="{{ path('article_show', {'id': article.id}) }}">
+                            <div class="btn btn-primary btn-more">Lire la suite</div>
+                          </a>
+                    </div>
+                </div>
+              <hr>
               </div>
-            <hr>
-            </div>
-            {% endfor %}
+          {% endfor %}
           <div class="pagination">
             {{ knp_pagination_render(articles) }}
           </div>

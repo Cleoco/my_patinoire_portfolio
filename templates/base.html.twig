@@ -60,7 +60,7 @@
                             <li><a href="{{ path('prestations') }}">PRESTATIONS</a></li>
                             <li><a href="{{ path('portfolio') }}">PORTFOLIO</a></li>
                             <li><a href="{{ path('blog') }}">BLOG</a></li>
-                            <li><a href="#contact">CONTACT</a></li>
+                            <li><a href="{{ path('homepage') }}#contact">CONTACT</a></li>
                             <span onclick="openNav()"><i class="fa fa-bars mt-0"></i></span>
                         </ul>
                     </div>
@@ -93,7 +93,7 @@
                     <a href="{{ path('prestations') }}">PRESTATIONS</a>
                     <a href="{{ path('portfolio') }}">PORTFOLIO</a>
                     <a href="{{ path('blog') }}">BLOG</a>
-                    <a href="{{ path('homepage') }}">CONTACT</a>
+                    <a href="{{ path('homepage') }}#contact">CONTACT</a>
                     </div>
                 
                 </div>
@@ -112,7 +112,7 @@
                         <h2>À VOTRE ÉCOUTE</h2>
                         <div class="filet"></div>
                     </div>
-                    <a href="../home/index.html#contact" class="btn btn-primary btn-4 btn-4c icon-arrow-right">CONTACT</a>
+                    <a href="{{ path('homepage') }}#contact" class="btn btn-primary btn-4 btn-4c icon-arrow-right">CONTACT</a>
                 </div>
             </section>
         {% endblock %}
@@ -129,7 +129,7 @@
                         <li><a href="{{ path('prestations') }}">PRESTATIONS</a></li>
                         <li><a href="{{ path('portfolio') }}">PORTFOLIO</a></li>
                         <li><a href="{{ path('blog') }}">BLOG</a></li>
-                        <li><a href="{{ path('homepage') }}">CONTACT</a></li>
+                        <li><a href="{{ path('homepage') }}#contact">CONTACT</a></li>
                         <li><a href="{{ path('terms_of_use') }}">MENTIONS LÉGALES</a></li>
                     </ul>
                 </footer>
