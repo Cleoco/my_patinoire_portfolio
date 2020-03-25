@@ -314,6 +314,39 @@ a:hover{
   .show_h4{
     text-align: left;
   }
+
+  /* ----------Breadcrumb---------- */
+
+
+  .breadcrumb {
+    
+    padding:0 !important;
+    margin-bottom: 0 !important;
+    list-style: none;
+    background: none !important;
+    border-radius: 0 !important;
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 13px !important;
+    line-height: 26px !important;
+    letter-spacing: 1px !important;
+    font-weight: 300 !important;
+    text-transform: none !important;
+    }
+    .breadcrumb-item a{
+        color:var(--color-blue) !important;
+    }
+    .breadcrumb-item a:hover{
+        color:var(--color-violet) !important;
+    }
+    .breadcrumb-item.active {
+    color: var(--color-grey-medium) !important;
+    }
+    .breadcrumb-item+.breadcrumb-item::before {
+      display: inline-block;
+      padding-right: .5rem;
+      color:var(--color-grey-medium) !important;
+      content: ">"!important;
+  }
   /* <!-- ----------------------------HEADER------------------------------ --> */
 
   .header{

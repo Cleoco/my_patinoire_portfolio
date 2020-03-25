@@ -99,7 +99,15 @@
 
 
 <section class="article container">
-            <div class="article_content_titre col-lg-12 col-md-12 col-sm-12 d-flex">
+   <div class="breadcrumb_page mt-0 mb-5">
+        <nav aria-label="breadcrumb ">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('homepage') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Portfolio</li>
+            </ol>
+        </nav>
+    </div>
+            <div class="p-0 article_content_titre col-lg-12 col-md-12 col-sm-12 d-flex">
                 <div class="portfolio_title"> <h3 class="h3_title">Galerie</h3></div>
                 <a class=" btn-portfolio btn btn-primary btn-4 btn-4c icon-arrow-right mb-4 mr-3" href="{{path('portfolio')}}">voir tous les projets</a>
             </div>

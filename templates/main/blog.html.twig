@@ -66,6 +66,14 @@ form button{
 
 <div class="container">
   <section class="article">
+    <div class="breadcrumb_page mt-0 mb-5">
+        <nav aria-label="breadcrumb ">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ path('homepage') }}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Blog</li>
+            </ol>
+        </nav>
+    </div>
     <div class="row">
         <div class="cards">
         {% set index = 0 %}

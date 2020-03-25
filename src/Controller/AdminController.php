@@ -363,7 +363,7 @@ class PrestationController extends AbstractController
          */
         public function show(Article $article, Request $request): Response
         {
-            $comments = $this->getDoctrine()->getRepository(Comment::class)->findAll();
+            // $comments = $this->getDoctrine()->getRepository(Comment::class)->findAll();
             $currentId = $article ->getId($request);
             $articleKeyWords = $article->getKeyWords();
             $articleTitle = $article-> getTitle();
@@ -373,7 +373,7 @@ class PrestationController extends AbstractController
             $comment = new Comment();
             $form = $this->createForm(CommentType::class, $comment);
             $form->handleRequest($request);
-            
+            // dump($comments);
             if ($form->isSubmitted() && $form->isValid()) {
                 $manager = $this->getDoctrine()->getManager();
                 $comment->setCreatedAt(new \DateTime())
