@@ -67,7 +67,9 @@
         </div>
         <div class="btn_actions d-flex justify-content-between">
             <a class="btn btn-primary btn-4 btn-4c icon-arrow-right mb-4" href="{{ path('portfolio') }}">retourner à la galerie</a>
+            {% if is_granted("ROLE_ADMIN") %}
             <a class="btn btn-primary btn-4 btn-4c icon-arrow-right mb-4" href="{{ path('projet_index') }}">retourner à la liste des projets</a>
+            {% endif %}
         </div>
         <p>{{ projet.content|raw}}</p>
 
@@ -183,7 +185,7 @@
                         </div>
                     </div>
                     <div class="modal-body">
-                        <img class="p-0 col-lg-12 col-md-12 col-sm-12" src='{{ asset('images/projet/' ~ projet.imageName4 ~ '') }}' alt={{ projet.alt5 }}">
+                        <img class="p-0 col-lg-12 col-md-12 col-sm-12" src='{{ asset('images/projet/' ~ projet.imageName4 ~ '') }}' alt="{{ projet.alt5 }}">
                     </div>
                     </div>
                 </div>
@@ -224,10 +226,11 @@
          
         <!-- <img class='col-lg-12 col-md-12 col-sm-12' src="../assets/images/tumblr_mzamu6ujld1si89rmo2_1280.jpg" alt="">                 -->
 </section>
+{% if is_granted("ROLE_ADMIN") %}
     <a class="btn btn-secondary btn-4 btn-4c icon-arrow-right mb-3" href="{{ path('projet_edit', {'id': projet.id}) }}">Modifier</a>
     {{ include('projet/_delete_form.html.twig') }}
+{% endif %}
     </div>
-
           
 
 {% endblock %}
