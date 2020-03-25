@@ -65,7 +65,10 @@
                 </ol>
             </nav>
         </div>
-        <a class="btn btn-primary btn-4 btn-4c icon-arrow-right mb-4" href="{{ path('portfolio') }}">retourner à la galerie</a>
+        <div class="btn_actions d-flex justify-content-between">
+            <a class="btn btn-primary btn-4 btn-4c icon-arrow-right mb-4" href="{{ path('portfolio') }}">retourner à la galerie</a>
+            <a class="btn btn-primary btn-4 btn-4c icon-arrow-right mb-4" href="{{ path('projet_index') }}">retourner à la liste des projets</a>
+        </div>
         <p>{{ projet.content|raw}}</p>
 
 {# ----------------------------------------------------------------------------------------------------------------------------------------------- #}

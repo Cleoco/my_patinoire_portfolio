@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProjetRepository")
@@ -51,7 +52,12 @@ class Projet
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
-     * @Vich\UploadableField(mapping="projet_une", fileNameProperty="imageUneName")
+     * @Assert\File(
+     *     maxSize = "2048k",
+     *     maxSizeMessage = "Poids du fichier trop lourd, limité à 2Mo",
+     *     mimeTypes = {"image/png", "image/jpeg", "image/jpg", "image/gif", "image/svg"},
+     *     mimeTypesMessage = "Format de fichier non pris en charge (.png, .jpg, .jpeg, .gif, .svg)"),
+     * @Vich\UploadableField(mapping="projet_une", fileNameProperty="imageUneName", )
      * 
      * @var File|null
      */
@@ -68,7 +74,11 @@ class Projet
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     * 
+     * @Assert\File(
+     *     maxSize = "2048k",
+     *     maxSizeMessage = "Poids du fichier trop lourd, limité à 2Mo",
+     *     mimeTypes = {"image/png", "image/jpeg", "image/jpg", "image/gif", "image/svg"},
+     *     mimeTypesMessage = "Format de fichier non pris en charge (.png, .jpg, .jpeg, .gif, .svg)"),
      * @Vich\UploadableField(mapping="projet_image1", fileNameProperty="imageName1")
      * 
      * @var File|null
@@ -85,7 +95,11 @@ class Projet
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     * 
+     * @Assert\File(
+     *     maxSize = "2048k",
+     *     maxSizeMessage = "Poids du fichier trop lourd, limité à 2Mo",
+     *     mimeTypes = {"image/png", "image/jpeg", "image/jpg", "image/gif", "image/svg"},
+     *     mimeTypesMessage = "Format de fichier non pris en charge (.png, .jpg, .jpeg, .gif, .svg)"),
      * @Vich\UploadableField(mapping="projet_image2", fileNameProperty="imageName2")
      * 
      * @var File|null
@@ -101,7 +115,11 @@ class Projet
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     * 
+     * @Assert\File(
+     *     maxSize = "2048k",
+     *     maxSizeMessage = "Poids du fichier trop lourd, limité à 2Mo",
+     *     mimeTypes = {"image/png", "image/jpeg", "image/jpg", "image/gif", "image/svg"},
+     *     mimeTypesMessage = "Format de fichier non pris en charge (.png, .jpg, .jpeg, .gif, .svg)"),
      * @Vich\UploadableField(mapping="projet_image3", fileNameProperty="imageName3")
      * 
      * @var File|null
@@ -117,7 +135,11 @@ class Projet
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     * 
+     * @Assert\File(
+     *     maxSize = "2048k",
+     *     maxSizeMessage = "Poids du fichier trop lourd, limité à 2Mo",
+     *     mimeTypes = {"image/png", "image/jpeg", "image/jpg", "image/gif", "image/svg"},
+     *     mimeTypesMessage = "Format de fichier non pris en charge (.png, .jpg, .jpeg, .gif, .svg)"),
      * @Vich\UploadableField(mapping="projet_image4", fileNameProperty="imageName4")
      * 
      * @var File|null
@@ -133,9 +155,13 @@ class Projet
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     * 
+     * @Assert\File(
+     *     maxSize = "2048k",
+     *     maxSizeMessage = "Poids du fichier trop lourd, limité à 2Mo",
+     *     mimeTypes = {"image/png", "image/jpeg", "image/jpg", "image/gif", "image/svg"},
+     *     mimeTypesMessage = "Format de fichier non pris en charge (.png, .jpg, .jpeg, .gif, .svg)"),
      * @Vich\UploadableField(mapping="projet_image5", fileNameProperty="imageName5")
-     * 
+     
      * @var File|null
      */
     private $imageFile5;
