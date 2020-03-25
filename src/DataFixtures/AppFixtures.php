@@ -46,7 +46,7 @@ class AppFixtures extends Fixture
                      -> setUpdatedAt($faker->dateTimeBetween('-6 months'));
             $manager->persist($article);
                      
-            for($k = 1; $k < mt_rand(4,15); $k++){
+            for($k = 1; $k < mt_rand(4,8); $k++){
                 $comment = new Comment();
                 $content = '<p>' . join($faker->paragraphs(2),'</p><p>') . '</p>';
     

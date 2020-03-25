@@ -361,8 +361,9 @@ class PrestationController extends AbstractController
         /**
          * @Route("/blog/{id}", name="article_show",  methods={"GET","POST"}, requirements={"id":"\d+"})
          */
-        public function show(Article $article, Request $request, Comment $comment): Response
+        public function show(Article $article, Request $request): Response
         {
+            $comments = $this->getDoctrine()->getRepository(Comment::class)->findAll();
             $currentId = $article ->getId($request);
             $articleKeyWords = $article->getKeyWords();
             $articleTitle = $article-> getTitle();
