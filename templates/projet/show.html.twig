@@ -61,7 +61,7 @@
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ path('homepage') }}">Home</a></li>
                     <li class="breadcrumb-item"><a href="{{ path('portfolio') }}">Portfolio</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ projet.title}}</li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ projet.title }}</li>
                 </ol>
             </nav>
         </div>
@@ -74,7 +74,7 @@
 
         
                 <figure class="p-0 images_projet container images_projet_1" type="button"  data-toggle="modal" data-target="#exampleModalCenter">
-                    <img class="p-0 col-lg-12 col-md-12 col-sm-12" src='{{ asset('images/projet/' ~ projet.imageName1 ~ '') }}' alt="">
+                    <img class="p-0 col-lg-12 col-md-12 col-sm-12" src='{{ asset('images/projet/' ~ projet.imageName1 ~ '') }}' alt="{{ projet.alt2 }}">
                     <figcaption class=" p-0 figcaption_projet d-flex justify-content-center align-items-center">
                             <div class="fa fa-search-plus"></div>
                     </figcaption>
@@ -94,7 +94,7 @@
                         </div>
                     </div>
                     <div class="modal-body">
-                        <img class="p-0 col-lg-12 col-md-12 col-sm-12" src='{{ asset('images/projet/' ~ projet.imageName1 ~ '') }}' alt="">
+                        <img class="p-0 col-lg-12 col-md-12 col-sm-12" src='{{ asset('images/projet/' ~ projet.imageName1 ~ '') }}' alt="{{ projet.alt2 }}">
                     </div>
                     </div>
                 </div>
@@ -103,7 +103,7 @@
 {# ----------------------------------------------------------------------------------------------------------------------------------------------- #}
         {% if projet.imageName2 != null %}
             <figure class="p-0 images_projet container images_projet_1" type="button"  data-toggle="modal" data-target="#exampleModalCenter2">
-                <img class="p-0 col-lg-12 col-md-12 col-sm-12" src='{{ asset('images/projet/' ~ projet.imageName2 ~ '') }}' alt="">
+                <img class="p-0 col-lg-12 col-md-12 col-sm-12" src='{{ asset('images/projet/' ~ projet.imageName2 ~ '') }}' alt="{{ projet.alt3 }}">
                 <figcaption class=" p-0 figcaption_projet d-flex justify-content-center align-items-center">
                         <div class="fa fa-search-plus"></div>
                 </figcaption>
@@ -123,7 +123,7 @@
                         </div>
                     </div>
                     <div class="modal-body">
-                        <img class="p-0 col-lg-12 col-md-12 col-sm-12" src='{{ asset('images/projet/' ~ projet.imageName2 ~ '') }}' alt="">
+                        <img class="p-0 col-lg-12 col-md-12 col-sm-12" src='{{ asset('images/projet/' ~ projet.imageName2 ~ '') }}' alt="{{ projet.alt3 }}">
                     </div>
                     </div>
                 </div>
@@ -132,7 +132,7 @@
 {# ----------------------------------------------------------------------------------------------------------------------------------------------- #}
         {% if projet.imageName3 != null %}
             <figure class="p-0 images_projet container images_projet_1" type="button"  data-toggle="modal" data-target="#exampleModalCenter3">
-                <img class="p-0 col-lg-12 col-md-12 col-sm-12" src='{{ asset('images/projet/' ~ projet.imageName3 ~ '') }}' alt="">
+                <img class="p-0 col-lg-12 col-md-12 col-sm-12" src='{{ asset('images/projet/' ~ projet.imageName3 ~ '') }}' alt="{{ projet.alt4 }}">
                 <figcaption class=" p-0 figcaption_projet d-flex justify-content-center align-items-center">
                         <div class="fa fa-search-plus"></div>
                 </figcaption>
@@ -152,7 +152,7 @@
                         </div>
                     </div>
                     <div class="modal-body">
-                        <img class="p-0 col-lg-12 col-md-12 col-sm-12" src='{{ asset('images/projet/' ~ projet.imageName3 ~ '') }}' alt="">
+                        <img class="p-0 col-lg-12 col-md-12 col-sm-12" src='{{ asset('images/projet/' ~ projet.imageName3 ~ '') }}' alt="{{ projet.alt4 }}">
                     </div>
                     </div>
                 </div>
@@ -161,7 +161,7 @@
 {# ----------------------------------------------------------------------------------------------------------------------------------------------- #}
         {% if projet.imageName4 != null %}
             <figure class="p-0 images_projet container images_projet_1" type="button"  data-toggle="modal" data-target="#exampleModalCenter4">
-                <img class="p-0 col-lg-12 col-md-12 col-sm-12" src='{{ asset('images/projet/' ~ projet.imageName4 ~ '') }}' alt="">
+                <img class="p-0 col-lg-12 col-md-12 col-sm-12" src='{{ asset('images/projet/' ~ projet.imageName4 ~ '') }}' alt="{{ projet.alt5 }}">
                 <figcaption class=" p-0 figcaption_projet d-flex justify-content-center align-items-center">
                         <div class="fa fa-search-plus"></div>
                 </figcaption>
@@ -180,7 +180,7 @@
                         </div>
                     </div>
                     <div class="modal-body">
-                        <img class="p-0 col-lg-12 col-md-12 col-sm-12" src='{{ asset('images/projet/' ~ projet.imageName4 ~ '') }}' alt="">
+                        <img class="p-0 col-lg-12 col-md-12 col-sm-12" src='{{ asset('images/projet/' ~ projet.imageName4 ~ '') }}' alt={{ projet.alt5 }}">
                     </div>
                     </div>
                 </div>
@@ -190,7 +190,7 @@
 
         {% if projet.imageName5 != null %}
             <figure class="p-0 images_projet container images_projet_1" type="button"  data-toggle="modal" data-target="#exampleModalCenter5">
-                <img class="p-0 col-lg-12 col-md-12 col-sm-12" src='{{ asset('images/projet/' ~ projet.imageName5 ~ '') }}' alt="">
+                <img class="p-0 col-lg-12 col-md-12 col-sm-12" src='{{ asset('images/projet/' ~ projet.imageName5 ~ '') }}' alt="{{ projet.alt6 }}">
                 <figcaption class=" p-0 figcaption_projet d-flex justify-content-center align-items-center">
                         <div class="fa fa-search-plus"></div>
                 </figcaption>
@@ -209,7 +209,7 @@
                         </div>
                     </div>
                     <div class="modal-body">
-                        <img class="p-0 col-lg-12 col-md-12 col-sm-12" src='{{ asset('images/projet/' ~ projet.imageName5 ~ '') }}' alt="">
+                        <img class="p-0 col-lg-12 col-md-12 col-sm-12" src='{{ asset('images/projet/' ~ projet.imageName5 ~ '') }}' alt="{{ projet.alt6 }}">
                     </div>
                     </div>
                 </div>

@@ -135,7 +135,7 @@
             {% for projet in projets %}
                 <div class="project_pictures p-0 col-lg-4 col-md-6 col-sm-12">
                     <figure class="m-0" >
-                        <img src='{{ asset('images/projet/' ~ projet.imageUneName ~ '') }}' alt="">
+                        <img src='{{ asset('images/projet/' ~ projet.imageUneName ~ '') }}' alt="{{ projet.alt }}">
                         <figcaption class="figcaption_projet">
                             <a href="{{ path('projet_show', {'id': projet.id}) }}" >
                                 <h3>{{ projet.title }}</h3>

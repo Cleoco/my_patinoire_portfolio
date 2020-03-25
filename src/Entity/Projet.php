@@ -147,6 +147,36 @@ class Projet
      */
     private $imageName5;
 
+    /**
+     * @ORM\Column(type="string", length=1000, nullable=true)
+     */
+    private $alt;
+
+    /**
+     * @ORM\Column(type="string", length=1000, nullable=true)
+     */
+    private $alt2;
+
+    /**
+     * @ORM\Column(type="string", length=1000, nullable=true)
+     */
+    private $alt3;
+
+    /**
+     * @ORM\Column(type="string", length=1000, nullable=true)
+     */
+    private $alt4;
+
+    /**
+     * @ORM\Column(type="string", length=1000, nullable=true)
+     */
+    private $alt5;
+
+    /**
+     * @ORM\Column(type="string", length=1000, nullable=true)
+     */
+    private $alt6;
+
 
     public function __construct()
     {
@@ -446,6 +476,78 @@ class Projet
         if ($this->category->contains($category)) {
             $this->category->removeElement($category);
         }
+
+        return $this;
+    }
+
+    public function getAlt(): ?string
+    {
+        return $this->alt;
+    }
+
+    public function setAlt(?string $alt): self
+    {
+        $this->alt = $alt;
+
+        return $this;
+    }
+
+    public function getAlt2(): ?string
+    {
+        return $this->alt2;
+    }
+
+    public function setAlt2(?string $alt2): self
+    {
+        $this->alt2 = $alt2;
+
+        return $this;
+    }
+
+    public function getAlt3(): ?string
+    {
+        return $this->alt3;
+    }
+
+    public function setAlt3(?string $alt3): self
+    {
+        $this->alt3 = $alt3;
+
+        return $this;
+    }
+
+    public function getAlt4(): ?string
+    {
+        return $this->alt4;
+    }
+
+    public function setAlt4(?string $alt4): self
+    {
+        $this->alt4 = $alt4;
+
+        return $this;
+    }
+
+    public function getAlt5(): ?string
+    {
+        return $this->alt5;
+    }
+
+    public function setAlt5(?string $alt5): self
+    {
+        $this->alt5 = $alt5;
+
+        return $this;
+    }
+
+    public function getAlt6(): ?string
+    {
+        return $this->alt6;
+    }
+
+    public function setAlt6(?string $alt6): self
+    {
+        $this->alt6 = $alt6;
 
         return $this;
     }

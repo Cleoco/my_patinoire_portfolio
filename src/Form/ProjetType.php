@@ -46,6 +46,13 @@ class ProjetType extends AbstractType
                     'placeholder'=> 'Sélectionnez un fichier '
                 ]
             ] )
+            ->add('alt', TextType::class, [
+                'label'=> 'Référencement image à la une',
+                'required'=> true,
+                'attr' => [
+                    'placeholder'=> 'Ajouter des mots-clés',
+                ]
+            ])
             ->add('imageFile1',VichImageType::class,[
                 'label' => 'Téléchagez une image',
                 'required'=> false,
@@ -53,6 +60,13 @@ class ProjetType extends AbstractType
                     'placeholder'=> 'Sélectionnez un fichier '
                 ]
             ] )
+            ->add('alt2', TextType::class, [
+                'label'=> 'Référencement image 1',
+                'required'=> false,
+                'attr' => [
+                    'placeholder'=> 'Ajouter des mots-clés',
+                ]
+            ])
             ->add('imageFile2',VichImageType::class,[
                 'label' => 'Téléchagez une image',
                 'required'=> false,
@@ -60,6 +74,13 @@ class ProjetType extends AbstractType
                     'placeholder'=> 'Sélectionnez un fichier '
                 ]
             ] )
+            ->add('alt3', TextType::class, [
+                'label'=> 'Référencement image 2',
+                'required'=> false,
+                'attr' => [
+                    'placeholder'=> 'Ajouter des mots-clés',
+                ]
+            ])
             ->add('imageFile3',VichImageType::class,[
                 'label' => 'Téléchagez une image',
                 'required'=> false,
@@ -67,6 +88,13 @@ class ProjetType extends AbstractType
                     'placeholder'=> 'Sélectionnez un fichier '
                 ]
             ] )
+            ->add('alt4', TextType::class, [
+                'label'=> 'Référencement image 3',
+                'required'=> false,
+                'attr' => [
+                    'placeholder'=> 'Ajouter des mots-clés',
+                ]
+            ])
             ->add('imageFile4',VichImageType::class,[
                 'label' => 'Téléchagez une image',
                 'required'=> false,
@@ -74,6 +102,13 @@ class ProjetType extends AbstractType
                     'placeholder'=> 'Sélectionnez un fichier '
                 ]
             ] )
+            ->add('alt5', TextType::class, [
+                'label'=> 'Référencement image 4',
+                'required'=> false,
+                'attr' => [
+                    'placeholder'=> 'Ajouter des mots-clés',
+                ]
+            ])
             ->add('imageFile5',VichImageType::class,[
                 'label' => 'Téléchagez une image',
                 'required'=> false,
@@ -81,6 +116,13 @@ class ProjetType extends AbstractType
                     'placeholder'=> 'Sélectionnez un fichier '
                 ]
             ] )
+            ->add('alt6', TextType::class, [
+                'label'=> 'Référencement image 5',
+                'required'=> false,
+                'attr' => [
+                    'placeholder'=> 'Ajouter des mots-clés',
+                ]
+            ])
         ;
     }
 
