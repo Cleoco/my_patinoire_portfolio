@@ -9,7 +9,12 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\Email;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Positive;
+use Symfony\Component\Validator\Constraints\Type;
 
 class ContactType extends AbstractType
 {
@@ -17,6 +22,11 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class, [
+                'constraints' => [
+                    new Length(['min' => 1, 'max' =>30]),
+                    new NotBlank(),
+                    new Type(['type'=>'string'])
+                ],
                 'label'=>false,
                 'required'=> true,
                 'attr' => [
@@ -24,6 +34,10 @@ class ContactType extends AbstractType
                 ]
             ])
             ->add('societe', TextType::class, [
+                'constraints' => [
+                    new Length(['min' => 1, 'max' =>30]),
+                    new Type(['type'=>'string'])
+                ],
                 'label'=>false,
                 'required'=> false,
                 'attr' => [
@@ -31,6 +45,12 @@ class ContactType extends AbstractType
                 ]
             ])
             ->add('email', EmailType::class, [
+                'constraints' => [
+                    new Length(['min' => 3, 'max' =>30]),
+                    new NotBlank(),
+                    new Email(),
+                    new Type(['type'=>'string'])
+                ],
                 'label'=>false,
                 'required'=> true,
                 'attr' => [
@@ -38,6 +58,12 @@ class ContactType extends AbstractType
                     ]
                 ])
             ->add('telephone', TextType::class, [
+                'constraints' => [
+                    new Length(['min' => 10, 'max' =>10]),
+                    new NotBlank(),
+                    new Type(['type'=>'string']),
+                    new Positive()
+                ],
                 'label'=>false,
                 'required'=> true,
                 'attr' => [
@@ -45,6 +71,10 @@ class ContactType extends AbstractType
                 ]
             ])
             ->add('message', TextareaType::class, [
+                'constraints' => [
+                    new Length(['min' => 10, 'max' =>2000]),
+                    new Type(['type'=>'string'])
+                ],
                 'label'=>false,
                 'required'=> false,
                 'attr' => [
@@ -52,6 +82,9 @@ class ContactType extends AbstractType
                 ]
             ])
             ->add('gprdAgreement', CheckboxType::class, [
+                'constraints' => [
+                    new NotBlank(),
+                ],
                 'label'=>'j\'accepte la politique d\'utilisation de mes données personnelles',
                 'required' => true,
                  
