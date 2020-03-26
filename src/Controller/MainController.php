@@ -7,6 +7,7 @@ use App\Entity\Category;
 use App\Entity\FiltersBlog;
 use App\Entity\Prestation;
 use App\Entity\Projet;
+use App\Form\ContactType;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use App\Repository\FiltersBlogRepository;
@@ -22,14 +23,38 @@ class MainController extends AbstractController
     /**
      * @Route("/", name="homepage")
      */
-    public function index()
+    public function index(Request $request, \Swift_Mailer $mailer)
     {
         $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
         $projets = $this->getDoctrine()->getRepository(Projet::class)->findBy([],['createdAt' => 'ASC'],6);
+
+        $form = $this->createForm(ContactType::class);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $contact = $form->getData();
+            $message = (new \Swift_Message('Nouveau Message'))
+                ->setFrom($contact['email'])
+                ->setTo('cleocosnier36@gmail.com')
+                ->setBody(
+                    $this->renderView(
+                        'emails/contact.html.twig', compact('contact')
+                    ),
+                    'text/html'
+                )
+            ;
+
+            $mailer->send($message);
+            $this->addFlash('success','Le message a bien été envoyé');
+
+            // return $this->redirectToRoute('homepage');
+
+        }
         return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',
             "categories" => $categories,
-            "projets" => $projets
+            "projets" => $projets,
+            'contactForm' => $form->createView(),
         ]);
     }
 

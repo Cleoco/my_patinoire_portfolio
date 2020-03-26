@@ -739,7 +739,9 @@ form{
 
             </div>
 
-            <div class="form-contact col-lg-8">
+            {{ form(contactForm) }}
+
+            {# <div class="form-contact col-lg-8">
 
                 <form class="form-name" action="" method="POST" enctype="multipart/form-data">
                     <input type="text" class="form-control" name="user_name" value="submit" placeholder="NOM*" required>
@@ -752,9 +754,10 @@ form{
                     <textarea name="message" class="form-control message-form" placeholder="MESSAGE" ></textarea><br>
                     <input class='btn btn-secondary'type="submit" value="ENVOYER">
                 </form>
-            <div>
+            <div> #}
         </div>
     </section>
+
 
     {% endblock %}
     {% block footer %}
