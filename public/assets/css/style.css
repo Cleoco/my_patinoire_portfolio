@@ -647,7 +647,7 @@ a:hover{
 
 .cv{   
   padding-top: 140px;
-  padding-bottom: 140px;
+  /* padding-bottom: 140px; */
   background: var(--color-violet);
   position: relative;
   height: auto;
@@ -661,6 +661,7 @@ a:hover{
 }
 .cv-content{
   position: relative;
+  padding-bottom: 140px;
 }
 
 .experience, .experience h3,.experience h4,.experience h5{
@@ -700,7 +701,7 @@ a:hover{
   }
   .timeline-fond{
       width: 3px;
-      height: 4572px;
+      height: 4780px;
       position: absolute;
       background: white;
       top:0;
@@ -934,7 +935,7 @@ a:hover{
 .page-link:hover {
   background-color: var(--color-violet) !important;
   border-color: var(--color-violet) !important;
-  color:white !important:
+  color:white !important;
 }
  
 

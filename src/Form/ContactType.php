@@ -17,40 +17,50 @@ class ContactType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class, [
+                'label'=>false,
                 'required'=> true,
                 'attr' => [
                     'placeholder'=> 'Nom*',
                 ]
             ])
             ->add('societe', TextType::class, [
+                'label'=>false,
                 'required'=> false,
                 'attr' => [
                     'placeholder'=> 'Société',
                 ]
             ])
             ->add('email', EmailType::class, [
+                'label'=>false,
                 'required'=> true,
                 'attr' => [
                     'placeholder'=> 'E-mail*',
                     ]
                 ])
             ->add('telephone', TextType::class, [
+                'label'=>false,
                 'required'=> true,
                 'attr' => [
                     'placeholder'=> 'Téléphone*',
                 ]
             ])
             ->add('message', TextareaType::class, [
-                'required'=> true,
+                'label'=>false,
+                'required'=> false,
                 'attr' => [
-                    'placeholder'=> 'Commentaire*',
+                    'placeholder'=> 'Commentaire',
                 ]
             ])
-            ->add('gdprAgreement', CheckboxType::class, [
+            ->add('gprdAgreement', CheckboxType::class, [
+                'label'=>'j\'accepte la politique d\'utilisation de mes données personnelles',
                 'required' => true,
                  
             ])
-            ->add('envoyer', SubmitType::class)
+            ->add('envoyer', SubmitType::class, [
+                'attr'=> [
+                    'class' => 'btn btn-secondary btn-4 btn-4c icon-arrow-right'
+                ]
+            ])
         ;
     }
 
