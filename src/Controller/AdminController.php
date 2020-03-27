@@ -380,7 +380,7 @@ class PrestationController extends AbstractController
             $currentId = $article ->getId($request);
             $articleKeyWords = $article->getKeyWords();
             $articleTitle = $article-> getTitle();
-            $lastestArticles = $this->getDoctrine()->getRepository(Article::class)->findBy([],['createdAt' => 'ASC'],5);
+            $lastestArticles = $this->getDoctrine()->getRepository(Article::class)->findBy([],['createdAt' => 'DESC'],5);
             $repo = $this->getDoctrine()->getRepository(Article::class)->findBy(array('keyWords' => $articleKeyWords),array('id' => 'desc'),2 );
             
             $comment = new Comment();
@@ -394,6 +394,7 @@ class PrestationController extends AbstractController
                 $manager->persist($comment);
                 $manager->flush();
 
+                $this->addFlash('success','Votre commentaire a bien été enregistré !');
                 return $this->redirectToRoute('article_show', ['id'=> $article->getId()]);
             }
 

@@ -42,6 +42,7 @@
 
 
     </style>
+
         <header  id="header" class="header">
                 <div class="background_head fixed-top">
                     <div class="navbar fixed-top container">
@@ -49,7 +50,7 @@
                         <!-- réseaux gauche -->
                         <a href="{{ path('homepage') }}" class="logo-header"><img src='{{ asset('images/logo-header.svg') }}' alt=""></a>
                         <ul class="reseaux-sociaux">
-                            <li><a href="https://www.facebook.com/cleo.csn"target="_blank"><i class="fa fa-facebook"></i></a></li>
+                            {# <li><a href="https://www.facebook.com/cleo.csn"target="_blank"><i class="fa fa-facebook"></i></a></li> #}
                             <li><a href="https://www.instagram.com/cleo__cook/?hl=fr"target="_blank"><i class="fa fa-instagram"></i></a></li>
                             <li><a href="https://www.linkedin.com/in/cl%C3%A9o-cosnier-092b7668"target="_blank"><i class="fa fa-linkedin"></i></a></li>
                             <!-- <li><a href=""><i class="fa fa-behance"></i></a></li> -->
@@ -105,7 +106,11 @@
  
             
         </header>
-
+        {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+        {% endfor %}
     
         {% block body %}{% endblock %}
         {% block contact %}

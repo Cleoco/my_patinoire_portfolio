@@ -45,7 +45,7 @@ class MainController extends AbstractController
             ;
 
             $mailer->send($message);
-            $this->addFlash('success','Le message a bien été envoyé');
+            $this->addFlash('success','Votre message a bien été envoyé');
 
             // return $this->redirectToRoute('homepage');
 
