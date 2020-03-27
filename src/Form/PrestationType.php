@@ -43,7 +43,8 @@ class PrestationType extends AbstractType
             ->add('category', EntityType::class, [
                 'class'=> Category::class,
                 'choice_label'=> 'name',
-                'label'=> "Quelle catégorie ?"
+                'label'=> "Quelle catégorie ?",
+                'required'=> true,
             ])
         ;
     }

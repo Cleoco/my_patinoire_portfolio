@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
@@ -23,11 +24,20 @@ class Article
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *    message = "Ce champ doit être rempli",
+     * )
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank(
+     *    message = "Ce champ doit être rempli",
+     * )
+     * @Assert\Length(
+     *      min = 2,
+     *      minMessage = "Votre description doit contenir au moins {{ limit }} caractères")
      */
     private $content;
 
@@ -36,6 +46,15 @@ class Article
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
      * @Vich\UploadableField(mapping="article_image", fileNameProperty="imageName")
+     * @Assert\NotBlank(
+     *    message = "Ce champ doit être rempli",
+     * )
+     *  * @Assert\File(
+     *      maxSize = "2M",
+     *      maxSizeMessage = "Ce fichier est trop lourd : ({{ size }} {{ suffix }}). téléchargez un fichier limité à ({{ limit }} {{ suffix }})"
+     *  )
+     * 
+     * 
      * 
      * @var File|null
      */
@@ -51,11 +70,17 @@ class Article
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
+     * @Assert\Url(
+     *    message = "cette url '{{ value }}' n'est pas valide",
+     * )
      */
     private $link;
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
+     * @Assert\Url(
+     *    message = "cette url '{{ value }}' n'est pas valide",
+     * )
      */
     private $source;
 
@@ -77,6 +102,11 @@ class Article
 
     /**
      * @ORM\Column(type="string", length=1000, nullable=true)
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 100,
+     *      minMessage = "Ce champ doit contenir au minimum {{ limit }} caractères",
+     *      maxMessage = "ce champ doit contenir au maximum {{ limit }} caractères")
      */
     private $keyWords;
 

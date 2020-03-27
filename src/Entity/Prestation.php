@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PrestationRepository")
@@ -18,16 +19,38 @@ class Prestation
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *    message = "Ce champ doit être rempli",
+     * )
+     * @Assert\NotBlank(
+     *    message = "Ce champ doit être rempli",
+     * )
+     * @Assert\Length(
+     *      min = 2,
+     *      minMessage = "Votre titre doit contenir au moins {{ limit }} caractères")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     *  @Assert\NotBlank(
+     *    message = "Ce champ doit être rempli",
+     * )
+     * @Assert\Length(
+     *      min = 2,
+     *      minMessage = "Votre description doit contenir au moins {{ limit }} caractères")
      */
     private $contentLeft;
 
     /**
      * @ORM\Column(type="text")
+     * 
+     *  @Assert\NotBlank(
+     *    message = "Ce champ doit être rempli",
+     * )
+     * @Assert\Length(
+     *      min = 2,
+     *      minMessage = "Votre description doit contenir au moins {{ limit }} caractères")
      */
     private $contentRight;
 

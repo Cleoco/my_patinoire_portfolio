@@ -29,6 +29,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 */
 class AdminController extends AbstractController
 {
+    public function adminDashboard()
+{
+
+    // or add an optional message - seen by developers
+    $this->denyAccessUnlessGranted('ROLE_ADMIN', null, 'Un utilisateur essaye de se connecter sans les droits d\'administrateur');
+}
 
     private $menu_categories;
     function __construct(CategoryRepository $repo)
@@ -336,7 +342,7 @@ class PrestationController extends AbstractController
         public function index(ArticleRepository $articleRepository): Response
         {
             return $this->render('article/index.html.twig', [
-                'articles' => $articleRepository->findAll(),
+                'articles' => $articleRepository->findBy([],['createdAt' => 'desc']),
                 "name" => "Gérer votre blog",
             ]);
         }

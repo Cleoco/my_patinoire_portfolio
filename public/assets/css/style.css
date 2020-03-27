@@ -315,6 +315,13 @@ a:hover{
     text-align: left;
   }
 
+  .col-form-label{
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
+    font-weight: 300;
+   
+
+  }
   /* ----------Breadcrumb---------- */
 
 

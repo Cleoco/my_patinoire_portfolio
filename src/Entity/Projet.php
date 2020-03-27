@@ -24,6 +24,9 @@ class Projet
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *    message = "Ce champ doit être rempli",
+     * )
      */
     private $title;
 

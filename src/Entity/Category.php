@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -24,6 +25,14 @@ class Category
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *    message = "Ce champ doit être rempli",
+     * )
+     * @Assert\Length(
+     *      min = 2,
+     *      minMessage = "Votre nom doit contenir au moins {{ limit }} caractères",
+     *      max = 20,
+     *      maxMessage = "Votre nom doit contenir au maximum {{ limit }} caractères",)
      */
     private $name;
 
@@ -38,6 +47,13 @@ class Category
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
      * @Vich\UploadableField(mapping="category_image", fileNameProperty="imageName")
+     * @Assert\NotBlank(
+     *    message = "Ce champ doit être rempli",
+     * )
+     * @Assert\File(
+     *    maxSize = "2M",
+     *    maxSizeMessage = "Ce fichier est trop lourd : ({{ size }} {{ suffix }}). téléchargez un fichier limité à ({{ limit }} {{ suffix }})"
+     * )
      * 
      * @var File|null
      */
