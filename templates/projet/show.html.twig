@@ -8,6 +8,11 @@
             height: 400px;
             background-image:url('{{ asset('images/projet/' ~ projet.imageUneName ~ '') }}');
         } #}
+    .body_project{
+        background-image:url("{{ asset('images/graphic-projet.svg') }}");
+        background-position: center bottom;
+        background-repeat:no-repeat;
+    }
     .images_projet{
         width:100%
     }
@@ -55,6 +60,7 @@
 
 }
 </style>
+<div class="body_project">
     <div class=" article container">
         <div class="breadcrumb_page mt-0 mb-5">
             <nav aria-label="breadcrumb ">
@@ -75,7 +81,7 @@
 
 {# ----------------------------------------------------------------------------------------------------------------------------------------------- #}
         {% if projet.imageName1 != null %}
-        <section class="row container">
+        <section class="row container project">
 
         
                 <figure class="p-0 images_projet container images_projet_1" type="button"  data-toggle="modal" data-target="#exampleModalCenter">
@@ -223,7 +229,7 @@
             
 
 
-         
+</div>
         <!-- <img class='col-lg-12 col-md-12 col-sm-12' src="../assets/images/tumblr_mzamu6ujld1si89rmo2_1280.jpg" alt="">                 -->
 </section>
 {% if is_granted("ROLE_ADMIN") %}

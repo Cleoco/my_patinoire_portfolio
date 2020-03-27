@@ -18,7 +18,7 @@ class UserFixtures extends Fixture
     {
         // user rôle admin
         $user = new User();
-        $pass = $this ->passwordEncoder->encodePassword($user, 'admin' );
+        $pass = $this ->passwordEncoder->encodePassword($user, 'Empowering36130#' );
         $user
         ->setEmail( 'cleo.cosnier@gmail.com' )
         ->setFirstname( 'Cléo' )

@@ -95,7 +95,7 @@
     padding-top: 140px;
     padding-bottom: 140px;
     position: relative;
-    background-image:url(../css/images/graphic-about.svg);
+    background-image:url("{{ asset('images/graphic-about.svg') }}");
     width: 100%;
     background-position: center top;
     background-repeat:no-repeat;
@@ -157,7 +157,6 @@
 
 @media (max-width:768px){
 
-    
 }
 
 
@@ -165,7 +164,7 @@
 
 
 .competences{
-    background-image:url(../css/images/graphic-competences.svg);
+    background-image:url("{{ asset('images/graphic-competences.svg') }}");
     width: 100%;
     background-position: center bottom;
     background-repeat:no-repeat;
@@ -263,6 +262,7 @@ h2{
     .card:nth-child(6):hover{
         background: var(--color-violet);
     }
+
 }
 
 
@@ -272,7 +272,7 @@ h2{
 .portfolio{
     padding-top: 106px;
     padding-bottom: 106px;
-    background-image:url(../css/images/graphic-portfolio.svg);
+    background-image:url("{{ asset('images/graphic-portfolio.svg') }}");
     width: 100%;
     background-position: center bottom;
     background-repeat:no-repeat;
@@ -400,7 +400,7 @@ figure{
     padding-top: 106px;
     padding-bottom: 106px;
     background: var(--color-violet);
-    background-image:url(../css/images/graphic-contact.svg);
+    background-image:url("{{ asset('images/graphic-contact.svg') }}");
     width: 100vw;
     background-position: center bottom;
     background-repeat:no-repeat;
@@ -505,11 +505,32 @@ form{
     .contact{
         text-align: center;
     }
-    .telephone{
+    .telephone, .telephone p{
         justify-content: center;
+        color:white;
+        margin-left:0;
     }
-    .adresse {
+    .telephone{
+        display:flex;
+        flex-direction:column;
+        align-items:center; 
+    }
+    .telephone img{
+        margin-bottom:20px;
+    }
+    .adresse, .adresse p {
         justify-content: center;
+        color:white;
+        margin-left:0;
+        text-align:center;
+    }
+    .adresse{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+    }
+    .adresse img{
+        margin-bottom:30px;
     }
 
     .form-contact{
@@ -546,6 +567,11 @@ form{
     }
     .form-control{
         width: 100%;
+    }
+    .contact_form p{
+        color:white;
+        font-size: 13px;
+        font-style: italic;
     }
  
 }

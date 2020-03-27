@@ -17,7 +17,11 @@
     h3{
         text-align:left;
     }
-
+    @media(max-width:992px){
+    .field_hidden{
+        display:none;
+    }
+  }
 </style>
 {{ include('admin/navigation_admin.html.twig') }}
 <div class="container">
@@ -25,18 +29,18 @@
     <table class="table">
         <thead>
             <tr>
-                <th><h4>Image à la une</h4></th>
+                <th class="field_hidden"><h4>Image à la une</h4></th>
                 <th><h4>Intitulé de l'article</h4></th>
-                <th><h4>Date d'ajout</h4></th>
+                <th class="field_hidden"><h4>Date d'ajout</h4></th>
                 <th><h4>Actions</h4></th>
             </tr>
         </thead>
         <tbody>
         {% for article in articles %}
             <tr>
-                <td><div class="project_miniature"><img   src='{{ asset('images/blog/' ~ article.imageName ~ '') }}' alt=""></div></td>
+                <td class="field_hidden"><div class="project_miniature"><img   src='{{ asset('images/blog/' ~ article.imageName ~ '') }}' alt=""></div></td>
                 <td><p>{{ article.title }}</p></td>
-                <td><p>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</p></td>
+                <td class="field_hidden"><p>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</p></td>
                 <td>
                     <a class="btn btn-primary btn-4 btn-4c icon-arrow-righ mb-2" href="{{ path('article_show', {'id': article.id}) }}">Voir</a>
                     <a class="btn btn-secondary btn-4 btn-4c icon-arrow-righ" href="{{ path('article_edit', {'id': article.id}) }}">Modifier</a>

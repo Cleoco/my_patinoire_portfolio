@@ -354,6 +354,23 @@ a:hover{
       color:var(--color-grey-medium) !important;
       content: ">"!important;
   }
+  @media(max-width:768px){
+    .field_hidden{
+        display:none;
+    }
+  }
+  @media(max-width:992px){
+    .breadcrumb_page {
+      display: flex;
+      justify-content: center;
+    }
+    .article, .portfolio, .cv{
+      background-image: none !important; 
+    }
+    .btn{
+      padding:15px 50px !important;
+    }
+  }
   /* <!-- ----------------------------HEADER------------------------------ --> */
 
   .header{
@@ -612,12 +629,13 @@ a:hover{
     opacity: 100%;
   }
 }
-@media(max-width:768px){
+@media(max-width:992px){
   .article_content_photo img{
-      width: 80%;
+      width: 100%;
       height: auto;
-      margin-left: 10%;
-      margin-right: 10%;
+      /* margin-left: 10%;
+      margin-right: 10%; */
+
      
    }
   .article_content_titre h3::before{
@@ -900,6 +918,7 @@ a:hover{
   width: 100%;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 
 
 }
@@ -943,6 +962,22 @@ a:hover{
   background-color: var(--color-violet) !important;
   border-color: var(--color-violet) !important;
   color:white !important;
+}
+
+@media(max-width:576px){
+
+}
+
+@media(max-width:768px){
+  
+}
+@media(max-width:992px){
+  .cards{
+    display: flex;
+    justify-content: center;
+  }
+
+
 }
  
 
@@ -994,7 +1029,7 @@ li span{
 .contact{
   background: var(--color-blue);
   position: relative;
-  background-image:url(../css/images/fond-contact.svg);
+  background-image:url("{{ asset('images/fond-contact.svg') }}");
   width: 100%;
   background-position: center bottom;
   background-repeat:no-repeat;
@@ -1023,7 +1058,9 @@ li span{
       padding-left: 15px;
       padding-right: 15px;
   }
-  
+  .contact-text{
+    margin : 30px auto;
+  }
 }
 
 

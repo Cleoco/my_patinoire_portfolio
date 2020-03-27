@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1366" height="3417" viewBox="0 0 1366 3417">
+  <g id="Groupe_201" data-name="Groupe 201" transform="translate(0 -929)">
+    <g id="Ellipse_38" data-name="Ellipse 38" transform="translate(0 929)" fill="none" stroke="#5352ed" stroke-width="40">
+      <circle cx="134" cy="134" r="134" stroke="none"/>
+      <circle cx="134" cy="134" r="114" fill="none"/>
+    </g>
+    <g id="Ellipse_41" data-name="Ellipse 41" transform="translate(1098 2427)" fill="none" stroke="#5352ed" stroke-width="40">
+      <circle cx="134" cy="134" r="134" stroke="none"/>
+      <circle cx="134" cy="134" r="114" fill="none"/>
+    </g>
+    <g id="Ellipse_43" data-name="Ellipse 43" transform="translate(41 3093)" fill="none" stroke="#5352ed" stroke-width="40">
+      <circle cx="81" cy="81" r="81" stroke="none"/>
+      <circle cx="81" cy="81" r="61" fill="none"/>
+    </g>
+    <g id="Ellipse_44" data-name="Ellipse 44" transform="translate(0 3925)" fill="none" stroke="#5352ed" stroke-width="40">
+      <circle cx="210.5" cy="210.5" r="210.5" stroke="none"/>
+      <circle cx="210.5" cy="210.5" r="190.5" fill="none"/>
+    </g>
+    <rect id="Rectangle_42" data-name="Rectangle 42" width="25" height="287" transform="translate(1366 1612) rotate(90)" fill="#5352ed"/>
+    <rect id="Rectangle_75" data-name="Rectangle 75" width="25" height="287" transform="translate(1366 3689) rotate(90)" fill="#5352ed"/>
+    <rect id="Rectangle_74" data-name="Rectangle 74" width="28" height="162" transform="translate(203 2177) rotate(90)" fill="#5352ed"/>
+    <rect id="Rectangle_73" data-name="Rectangle 73" width="1366" height="3298" transform="translate(0 929)" fill="none"/>
+  </g>
+</svg>
