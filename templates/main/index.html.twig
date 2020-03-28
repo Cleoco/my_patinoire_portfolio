@@ -101,6 +101,28 @@
     background-repeat:no-repeat;
 
 }
+.about_content_titre {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    animation-duration: 1.5s;
+    animation-direction: normal;
+    animation-name: glissement;
+}
+
+@keyframes glissement {
+    from {
+      margin-left: -30%;
+      opacity: 0;
+    }
+  
+    to {
+      margin-left: 0%;
+      opacity: 1;
+    }
+}
 
 .rect-haut-prez{
     position: absolute;
@@ -816,10 +838,21 @@ form{
             </div>
             <div class="contact_form mt-5 col-lg-6 col-md-12 col-sm-12">
                 <p class="ml-3 text-right">* Champs obligatoires</p>
-                {{ form(contactForm) }}
+                {{ form_start(contactForm) }}
+                    {{ form_row(contactForm.nom)}}
+                    {{ form_row(contactForm.societe)}}
+                    {{ form_row(contactForm.email)}}
+                    {{ form_row(contactForm.telephone)}}
+                    {{ form_row(contactForm.message)}}
+                    <div class="gprd_agreement d-flex">
+                        {{ form_row(contactForm.gprdAgreement)}}
+                        <p style="color:white; font-style:normal">J'accepte la <a style="color:white;text-decoration: underline !important;"  href="{{ path('terms_of_use') }}" >politique d'utilisation de mes données personnelles</a></p>
+                    </div>
+                    {{ form_row(contactForm.envoyer)}}
+
+                    {{ form_end(contactForm)}}
             </div>
 
-           
         </div>
         </div>
     </section>

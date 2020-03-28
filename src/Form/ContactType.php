@@ -85,7 +85,7 @@ class ContactType extends AbstractType
                 'constraints' => [
                     new NotBlank(),
                 ],
-                'label'=>'j\'accepte la politique d\'utilisation de mes données personnelles',
+                'label'=>false,
                 'required' => true,
                  
             ])
