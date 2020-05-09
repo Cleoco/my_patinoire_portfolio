@@ -47,20 +47,22 @@
                 {% set index = 0 %}
                     {% for category in categories %}
                         <!-- filtres -->
-                            <div class="card col-lg-2 col-md-3" data-index={{ index }}>
-                                <img src='{{ asset('images/category/' ~ category.imageName ~ '') }}' alt="">
-                                <h3>{{ category.name }}</h3>
-                                <div class="filet-fin"></div>
-                            </div>
+                            <a href="#prestation{{index}}"class="card col-lg-2 col-md-3" data-index={{ index }}>
+                                <div >
+                                    <img src='{{ asset('images/category/' ~ category.imageName ~ '') }}' alt="">
+                                    <h3>{{ category.name }}</h3>
+                                    <div class="filet-fin"></div>
+                                </div>
+                            </a>
                             {% set index = index + 1 %}
                     {% endfor %}
                 </div>
             </div>
         </div>
     </section>
-
+{% set index = 0 %}
 {% for prestation in prestations %}
-    <section class="details">
+    <section id='prestation{{index}}' class="details">
             <div class="details-content container data-index=">
                 <h2>{{ prestation.title }}</h2>
                 <div class="filet"></div>
@@ -77,6 +79,7 @@
             </div>
 
         </section>
+        {% set index = index + 1 %}
     {% endfor %}
     
 

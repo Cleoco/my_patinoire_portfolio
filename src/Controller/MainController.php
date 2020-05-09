@@ -26,8 +26,8 @@ class MainController extends AbstractController
     public function index(Request $request, \Swift_Mailer $mailer)
     {
         $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
-        $projets = $this->getDoctrine()->getRepository(Projet::class)->findBy([],['createdAt' => 'ASC'],6);
-
+        $projets = $this->getDoctrine()->getRepository(Projet::class)->findBy([],['createdAt' => 'DESC'],6);
+        $articles = $this->getDoctrine()->getRepository(Article::class)->findBy([],['createdAt' => 'DESC'],3);
         $form = $this->createForm(ContactType::class);
         $form->handleRequest($request);
 
@@ -35,9 +35,9 @@ class MainController extends AbstractController
             $contact = $form->getData();
             $message = (new \Swift_Message('Nouveau Message'))
                 ->setFrom($contact['email'])
-                ->setTo('cleocosnier36@gmail.com')
+                ->setTo('cleo.cosnier@gmail.com')
                 ->setBody(
-                    $this->renderView(
+                    $this->renderView( 
                         'emails/contact.html.twig', compact('contact')
                     ),
                     'text/html'
@@ -54,6 +54,7 @@ class MainController extends AbstractController
             'controller_name' => 'MainController',
             "categories" => $categories,
             "projets" => $projets,
+            "articles"=> $articles,
             'contactForm' => $form->createView(),
         ]);
     }
@@ -88,7 +89,7 @@ class MainController extends AbstractController
     public function portfolio()
     {
         $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();
-        $projets = $this->getDoctrine()->getRepository(Projet::class)->findAll();
+        $projets = $this->getDoctrine()->getRepository(Projet::class)->findBy([],['createdAt' => 'DESC']);
         return $this->render('main/portfolio.html.twig',[
             "name" => "Portfolio",
             "categories" => $categories,
@@ -118,10 +119,9 @@ class MainController extends AbstractController
      */
     public function blog(PaginatorInterface $paginator, Request $request): Response
     {
-        dump($request);
         $filters = $this->getDoctrine()->getRepository(FiltersBlog::class)->findAll();
         $articles = $paginator->paginate($this->getDoctrine()->getRepository(Article::class)
-            ->findAll(),
+            ->findBy([],['createdAt' => 'DESC']),
             $request->query->getInt('page', 1), /*page number*/
             4
     );
@@ -139,26 +139,24 @@ class MainController extends AbstractController
      */
     public function search(Request $request): Response
     {
-        $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
-
+        $articles = $this->getDoctrine()->getRepository(Article::class)->findBy([],['createdAt' => 'DESC']);
         $keyWord = $request->request->get('search');
         $keyWordSearched = htmlspecialchars($keyWord);
         $articlesByKeyword = [];
 
-        if(empty($keyWord) == false){
+        if(empty($keyWord) == false && $keyWord != " "){
             for($i=0; $i<count($articles); $i++){
-                if(stristr($articles[$i]->getContent(), $keyWordSearched,) || stristr($articles[$i]->getTitle(), $keyWordSearched,) ){
+                if(stristr($articles[$i]->getContent(), $keyWordSearched) || stristr($articles[$i]->getTitle(), $keyWordSearched) ){
                     $articlesByKeyword[]=$articles[$i];
                 }
             }
+
         }
-        dump($articlesByKeyword);
+        else{
+            $this->addFlash('warning', 'Aucun mot-clé renseigné dans la recherche');
+        }
         $filters = $this->getDoctrine()->getRepository(FiltersBlog::class)->findAll();
-    //     $articles = $paginator->paginate($this->getDoctrine()->getRepository(Article::class)
-    //         ->findAll(),
-    //         $request->query->getInt('page', 1), /*page number*/
-    //         4
-    // );
+   
         return $this->render('main/blogSearch.html.twig',[
             "articles" => $articles,
             "name" => "Votre recherche",

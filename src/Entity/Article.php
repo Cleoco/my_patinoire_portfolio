@@ -53,9 +53,6 @@ class Article
      *      maxSize = "2M",
      *      maxSizeMessage = "Ce fichier est trop lourd : ({{ size }} {{ suffix }}). téléchargez un fichier limité à ({{ limit }} {{ suffix }})"
      *  )
-     * 
-     * 
-     * 
      * @var File|null
      */
     private $imageFile;

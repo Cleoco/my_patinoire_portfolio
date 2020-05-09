@@ -27,7 +27,7 @@ class AccountController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $message = (new \Swift_Message('Modification mot de passe'))
-                ->setFrom('cleocosnier36@gmail.com')
+                ->setFrom('cleo.cosnier@gmail.com')
                 ->setTo($user->getEmail())
                 ->setBody(
                         $this->renderView(

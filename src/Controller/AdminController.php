@@ -48,7 +48,6 @@ class AdminController extends AbstractController
     public function index(CategoryRepository $categoryRepository, UserRepository $user): Response
     {
         $userName = $user->findAll();
-        dump($userName);
         return $this->render('admin/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
             "name" => "votre espace de gestion",
@@ -174,7 +173,6 @@ class PrestationController extends AbstractController
         $prestation = new Prestation();
         $form = $this->createForm(PrestationType::class, $prestation);
         $form->handleRequest($request);
-        dump($menu_categories);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($prestation);
@@ -251,7 +249,7 @@ class PrestationController extends AbstractController
         public function index(ProjetRepository $projetRepository): Response
         {
             return $this->render('projet/index.html.twig', [
-                'projets' => $projetRepository->findAll(),
+                'projets' => $projetRepository->findBy([],['createdAt' => 'DESC']),
                 "name" => "Gérer vos projets",
             ]);
         }
@@ -287,7 +285,6 @@ class PrestationController extends AbstractController
         {
             $projets = $this->getDoctrine()->getRepository(Projet::class)->findAll();
             $projetTitle = $projet-> getTitle();
-            dump($projets);
             return $this->render('projet/show.html.twig', [
                 'projet' => $projet,
                 "projets" => $projets,
@@ -374,7 +371,7 @@ class PrestationController extends AbstractController
         /**
          * @Route("/blog/{id}", name="article_show",  methods={"GET","POST"}, requirements={"id":"\d+"})
          */
-        public function show(Article $article, Request $request): Response
+        public function show(Article $article, Request $request, \Swift_Mailer $mailer): Response
         {
             // $comments = $this->getDoctrine()->getRepository(Comment::class)->findAll();
             $currentId = $article ->getId($request);
@@ -386,18 +383,31 @@ class PrestationController extends AbstractController
             $comment = new Comment();
             $form = $this->createForm(CommentType::class, $comment);
             $form->handleRequest($request);
-            // dump($comments);
             if ($form->isSubmitted() && $form->isValid()) {
+                $commentNew = $form->getData();
+
+                $message = (new \Swift_Message('Nouveau commentaire ajouté'))
+                    ->setFrom($commentNew->getEmail())
+                    ->setTo('cleo.cosnier@gmail.com')
+                    ->setBody(
+                        $this->renderView( 
+                            'emails/moderation.html.twig', compact('commentNew',"articleTitle")
+                        ),
+                        'text/html'
+                    )
+                ;
+                $mailer->send($message);
                 $manager = $this->getDoctrine()->getManager();
                 $comment->setCreatedAt(new \DateTime())
                         ->setArticle($article);
                 $manager->persist($comment);
                 $manager->flush();
 
+
                 $this->addFlash('success','Votre commentaire a bien été enregistré !');
                 return $this->redirectToRoute('article_show', ['id'=> $article->getId()]);
             }
-
+            
             return $this->render('article/show.html.twig', [
                 'articleByKeyWords' => $repo,
                 'article' => $article,

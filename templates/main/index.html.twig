@@ -1,8 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-159319280-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-159319280-1');
+        </script>
         <meta charset="UTF-8">
-        <title>{% block title %}Cléo Cosnier | Portfolio{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}Cléo Cosnier | Portfolio | Toulouse{% endblock %}</title>
+        <meta name="description" content="Directrice artistique et graphiste Print / Web sur Toulouse(31), je mets à votre service mon savoir-faire et ma créativité
+                        et vous accompagne dans vos projets de communication.">
             <link rel="stylesheet" href="/../assets/css/style.css">
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.min.js">
@@ -69,16 +80,16 @@
 }
 
   
-@media(min-width:768px){
-    .fa-bars{visibility: hidden;}
+@media(min-width:1200px){
+    .fa-bars{display: none;}
 
 }
 
-@media (max-width:768px){
+@media (max-width:992px){
 
 
     .header_content_titre p {
-       visibility: hidden;
+       display: none;
     }
     .header_content_titre h1{
         font-family: 'Montserrat',sans-serif;
@@ -102,6 +113,43 @@
 
 }
 .about_content_titre {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+.about_content_photo img{
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+@media (max-width:992px){
+    .filet{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .about_content_titre{
+        text-align: center;
+    }
+    .about_content_titre .btn{
+        margin-bottom: 30px;
+       
+    }
+}
+  
+@media(min-width:768px){
+    .about_content_titre .btn{
+        margin-bottom: 30px;
+       
+    }
+
+}
+
+@media (min-width:992px){
+    .about_content_titre {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -154,31 +202,6 @@
     opacity: 100%;
   }
 }
-
-@media (max-width:992px){
-    .filet{
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .about_content_titre{
-        text-align: center;
-    }
-    .about_content_titre .btn{
-        margin-bottom: 30px;
-       
-    }
-}
-  
-@media(min-width:768px){
-    .about_content_titre .btn{
-        margin-bottom: 30px;
-       
-    }
-
-}
-
-@media (max-width:768px){
-
 }
 
 
@@ -209,13 +232,8 @@ h2{
     width: 268px;
     height: auto;
     background: white;
-    box-shadow: 0px 0px 30px rgb(190, 190, 190);
-    border-radius: 20px;
     border:0;
     margin: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     padding: 50px;
     position: relative;
     text-decoration: none;
@@ -414,6 +432,62 @@ figure{
 }
 
 
+/* <!-- ----------------------------BLOG------------------------------ --> */
+
+.blog{
+    background-color: var(--color-grey);
+    height: auto;
+    padding-top: 106px;
+    padding-bottom: 106px;
+    background-image:url("{{ asset('images/graphic-blog.svg') }}");
+    width: 100%;
+    background-position: center top;
+    background-repeat:no-repeat;
+    display:flex;
+    flex-direction:column;
+    justify-content:center ;
+}
+.blog .filet{
+    margin: 40px auto;
+}
+.blog_infos h3{
+    text-align:left;
+}
+.blog_infos {
+    padding:20px 50px 50px;
+}
+.blog_infos .filet-fin{
+    margin-left:0;
+}
+.image_blog{
+    width:100%;
+}
+.blog .card {
+    padding:0;
+}
+.image_blog a{
+    width:100%;
+}
+.image_blog a img{
+    width:100% !important;
+    height:100% !important;
+    object-fit:cover !important;
+    margin:0;
+}
+.image_blog{
+    border-radius: 60px 60px 0 0;
+    overflow:hidden;
+}
+.blog .card{
+    justify-content:start !important
+}
+.blog .cards{
+    flex-wrap:wrap
+}
+.btn_blog_access{
+    margin-left:auto !important;
+    margin-right:auto !important;
+}
 
 /* <!-- ----------------------------CONTACT------------------------------ --> */
 
@@ -643,6 +717,9 @@ form{
         font-size:13px;
         font-style:italic;
     }
+    textarea.form-control{
+        min-height:175px !important;
+    }
 }
 
 
@@ -672,7 +749,7 @@ form{
                         <li><a href="{{ path('portfolio') }}">PORTFOLIO</a></li>
                         <li><a href="{{ path('blog') }}">BLOG</a></li>
                         <li><a href="#contact">CONTACT</a></li>
-                        <span onclick="openNav()"><i class="fa fa-bars mt-0"></i></span>
+                        <span onclick="openNav()"><i class="fa fa-bars"></i></span>
                     </ul>
             </div>
         </div>
@@ -717,7 +794,6 @@ form{
 {% endfor %}
 
 
-
     {# <!-- ----------------------------ABOUT------------------------------ --> #}
 
 <section id="arrox-scroll-header" class="about container">
@@ -735,7 +811,7 @@ form{
         </div>
         <div class="col-lg-6 col-md-12 col-sm-12">
             <div id="about_content_photo">
-                <img src="{{ asset('images/P1000368.jpg') }}" alt="">
+                <img src="{{ asset('images/P1000368.jpg') }}" alt="cleo cosnier - designer graphique Toulouse(31)">
             </div>
         </div>
 
@@ -758,14 +834,14 @@ form{
             {% for category in categories %}
                 <!-- filtres -->
                     <div class="card col-lg-3 col-md-4 col-sm-12" data-index={{ index }}>
-                        <img src='{{ asset('images/category/' ~ category.imageName ~ '') }}' alt="">
+                        <img src='{{ asset('images/category/' ~ category.imageName ~ '') }}' alt="{{ asset('images/category/' ~ category.imageName ~ '') }}">
                         <h3>{{ category.name }}</h3>
                         <div class="filet-fin"></div>
                     </div>
                     {% set index = index + 1 %}
             {% endfor %}
             <a href="#contact" class="card card_contact col-lg-3 col-md-4 col-sm-12">
-                <img class='img-tel'src="{{ asset('images/Groupe54.svg') }}" alt="">
+                <img class='img-tel'src="{{ asset('images/Groupe54.svg') }}" alt="{{ asset('images/Groupe54.svg') }}">
                 <h3><span>CONTACT</span></h3>
                 <div class="filet-fin-blanc"></div>
             </a> 
@@ -787,7 +863,7 @@ form{
     {% for projet in projets %}
         <div class="image col-lg-4 col-md-6 col-sm-12">
             <figure>
-                <a href="{{ path('projet_show', {'id': projet.id}) }}"><img src="{{ asset('images/projet/' ~ projet.imageUneName ~ '') }}" alt="">
+                <a href="{{ path('projet_show', {'id': projet.id}) }}"><img src="{{ asset('images/projet/' ~ projet.imageUneName ~ '') }}" alt="{{ projet.title }}">
                 <figcaption>
                     <h3>{{ projet.title }}</h3>
                     <div class="filet-fin"></div>
@@ -803,6 +879,30 @@ form{
     </div>
 </section>
 
+{# <!-- ----------------------------BLOG------------------------------ --> #}
+
+<section class="blog">
+    <div class="titre">
+        <h2>Blog</h2>
+        <div class="filet"></div>
+    </div>
+    <div class="row cards container">
+        {% for article in articles %}
+            <div class="card col-lg-3 col-md-4 col-sm-12">
+                <div class="image_blog">
+                    <a href="{{ path('article_show', {'id': article.id}) }}"><img src="{{ asset('images/blog/' ~ article.imageName ~ '') }}" alt="{{article.title}}"></a>
+                </div>
+                <div class="blog_infos">
+                    <a href="{{ path('article_show', {'id': article.id}) }}"><h3>{{ article.title }}</h3></a>
+                    <div class="filet-fin"></div>
+                    {# <p>{{ article.filter }}</p> #}
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+    <a href="{{ path('blog') }}" class="btn_blog_access btn btn-primary btn-4 btn-4c icon-arrow-right mt-4">voir toutes les actualités</a>
+</section>
 
 {# 
     <!-- ----------------------------CONTACT------------------------------ --> #}

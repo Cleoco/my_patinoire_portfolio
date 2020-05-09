@@ -45,6 +45,16 @@ p, label{
   color: var(--color-grey-medium);
   margin-bottom: 40px;;
 }
+ul{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: 1px;
+  font-weight: 300;
+  color: var(--color-grey-medium);
+  margin-bottom: 40px;
+  margin-left: 20px;
+}
 
 h1{
   font-family: "EB Garamond",serif;
@@ -99,6 +109,7 @@ h5{
 
 ul{
   padding:0;
+
 }
 
 .filet{
@@ -135,9 +146,6 @@ ul{
 a{
   text-decoration: none !important;
 }
-a:hover{
-  color:white !important;
-}
 
 .form-control{
   background :var(--color-grey) !important;
@@ -152,6 +160,7 @@ a:hover{
   padding: 25px !important;
   
 }
+
 /* MENU BURGER
 
 
@@ -173,7 +182,7 @@ a:hover{
     font-size: 2rem;
     position: absolute;
     right: 20px;
-    margin-top: 15px;
+    margin-top: -15px;
     cursor: pointer;
     display:none;
   }
@@ -401,8 +410,12 @@ a:hover{
     margin-top: 0;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     height: 100px;
     width: 100%;
+  }
+  .menu li, .reseaux-sociaux{
+    margin: 0;
   }
 
   .navbar a{
@@ -413,6 +426,7 @@ a:hover{
   .reseaux-sociaux{
     display: flex;
     list-style: none;
+    margin-top: 8px;
   }
 
   .reseaux-sociaux a{
@@ -422,6 +436,7 @@ a:hover{
   .menu{
     display: flex;
     list-style: none;
+    margin-top: 13px;
   }
 
   .menu a{
@@ -432,12 +447,14 @@ a:hover{
     font-weight: 600;
     letter-spacing: 5px;
   }
+
   .menu span{
     letter-spacing: 0;
   }
 
   .menu a:hover {
-    border-bottom: 3px solid #fff
+    border-bottom: 3px solid #fff;
+    color:white !important;
   }
   
   .header_content_titre{
@@ -453,7 +470,7 @@ a:hover{
    
     .header_content_titre h1{
         letter-spacing: 0.5rem;
-        font-size: 30px;
+        font-size: 30px !important;
         font-weight: 600;
     }
     
@@ -461,13 +478,12 @@ a:hover{
         margin-top: 50px;
     }
   }
-  @media (max-width:992px){
+  @media (min-width:1200px){
 
     .menu a{font-size: 12px; margin-left: 20px;}
    
     .header_content_titre h1{
         letter-spacing: 0.5rem;
-        font-size: 30px;
         font-weight: 600;
     }
     
@@ -475,7 +491,7 @@ a:hover{
         margin-top: 50px;
     }
   }
-  @media (max-width:768px){
+  @media (max-width:1200px){
     
     .fa-bars{
       display:block
@@ -494,12 +510,8 @@ a:hover{
       top: 15px;
       right: 35px;
     }
-    .email a {
-  
-      color: white;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 14px;
-      visibility: hidden;
+    .email {
+      display: none;
   }
   }
 
@@ -516,12 +528,6 @@ a:hover{
   background-repeat:no-repeat;
 
 }
-
-.article_content_titre{
-  margin: auto 0;
-
-}
-
 .article_content_titre p{
   color: var(--color-grey-medium);
   margin-bottom: 40px;
@@ -531,20 +537,15 @@ a:hover{
  
 }
 
-.article_content_photo{
+/* .article_content_photo{
   
   width: 556px;
   display: flex;
   align-items: center;
   display: table;
   margin:auto 0;
-}
+} */
 
-.article_content_photo img{
- width: 100%;
- height: auto;
-
-}
 
 .rect-haut-prez{
   position: absolute;
@@ -566,6 +567,7 @@ a:hover{
   justify-content: center;
   width: 100%;
   height: 100%;
+  margin: auto 0;
 
 }
 
@@ -608,43 +610,58 @@ a:hover{
 
 .article_content_photo img{
  width: 100%;
- height: auto;
+ height: 100%;
+ -o-object-fit: cover;
+ object-fit: cover;
 
 }
-.article_content_photo {
-  margin: auto 0;
-}
-.article_content_photo img{
-  animation-duration: 2s;
-  animation-direction: normal;
-  animation-delay: 0.5s;
-  animation-name: glissement-photo;
-  opacity: 0;
-  animation-fill-mode: forwards;
-}
-@keyframes glissement-photo {
+@media(min-width:992px){
+  .about_content_titre {
+    animation-duration: 1.5s;
+    animation-direction: normal;
+    animation-name: glissement;
+  }
+
+  @keyframes glissement {
   from {
-    margin-left: 30%;
-    opacity: 0%;
+      margin-left: -30%;
+      opacity: 0;
   }
 
   to {
-    margin-left: 0%;
-    opacity: 100%;
+      margin-left: 0%;
+      opacity: 1;
+  }
+  }
+  .article_content_photo img{
+      width: 100%;
+      height: auto;     
+   }
+
+  .article_content_photo img{
+    animation-duration: 2s;
+    animation-direction: normal;
+    animation-delay: 0.5s;
+    animation-name: glissement-photo;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  }
+  @keyframes glissement-photo {
+    from {
+      margin-left: 30%;
+      opacity: 0%;
+    }
+
+    to {
+      margin-left: 0%;
+      opacity: 100%;
+    }
   }
 }
 @media(max-width:992px){
-  .article_content_photo img{
-      width: 100%;
-      height: auto;
-      /* margin-left: 10%;
-      margin-right: 10%; */
 
-     
-   }
   .article_content_titre h3::before{
       display: none;
-  
   }
   
   .article_content_titre{
@@ -660,13 +677,6 @@ a:hover{
   .contact-content{
     flex-wrap: wrap;
     text-align: center;
-  }
-  .contact-text .filet, .contact-content .btn {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .contact-content .btn{
-    margin-bottom: 30px;
   }
 }
 
@@ -687,6 +697,7 @@ a:hover{
 }
 .cv-content h2{
   color: white;
+  font-size: 50px;
 }
 .cv-content{
   position: relative;
@@ -813,6 +824,9 @@ a:hover{
   .cv-content{
       padding-left: 15px;
       padding-right: 15px;
+  }
+  .cv-content h2{
+    font-size: 30px;
   }
 }
 @media(max-width:576px){
@@ -1044,26 +1058,35 @@ li span{
   align-items: center;
   color: white;
 }
+
 .contact .filet{
   background: white;
-  margin-bottom: 0;
+  margin:40px 0 0;
 }
 .contact-text{
   margin: 30px 0;
 }
-.contact .btn{
+.contact-content .btn{
   width: 300px;
   text-align: center;
 }
 
 
-@media(max-width:768px){
+@media(max-width:992px){
   .contact-content{
       padding-left: 15px;
       padding-right: 15px;
   }
   .contact-text{
     margin : 30px auto;
+  }
+  .contact-content .btn{
+    width: 200px !important;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+  .contact-content .filet{
+    margin:40px auto 0;
   }
 }
 

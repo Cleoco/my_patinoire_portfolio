@@ -110,13 +110,13 @@ form button{
               <div class="article_content ">
                 <div class="row">
                     <div class="article_image col-lg-4">
-                        <img src='{{ asset('images/blog/' ~ article.imageName ~ '') }}' alt="">
+                        <img src='{{ asset('images/blog/' ~ article.imageName ~ '') }}' alt="{{ article.title }}">
                     </div>
                     <div class="article_info col-lg-8">
                         <a href="{{ path('article_show', {'id': article.id}) }}" >
                             <h3 class="article_title">{{ article.title }}</h3>
                         </a>
-                            <p>{{ article.createdAt | date('d-m-Y') }}</p>
+                            <p>{{ article.createdAt | date('d/m/Y') }}</p>
                             <p>{{ article.content | slice(0, 100) |raw }} …</p>
                           <a href="{{ path('article_show', {'id': article.id}) }}">
                             <div class="btn btn-primary btn-more">Lire la suite</div>
